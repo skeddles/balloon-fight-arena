@@ -6,6 +6,7 @@ func _process(_delta):
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
 		endedMatch = true
 		var winner = get_tree().get_nodes_in_group("character")[0]
+		$Sound/Music.playing = false
 		$Sound/MatchOver.playing = true
 		$MatchOver/Winner.text = "WINNER: PLAYER "+ str(winner.playerNumber)
 		$MatchOver.visible = true

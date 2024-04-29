@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://du0cdw1j5f083" path="res://art/tileset.png" id="3_2yhc7"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="3_4b6q1"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="4_3r8oy"]
+[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="4_xx4ci"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_8sida"]
 tile_data = PackedInt32Array(0, 458752, 3, 65536, 458752, 4, 131072, 458752, 5, 196608, 458752, 6, 1, 524288, 3, 65537, 524288, 4, 131073, 524288, 5, 196609, 524288, 6, 2, 589824, 3, 65538, 589824, 4, 131074, 589824, 5, 196610, 589824, 6, 3, 655360, 3, 65539, 655360, 4, 131075, 655360, 5, 196611, 655360, 6)
@@ -544,9 +545,6 @@ normal = Vector2(0, 1)
 normal = Vector2(-1, 0)
 distance = -640.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp2qk"]
-size = Vector2(120, 7.5)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sg6g"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -584,10 +582,6 @@ position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_lf10b")
 one_way_collision_margin = 54.2
 
-[node name="floor2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(358, -194.75)
-shape = SubResource("RectangleShape2D_pp2qk")
-
 [node name="Spawn1" type="Marker2D" parent="."]
 position = Vector2(80, 320)
 
@@ -604,6 +598,11 @@ position = Vector2(448, 320)
 
 [node name="MatchOver" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("3_4b6q1")
+
+[node name="Music" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("4_xx4ci")
+volume_db = -13.048
+autoplay = true
 
 [node name="MatchOver" type="Node2D" parent="."]
 visible = false
