@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cgb7hfsj8qklt"]
+[gd_scene load_steps=47 format=3 uid="uid://20bds8waqqmi"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_hodwi"]
 [ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="2_eel1n"]
