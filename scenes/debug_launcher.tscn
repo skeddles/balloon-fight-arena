@@ -292,4 +292,14 @@ value = 2.0
 rounded = true
 alignment = 1
 
+[node name="Version" type="Label" parent="."]
+offset_left = 556.0
+offset_top = 4.0
+offset_right = 637.0
+offset_bottom = 15.0
+theme = ExtResource("2_yn84k")
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "V0.0.0"
+horizontal_alignment = 2
+
 [connection signal="pressed" from="StartMatchButton" to="." method="_on_start_match_button_pressed"]

@@ -8,6 +8,9 @@ const characters = [
 	"balloon-bird-white"
 ]
 
+func _ready():
+	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
+
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
 		OS.alert(' you must pick at least two characters','selection error')
