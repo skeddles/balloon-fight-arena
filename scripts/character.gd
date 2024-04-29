@@ -24,10 +24,11 @@ func init():
 	$Balloons.animation = str(current_balloons) + "_idle"
 
 func _draw():
-	if controller and controller.has_method("debugDraw"):
-		controller.debugDraw(self)
-	if invincible:
-		draw_circle(Vector2(-15,-15),1,Color(0,1,1))
+	if controller:
+		if controller.has_method("debugDraw"):
+			controller.debugDraw(self)
+		if "DEBUG" in controller and controller.DEBUG and invincible:
+			draw_circle(Vector2(-15,-15),1,Color(0,1,1))
 
 func _physics_process(delta):
 	if controller and controller.has_method("debugDraw"): queue_redraw()
