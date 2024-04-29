@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="BalloonFight"
+config/name="Balloon Fight Arena"
+config/version="1.0.0"
 run/main_scene="res://scenes/debug_launcher.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
