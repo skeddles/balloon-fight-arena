@@ -32,7 +32,7 @@ func update():
 	# Update Balloon Counter
 	if character.stored_balloons > 10:
 		print("more than 10 balloons")
-		get_node("Contents/BalloonCounter/Count").text = str(character.stored_balloons)
+		get_node("Contents/BalloonCounter").text = "x"+str(character.stored_balloons)
 		setBalloonCounterVisibility(true)
 	elif character.stored_balloons > 1:
 		print("1-10 balloons")
@@ -43,6 +43,6 @@ func update():
 		get_node("Contents/NoBalloons").visible = true
 
 func setBalloonCounterVisibility(visibility):
-	get_node("Contents/BalloonCounter/Count").visible = visibility
-	for i in range(11,16):
-		get_node("Contents/BalloonCounter/Balloon"+str(i)).visible = visibility
+	get_node("Contents/BalloonCounter").visible = visibility
+	for i in range(1,6):
+		get_node("Contents/CountBalloon"+str(i)).visible = visibility

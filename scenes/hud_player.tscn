@@ -102,40 +102,32 @@ visible = false
 position = Vector2(47, 24)
 texture = ExtResource("3_nt66b")
 
-[node name="BalloonCounter" type="Node" parent="Contents"]
-
-[node name="Count" type="Label" parent="Contents/BalloonCounter"]
-visible = false
-offset_left = 36.0
-offset_top = 347.0
-offset_right = 76.0
-offset_bottom = 370.0
+[node name="BalloonCounter" type="Label" parent="Contents"]
+offset_left = 37.0
+offset_top = 19.0
+offset_right = 51.0
+offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.435294, 0.435294, 0.435294, 1)
 theme_override_fonts/font = ExtResource("4_kocfj")
 theme_override_font_sizes/font_size = 7
 text = "x99"
 
-[node name="Balloon11" type="Sprite2D" parent="Contents/BalloonCounter"]
-visible = false
-position = Vector2(27, 347)
+[node name="CountBalloon1" type="Sprite2D" parent="Contents"]
+position = Vector2(28, 19)
 texture = ExtResource("3_nt66b")
 
-[node name="Balloon12" type="Sprite2D" parent="Contents/BalloonCounter"]
-visible = false
-position = Vector2(32, 347)
+[node name="CountBalloon2" type="Sprite2D" parent="Contents"]
+position = Vector2(33, 19)
 texture = ExtResource("3_nt66b")
 
-[node name="Balloon13" type="Sprite2D" parent="Contents/BalloonCounter"]
-visible = false
-position = Vector2(30, 351)
+[node name="CountBalloon3" type="Sprite2D" parent="Contents"]
+position = Vector2(31, 23)
 texture = ExtResource("3_nt66b")
 
-[node name="Balloon14" type="Sprite2D" parent="Contents/BalloonCounter"]
-visible = false
-position = Vector2(27, 354)
+[node name="CountBalloon4" type="Sprite2D" parent="Contents"]
+position = Vector2(28, 26)
 texture = ExtResource("3_nt66b")
 
-[node name="Balloon15" type="Sprite2D" parent="Contents/BalloonCounter"]
-visible = false
-position = Vector2(33, 354)
+[node name="CountBalloon5" type="Sprite2D" parent="Contents"]
+position = Vector2(34, 26)
 texture = ExtResource("3_nt66b")
