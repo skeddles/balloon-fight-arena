@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bv6xaxgvlwc1i"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bv6xaxgvlwc1i"]
 
+[ext_resource type="Texture2D" uid="uid://d5wa5ynmo4mj" path="res://art/ui/checkbox-checked.png" id="1_jsau7"]
 [ext_resource type="FontFile" uid="uid://ci2ne8c118w1t" path="res://art/fonts/balloon_fight_font.ttf" id="1_rcqlx"]
+[ext_resource type="Texture2D" uid="uid://cpmx4dmi017gq" path="res://art/ui/checkbox.png" id="2_32r2s"]
 [ext_resource type="Texture2D" uid="uid://bwe55tvx08yjs" path="res://art/ui/down.png" id="2_n0vnu"]
 [ext_resource type="Texture2D" uid="uid://bx23jpb4uva4a" path="res://art/ui/radio-checked.png" id="3_n702m"]
 [ext_resource type="Texture2D" uid="uid://ct2me21iv33hm" path="res://art/ui/updown.png" id="3_rkkrf"]
@@ -37,6 +39,8 @@ bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs0xx"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6khse"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 1)
 border_width_left = 1
@@ -68,6 +72,14 @@ Button/styles/focus = SubResource("StyleBoxFlat_chdkp")
 Button/styles/hover = SubResource("StyleBoxFlat_40wd7")
 Button/styles/normal = SubResource("StyleBoxFlat_lqbcj")
 Button/styles/pressed = SubResource("StyleBoxFlat_dgjas")
+CheckBox/icons/checked = ExtResource("1_jsau7")
+CheckBox/icons/unchecked = ExtResource("2_32r2s")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_xs0xx")
 Fonts/fonts/normal = ExtResource("1_rcqlx")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_6khse")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_tb2vg")

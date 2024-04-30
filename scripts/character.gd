@@ -1,23 +1,27 @@
 extends CharacterBody2D
+class_name Character
 
 ## The proper name of the character
 @export var CharacterName:String
 ## Whether this character should be able to use a parachute while falling
 @export var HasParachute:bool = false
 
-var controller : Node
+# set by code on setup
+var controller:Node
+var playerHUD:PlayerHUD
+var playerNumber:int
 
+# character stats
 const SPEED = 100.0
 const FLAP_VELOCITY = -100.0
 const JUMP_VELOCITY = -50.0
 const GRAVITY_MULTIPLIER = 0.2
 const AIR_FRICTION = 1
-
-var playerNumber:int
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var current_balloons = 4
+# player state variables
+var current_balloons = 0
+var stored_balloons = 0
 var falling = false
 var parachuting = false
 var invincible = false
@@ -143,6 +147,7 @@ func startFalling():
 	collision_mask = 0
 	$Sprite.animation = "fall"
 	$Audio/Falling.play(0)
+	playerHUD.update()
 
 func _on_sprite_animation_finished():
 	if $Sprite.animation == 'flap':	$Sprite.animation = 'float'

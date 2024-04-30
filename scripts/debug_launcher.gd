@@ -1,5 +1,7 @@
 extends Node2D
 
+const MAX_PLAYERS = 4
+
 const characters = [
 	"balloon-fighter-red",
 	"balloon-fighter-blue",
@@ -24,18 +26,37 @@ func _on_start_match_button_pressed():
 	var arenaScene = preload("res://scenes/main.tscn").instantiate()
 	
 	get_tree().root.add_child(arenaScene)
-	for i in range(1,5):
+	var balloonCount = int($BalloonCount.value)
+	var enabledCharacters = []
+	for i in range(1,MAX_PLAYERS+1):
 		print("char",i," P"+str(i)+"Input")
 		print(get_node("P"+str(i)+"Input"))
 		var controlSelection = get_node("P"+str(i)+"Input").selected
 		var characterSelection = get_node("P"+str(i)+"Char").selected
 		if controlSelection != 0:
-			print("load ","res://scenes/characters/"+characters[characterSelection]+".tscn")
+			# Create Character
 			var character = load("res://scenes/characters/"+characters[characterSelection]+".tscn").instantiate()
 			arenaScene.add_child(character)
 			character.position = arenaScene.find_child("Spawn"+str(i)).position
-			character.current_balloons = int($BalloonCount.value)
 			character.playerNumber = i
+			character.playerHUD = arenaScene.get_node("HUD/PlayerList/Player"+str(character.playerNumber))
+			character.playerHUD.character = character
+			enabledCharacters.append(character)
+			
+			# Set Balloons
+			if balloonCount > 4:
+				if $StartFilled.button_pressed:
+					character.current_balloons = 4
+					character.stored_balloons = balloonCount - 4
+				else:
+					character.stored_balloons = balloonCount
+			else:
+				if $StartFilled.button_pressed:
+					character.current_balloons = balloonCount
+				else:
+					character.stored_balloons = balloonCount
+
+			# Attach Controller
 			var controller
 			if controlSelection == 5: 
 				controller = preload("res://scenes/cpu.tscn").instantiate()
@@ -48,6 +69,9 @@ func _on_start_match_button_pressed():
 			character.add_child(controller)
 			character.controller = controller
 			character.init()
+			
+	for character in enabledCharacters:
+		character.playerHUD.initialize(enabledCharacters.size())
 	get_node("/root/DebugLauncher").queue_free()
 
 func checkAtLeast2CharactersSelected():

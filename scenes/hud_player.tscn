@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://balt60cletle5"]
+
+[ext_resource type="Script" path="res://scripts/hud-player.gd" id="1_1nyri"]
+[ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="1_3vvis"]
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_6snx6"]
+[ext_resource type="Texture2D" uid="uid://gb8ihigxf0kd" path="res://art/ui/hud-balloon-filler.png" id="2_mgt34"]
+[ext_resource type="Texture2D" uid="uid://c8aqvg7mivsq8" path="res://art/ui/balloon-count.png" id="3_nt66b"]
+[ext_resource type="FontFile" uid="uid://cx4th7534rfp1" path="res://art/fonts/wendy.ttf" id="4_kocfj"]
+
+[node name="Player" type="MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+size_flags_horizontal = 8
+script = ExtResource("1_1nyri")
+
+[node name="Contents" type="Control" parent="."]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 2
+
+[node name="BalloonSprite" type="Sprite2D" parent="Contents"]
+position = Vector2(12, 13)
+texture = ExtResource("1_3vvis")
+region_enabled = true
+region_rect = Rect2(80, 80, 24, 16)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Contents"]
+position = Vector2(11, 21)
+texture = ExtResource("1_3vvis")
+region_enabled = true
+region_rect = Rect2(8, 8, 16, 16)
+
+[node name="NoBalloons" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(37, 21)
+texture = ExtResource("2_mgt34")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Dead" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(37, 21)
+texture = ExtResource("2_mgt34")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="PlayerNumber" type="Label" parent="Contents"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 6.0
+offset_right = 50.0
+offset_bottom = 12.0
+theme = ExtResource("2_6snx6")
+text = "P12"
+horizontal_alignment = 1
+
+[node name="Balloon1" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(27, 17)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon2" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(32, 17)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon3" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(37, 17)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon4" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(42, 17)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon5" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(47, 17)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon6" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(27, 24)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon7" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(32, 24)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon8" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(37, 24)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon9" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(42, 24)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon10" type="Sprite2D" parent="Contents"]
+visible = false
+position = Vector2(47, 24)
+texture = ExtResource("3_nt66b")
+
+[node name="BalloonCounter" type="Node" parent="Contents"]
+
+[node name="Count" type="Label" parent="Contents/BalloonCounter"]
+visible = false
+offset_left = 36.0
+offset_top = 347.0
+offset_right = 76.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(0.435294, 0.435294, 0.435294, 1)
+theme_override_fonts/font = ExtResource("4_kocfj")
+theme_override_font_sizes/font_size = 7
+text = "x99"
+
+[node name="Balloon11" type="Sprite2D" parent="Contents/BalloonCounter"]
+visible = false
+position = Vector2(27, 347)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon12" type="Sprite2D" parent="Contents/BalloonCounter"]
+visible = false
+position = Vector2(32, 347)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon13" type="Sprite2D" parent="Contents/BalloonCounter"]
+visible = false
+position = Vector2(30, 351)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon14" type="Sprite2D" parent="Contents/BalloonCounter"]
+visible = false
+position = Vector2(27, 354)
+texture = ExtResource("3_nt66b")
+
+[node name="Balloon15" type="Sprite2D" parent="Contents/BalloonCounter"]
+visible = false
+position = Vector2(33, 354)
+texture = ExtResource("3_nt66b")

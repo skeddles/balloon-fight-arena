@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://nehwgbvojxei"]
+
+[ext_resource type="PackedScene" uid="uid://balt60cletle5" path="res://scenes/hud_player.tscn" id="1_nm6lv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggftk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqwut"]
+bg_color = Color(0.435294, 0.435294, 0.435294, 1)
+
+[node name="HUD" type="Panel"]
+offset_top = 328.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ggftk")
+
+[node name="Line" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 640.0
+offset_bottom = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uqwut")
+
+[node name="PlayerList" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Player1" parent="PlayerList" instance=ExtResource("1_nm6lv")]
+visible = false
+layout_mode = 2
+
+[node name="Player2" parent="PlayerList" instance=ExtResource("1_nm6lv")]
+visible = false
+layout_mode = 2
+
+[node name="Player3" parent="PlayerList" instance=ExtResource("1_nm6lv")]
+visible = false
+layout_mode = 2
+
+[node name="Player4" parent="PlayerList" instance=ExtResource("1_nm6lv")]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
