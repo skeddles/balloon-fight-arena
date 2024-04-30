@@ -36,7 +36,7 @@ func update():
 		print("more than 10 balloons")
 		$Contents/BalloonCounter.text = "x"+str(character.stored_balloons)
 		setBalloonCounterVisibility(true)
-	elif character.stored_balloons > 1:
+	elif character.stored_balloons > 0:
 		print("1-10 balloons")
 		for i in range(1,character.stored_balloons+1):
 			get_node("Contents/Balloon"+str(i)).visible = true
