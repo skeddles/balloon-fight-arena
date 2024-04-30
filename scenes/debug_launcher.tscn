@@ -292,10 +292,10 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="BalloonCount" type="SpinBox" parent="."]
-offset_left = 124.0
-offset_top = 318.0
-offset_right = 174.0
-offset_bottom = 349.0
+offset_left = 125.0
+offset_top = 322.0
+offset_right = 173.0
+offset_bottom = 344.0
 theme = ExtResource("2_yn84k")
 min_value = 1.0
 max_value = 99.0
