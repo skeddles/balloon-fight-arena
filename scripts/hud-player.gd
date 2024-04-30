@@ -9,6 +9,8 @@ func initialize(numberOfPlayers):
 	get_node("Contents/PlayerNumber").text = "P"+str(character.playerNumber)
 	add_theme_constant_override("margin_left", 50)
 	add_theme_constant_override("margin_right", 50)
+	$Contents/PlayerSprite.texture = character.get_node("Sprite").sprite_frames.get_frame_texture("idle",0)
+	$Contents/BalloonSprite.texture = character.get_node("Balloons").sprite_frames.get_frame_texture("2_idle",1)
 	update()
 	visible = true
 

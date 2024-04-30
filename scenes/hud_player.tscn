@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://balt60cletle5"]
+[gd_scene load_steps=9 format=3 uid="uid://balt60cletle5"]
 
 [ext_resource type="Script" path="res://scripts/hud-player.gd" id="1_1nyri"]
 [ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="1_3vvis"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://gb8ihigxf0kd" path="res://art/ui/hud-balloon-filler.png" id="2_mgt34"]
 [ext_resource type="Texture2D" uid="uid://c8aqvg7mivsq8" path="res://art/ui/balloon-count.png" id="3_nt66b"]
 [ext_resource type="FontFile" uid="uid://cx4th7534rfp1" path="res://art/fonts/wendy.ttf" id="4_kocfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87jer"]
+atlas = ExtResource("1_3vvis")
+region = Rect2(112, 80, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wcv5"]
+atlas = ExtResource("1_3vvis")
+region = Rect2(8, 8, 16, 16)
 
 [node name="Player" type="MarginContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -18,15 +26,13 @@ layout_mode = 2
 
 [node name="BalloonSprite" type="Sprite2D" parent="Contents"]
 position = Vector2(12, 13)
-texture = ExtResource("1_3vvis")
-region_enabled = true
-region_rect = Rect2(80, 80, 24, 16)
+texture = SubResource("AtlasTexture_87jer")
+flip_h = true
 
 [node name="PlayerSprite" type="Sprite2D" parent="Contents"]
-position = Vector2(11, 21)
-texture = ExtResource("1_3vvis")
-region_enabled = true
-region_rect = Rect2(8, 8, 16, 16)
+position = Vector2(13, 21)
+texture = SubResource("AtlasTexture_7wcv5")
+flip_h = true
 
 [node name="NoBalloons" type="Sprite2D" parent="Contents"]
 visible = false
