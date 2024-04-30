@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://20bds8waqqmi"]
+[gd_scene load_steps=48 format=3 uid="uid://20bds8waqqmi"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_hodwi"]
 [ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="2_eel1n"]
 [ext_resource type="AudioStream" uid="uid://h16yknk32i1a" path="res://sound/bf-pop.wav" id="3_k2gmj"]
+[ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_uul2j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vo41"]
 radius = 4.0
@@ -438,6 +439,9 @@ shape = SubResource("CapsuleShape2D_s0k5s")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_k2gmj")
+
+[node name="Falling" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_uul2j")
 
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]

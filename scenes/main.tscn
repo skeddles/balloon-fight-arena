@@ -589,10 +589,10 @@ position = Vector2(80, 320)
 position = Vector2(624, 320)
 
 [node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(256, 320)
+position = Vector2(136, 144)
 
 [node name="Spawn4" type="Marker2D" parent="."]
-position = Vector2(448, 320)
+position = Vector2(536, 144)
 
 [node name="Sound" type="Node" parent="."]
 

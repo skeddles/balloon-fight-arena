@@ -10,14 +10,16 @@ const INPUT_LIMIT = 1000
 var rng = RandomNumberGenerator.new()
 var state = CHASE
 
-
 func updateState(character):
 	if not character or not target: return
-	if distanceBetween(character,target) < 100 and character.position.y > target.position.y - 32: 
+	if character.current_balloons < 1:
+		state = FLEE
+	elif target.current_balloons < 1:
+		state = CHASE
+	elif distanceBetween(character,target) < 75 and character.position.y > target.position.y - 32: 
 		state = FLEE
 	else:
 		state = CHASE
-
 
 func getInput(character):
 	var input = {

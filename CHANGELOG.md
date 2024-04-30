@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.0.0 - 2024-04-01
+## 2.0.0 - 2024-05-01
+
+- Balloon Birds now have parachutes
+- Characters can walk and jump without balloons
+- Colliding with a character with no balloons kills them
+
+## 1.0.0 - 2024-04-29
 
 ### Added
 

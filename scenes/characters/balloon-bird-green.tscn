@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://bvrq0blakfjhf"]
+[gd_scene load_steps=48 format=3 uid="uid://bvrq0blakfjhf"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_cvcs2"]
 [ext_resource type="Texture2D" uid="uid://cnjjw2dvtwsbf" path="res://art/balloon-bird-green.png" id="2_kv2vg"]
 [ext_resource type="AudioStream" uid="uid://h16yknk32i1a" path="res://sound/bf-pop.wav" id="3_sbcac"]
+[ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_7rh50"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vo41"]
 radius = 4.0
@@ -400,6 +401,7 @@ height = 16.0
 z_index = 1
 script = ExtResource("1_cvcs2")
 CharacterName = "Balloon Bird Green"
+HasParachute = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -439,6 +441,9 @@ shape = SubResource("CapsuleShape2D_s0k5s")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_sbcac")
+
+[node name="Falling" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_7rh50")
 
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://bwgkbxnyqdc71"]
+[gd_scene load_steps=51 format=3 uid="uid://bwgkbxnyqdc71"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_u8qwf"]
 [ext_resource type="Texture2D" uid="uid://dbe0l46sn6hq4" path="res://art/balloon-bird-white.png" id="2_ydlkv"]
 [ext_resource type="AudioStream" uid="uid://h16yknk32i1a" path="res://sound/bf-pop.wav" id="3_ewa0f"]
+[ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_iak7i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vo41"]
 radius = 4.0
@@ -87,6 +88,18 @@ region = Rect2(80, 272, 24, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d344c"]
 atlas = ExtResource("2_ydlkv")
 region = Rect2(80, 248, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16xkm"]
+atlas = ExtResource("2_ydlkv")
+region = Rect2(176, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi0b4"]
+atlas = ExtResource("2_ydlkv")
+region = Rect2(200, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mhqm"]
+atlas = ExtResource("2_ydlkv")
+region = Rect2(224, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxlbw"]
 animations = [{
@@ -212,6 +225,20 @@ animations = [{
 "loop": true,
 "name": &"4_walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16xkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi0b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mhqm")
+}],
+"loop": false,
+"name": &"parachute",
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8rev"]
@@ -399,6 +426,7 @@ height = 16.0
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 z_index = 1
 script = ExtResource("1_u8qwf")
+HasParachute = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -407,13 +435,15 @@ shape = SubResource("CapsuleShape2D_3vo41")
 [node name="Balloons" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bxlbw")
-animation = &"4_idle"
+animation = &"parachute"
 autoplay = "1_idle"
+frame = 2
+frame_progress = 1.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_q4adw")
-animation = &"electrocute"
+animation = &"parachute"
 autoplay = "idle"
 
 [node name="FeetArea" type="Area2D" parent="."]
@@ -438,6 +468,9 @@ shape = SubResource("CapsuleShape2D_s0k5s")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_ewa0f")
+
+[node name="Falling" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_iak7i")
 
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]
