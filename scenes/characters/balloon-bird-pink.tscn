@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cmk3ewtmtwkoo"]
+[gd_scene load_steps=51 format=3 uid="uid://cmk3ewtmtwkoo"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_4kbwi"]
 [ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/balloon-bird-pink.png" id="2_00hh8"]
@@ -88,6 +88,18 @@ region = Rect2(80, 272, 24, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d344c"]
 atlas = ExtResource("2_00hh8")
 region = Rect2(80, 248, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fitgo"]
+atlas = ExtResource("2_00hh8")
+region = Rect2(176, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikgk6"]
+atlas = ExtResource("2_00hh8")
+region = Rect2(200, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu5fr"]
+atlas = ExtResource("2_00hh8")
+region = Rect2(224, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxlbw"]
 animations = [{
@@ -213,6 +225,20 @@ animations = [{
 "loop": true,
 "name": &"4_walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fitgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikgk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu5fr")
+}],
+"loop": false,
+"name": &"parachute",
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8rev"]
@@ -409,7 +435,7 @@ shape = SubResource("CapsuleShape2D_3vo41")
 [node name="Balloons" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bxlbw")
-animation = &"4_idle"
+animation = &"parachute"
 autoplay = "1_idle"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

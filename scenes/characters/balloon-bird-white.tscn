@@ -435,10 +435,8 @@ shape = SubResource("CapsuleShape2D_3vo41")
 [node name="Balloons" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bxlbw")
-animation = &"parachute"
+animation = &"2_idle"
 autoplay = "1_idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
