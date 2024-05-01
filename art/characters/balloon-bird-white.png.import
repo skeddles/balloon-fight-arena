@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ktcc4feptlye"
-path="res://.godot/imported/balloon-bird.png-c0197193b0706ac074e2cbddce777555.ctex"
+uid="uid://dbe0l46sn6hq4"
+path="res://.godot/imported/balloon-bird-white.png-7a67cc55548bd4251ee46a0fadf73267.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/balloon-bird.png"
-dest_files=["res://.godot/imported/balloon-bird.png-c0197193b0706ac074e2cbddce777555.ctex"]
+source_file="res://art/characters/balloon-bird-white.png"
+dest_files=["res://.godot/imported/balloon-bird-white.png-7a67cc55548bd4251ee46a0fadf73267.ctex"]
 
 [params]
 

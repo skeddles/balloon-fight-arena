@@ -1,32 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo8evtpcwfkhr"]
+[gd_scene load_steps=3 format=3 uid="uid://bo8evtpcwfkhr"]
 
 [ext_resource type="Script" path="res://scripts/debug_launcher.gd" id="1_j5hcl"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_yn84k"]
-[ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="3_bjqm3"]
-[ext_resource type="Texture2D" uid="uid://dbe0l46sn6hq4" path="res://art/balloon-bird-white.png" id="3_gsey8"]
-[ext_resource type="Texture2D" uid="uid://dn4o2i36skm8j" path="res://art/balloon-fighter-blue.png" id="4_idfr5"]
-[ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/balloon-bird-pink.png" id="5_cl1ed"]
-[ext_resource type="Texture2D" uid="uid://cnjjw2dvtwsbf" path="res://art/balloon-bird-green.png" id="6_t2j6m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q0vqa"]
-atlas = ExtResource("3_bjqm3")
-region = Rect2(8, 8, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7jpdj"]
-atlas = ExtResource("4_idfr5")
-region = Rect2(8, 8, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydqum"]
-atlas = ExtResource("5_cl1ed")
-region = Rect2(8, 8, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8eqna"]
-atlas = ExtResource("6_t2j6m")
-region = Rect2(8, 8, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_unn1b"]
-atlas = ExtResource("3_gsey8")
-region = Rect2(8, 8, 16, 16)
 
 [node name="DebugLauncher" type="Node2D"]
 script = ExtResource("1_j5hcl")
@@ -41,9 +16,9 @@ theme = ExtResource("2_yn84k")
 text = "START MATCH"
 
 [node name="P1Input" type="OptionButton" parent="."]
-offset_left = 89.0
+offset_left = 59.0
 offset_top = 65.0
-offset_right = 275.0
+offset_right = 284.0
 offset_bottom = 96.0
 theme = ExtResource("2_yn84k")
 alignment = 1
@@ -62,110 +37,46 @@ popup/item_4/id = 4
 popup/item_5/text = "CPU"
 popup/item_5/id = 5
 
-[node name="P1Char" type="OptionButton" parent="."]
-offset_left = 89.0
+[node name="P1Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 59.0
 offset_top = 103.0
-offset_right = 275.0
+offset_right = 284.0
 offset_bottom = 134.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 5
 selected = 4
-popup/item_0/text = "BALLOON FIGHTER"
-popup/item_0/icon = SubResource("AtlasTexture_q0vqa")
-popup/item_0/id = 0
-popup/item_1/text = "BALLOON FIGHTER B"
-popup/item_1/icon = SubResource("AtlasTexture_7jpdj")
-popup/item_1/id = 1
-popup/item_2/text = "BALLOON BIRD PINK"
-popup/item_2/icon = SubResource("AtlasTexture_ydqum")
-popup/item_2/id = 2
-popup/item_3/text = "BALLOON BIRD GREEN"
-popup/item_3/icon = SubResource("AtlasTexture_8eqna")
-popup/item_3/id = 3
-popup/item_4/text = "BALLOON BIRD WHITE"
-popup/item_4/icon = SubResource("AtlasTexture_unn1b")
-popup/item_4/id = 4
 
-[node name="P2Char" type="OptionButton" parent="."]
-offset_left = 368.0
+[node name="P2Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 338.0
 offset_top = 103.0
-offset_right = 554.0
+offset_right = 563.0
 offset_bottom = 134.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 5
 selected = 2
-popup/item_0/text = "BALLOON FIGHTER"
-popup/item_0/icon = SubResource("AtlasTexture_q0vqa")
-popup/item_0/id = 0
-popup/item_1/text = "BALLOON FIGHTER B"
-popup/item_1/icon = SubResource("AtlasTexture_7jpdj")
-popup/item_1/id = 1
-popup/item_2/text = "BALLOON BIRD PINK"
-popup/item_2/icon = SubResource("AtlasTexture_ydqum")
-popup/item_2/id = 2
-popup/item_3/text = "BALLOON BIRD GREEN"
-popup/item_3/icon = SubResource("AtlasTexture_8eqna")
-popup/item_3/id = 3
-popup/item_4/text = "BALLOON BIRD WHITE"
-popup/item_4/icon = SubResource("AtlasTexture_unn1b")
-popup/item_4/id = 4
 
-[node name="P3Char" type="OptionButton" parent="."]
-offset_left = 89.0
+[node name="P3Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 59.0
 offset_top = 223.0
-offset_right = 275.0
+offset_right = 284.0
 offset_bottom = 254.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 5
 selected = 3
-popup/item_0/text = "BALLOON FIGHTER"
-popup/item_0/icon = SubResource("AtlasTexture_q0vqa")
-popup/item_0/id = 0
-popup/item_1/text = "BALLOON FIGHTER B"
-popup/item_1/icon = SubResource("AtlasTexture_7jpdj")
-popup/item_1/id = 1
-popup/item_2/text = "BALLOON BIRD PINK"
-popup/item_2/icon = SubResource("AtlasTexture_ydqum")
-popup/item_2/id = 2
-popup/item_3/text = "BALLOON BIRD GREEN"
-popup/item_3/icon = SubResource("AtlasTexture_8eqna")
-popup/item_3/id = 3
-popup/item_4/text = "BALLOON BIRD WHITE"
-popup/item_4/icon = SubResource("AtlasTexture_unn1b")
-popup/item_4/id = 4
 
-[node name="P4Char" type="OptionButton" parent="."]
-offset_left = 368.0
+[node name="P4Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 338.0
 offset_top = 223.0
-offset_right = 554.0
+offset_right = 563.0
 offset_bottom = 254.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 5
 selected = 1
-popup/item_0/text = "BALLOON FIGHTER"
-popup/item_0/icon = SubResource("AtlasTexture_q0vqa")
-popup/item_0/id = 0
-popup/item_1/text = "BALLOON FIGHTER B"
-popup/item_1/icon = SubResource("AtlasTexture_7jpdj")
-popup/item_1/id = 1
-popup/item_2/text = "BALLOON BIRD PINK"
-popup/item_2/icon = SubResource("AtlasTexture_ydqum")
-popup/item_2/id = 2
-popup/item_3/text = "BALLOON BIRD GREEN"
-popup/item_3/icon = SubResource("AtlasTexture_8eqna")
-popup/item_3/id = 3
-popup/item_4/text = "BALLOON BIRD WHITE"
-popup/item_4/icon = SubResource("AtlasTexture_unn1b")
-popup/item_4/id = 4
 
 [node name="P2Input" type="OptionButton" parent="."]
-offset_left = 368.0
+offset_left = 338.0
 offset_top = 65.0
-offset_right = 554.0
+offset_right = 563.0
 offset_bottom = 96.0
 theme = ExtResource("2_yn84k")
 alignment = 1
@@ -185,9 +96,9 @@ popup/item_5/text = "CPU"
 popup/item_5/id = 5
 
 [node name="P3Input" type="OptionButton" parent="."]
-offset_left = 89.0
+offset_left = 59.0
 offset_top = 184.0
-offset_right = 275.0
+offset_right = 284.0
 offset_bottom = 215.0
 theme = ExtResource("2_yn84k")
 alignment = 1
@@ -207,9 +118,9 @@ popup/item_5/text = "CPU"
 popup/item_5/id = 5
 
 [node name="P4Input" type="OptionButton" parent="."]
-offset_left = 368.0
+offset_left = 338.0
 offset_top = 184.0
-offset_right = 554.0
+offset_right = 563.0
 offset_bottom = 215.0
 theme = ExtResource("2_yn84k")
 alignment = 1
@@ -232,7 +143,7 @@ popup/item_5/id = 5
 offset_left = 146.0
 offset_top = 46.0
 offset_right = 208.0
-offset_bottom = 69.0
+offset_bottom = 59.0
 theme = ExtResource("2_yn84k")
 text = "PLAYER 1"
 
@@ -248,7 +159,7 @@ text = "SELECT PLAYERS"
 offset_left = 430.0
 offset_top = 45.0
 offset_right = 492.0
-offset_bottom = 68.0
+offset_bottom = 56.0
 theme = ExtResource("2_yn84k")
 text = "PLAYER 2
 "
@@ -257,7 +168,7 @@ text = "PLAYER 2
 offset_left = 147.0
 offset_top = 163.0
 offset_right = 209.0
-offset_bottom = 186.0
+offset_bottom = 173.0
 theme = ExtResource("2_yn84k")
 text = "PLAYER 3
 "
@@ -266,7 +177,7 @@ text = "PLAYER 3
 offset_left = 431.0
 offset_top = 162.0
 offset_right = 493.0
-offset_bottom = 211.0
+offset_bottom = 177.0
 theme = ExtResource("2_yn84k")
 text = "PLAYER 4
 

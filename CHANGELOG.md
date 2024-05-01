@@ -10,6 +10,7 @@
 - Characters can walk and jump without balloons
 - Colliding with a character with no balloons kills them
 - Characters can now start with up to 99 balloons
+- Added 2 new characters (bird and fighter colored based on famicom box art)
 
 ## 1.0.0 - 2024-04-29
 

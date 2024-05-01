@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqlorhtduxfae"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_xvdw2"]
+[ext_resource type="Texture2D" uid="uid://ct3mav1a2c6r" path="res://art/characters/balloon-bird-famicom.png" id="2_rc7lr"]
+
+[node name="Balloon Bird (Famicom)" instance=ExtResource("1_xvdw2")]
+CharacterName = "Balloon Bird (Famicom)"
+HasParachute = true
+SpriteSheet = ExtResource("2_rc7lr")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn4o2i36skm8j"
-path="res://.godot/imported/balloon-fighter-blue.png-47dcac1c514695c761c84debdf96890d.ctex"
+uid="uid://du0cdw1j5f083"
+path="res://.godot/imported/tileset.png-15e14c103d1f3d54a7d717ff03ccf774.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/balloon-fighter-blue.png"
-dest_files=["res://.godot/imported/balloon-fighter-blue.png-47dcac1c514695c761c84debdf96890d.ctex"]
+source_file="res://art/tiles/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-15e14c103d1f3d54a7d717ff03ccf774.ctex"]
 
 [params]
 

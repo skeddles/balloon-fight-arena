@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnjjw2dvtwsbf"
-path="res://.godot/imported/balloon-bird-green.png-bd9be8ad5b33125a6fbfab769789a3bc.ctex"
+uid="uid://bpq88n8kuuhxn"
+path="res://.godot/imported/balloon-fighter-famicom.png-3fe945827d5bc9afef05c53613e1065a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/balloon-bird-green.png"
-dest_files=["res://.godot/imported/balloon-bird-green.png-bd9be8ad5b33125a6fbfab769789a3bc.ctex"]
+source_file="res://art/characters/balloon-fighter-famicom.png"
+dest_files=["res://.godot/imported/balloon-fighter-famicom.png-3fe945827d5bc9afef05c53613e1065a.ctex"]
 
 [params]
 

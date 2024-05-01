@@ -2,16 +2,24 @@ extends Node2D
 
 const MAX_PLAYERS = 4
 
-const characters = [
-	"balloon-fighter-red",
-	"balloon-fighter-blue",
-	"balloon-bird-pink",
-	"balloon-bird-green",
-	"balloon-bird-white"
-]
+
+
+var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
 
 func _ready():
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
+	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
+	for f in charactersList:
+		var path = "res://scenes/characters/"+f.replace('.remap', '')
+		var scene = load(path)
+		var instance = scene.instantiate()
+		for dropdown in characterDropdowns:
+			dropdown.add_item(instance.CharacterName.to_upper())
+			var icon_atlas = AtlasTexture.new()
+			icon_atlas.atlas = instance.SpriteSheet
+			icon_atlas.region = Rect2(8,8,16,16)
+			print(icon_atlas)
+			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -35,7 +43,8 @@ func _on_start_match_button_pressed():
 		var characterSelection = get_node("P"+str(i)+"Char").selected
 		if controlSelection != 0:
 			# Create Character
-			var character = load("res://scenes/characters/"+characters[characterSelection]+".tscn").instantiate()
+			print(characterSelection,charactersList[characterSelection])
+			var character = load("res://scenes/characters/"+charactersList[characterSelection]).instantiate()
 			arenaScene.add_child(character)
 			character.position = arenaScene.find_child("Spawn"+str(i)).position
 			character.playerNumber = i

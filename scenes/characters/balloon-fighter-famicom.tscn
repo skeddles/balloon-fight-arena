@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://17c40hwng7x5"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_v81vv"]
+[ext_resource type="Texture2D" uid="uid://bpq88n8kuuhxn" path="res://art/characters/balloon-fighter-famicom.png" id="2_gu2hb"]
+
+[node name="Character" instance=ExtResource("1_v81vv")]
+CharacterName = "Balloon Fighter (Famicom)"
+SpriteSheet = ExtResource("2_gu2hb")

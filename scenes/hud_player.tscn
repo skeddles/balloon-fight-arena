@@ -1,18 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://balt60cletle5"]
 
 [ext_resource type="Script" path="res://scripts/hud-player.gd" id="1_1nyri"]
-[ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/balloon-fighter.png" id="1_3vvis"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_6snx6"]
 [ext_resource type="Texture2D" uid="uid://gb8ihigxf0kd" path="res://art/ui/hud-balloon-filler.png" id="2_mgt34"]
+[ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/characters/balloon-fighter.png" id="2_uwp12"]
 [ext_resource type="Texture2D" uid="uid://c8aqvg7mivsq8" path="res://art/ui/balloon-count.png" id="3_nt66b"]
 [ext_resource type="FontFile" uid="uid://cx4th7534rfp1" path="res://art/fonts/wendy.ttf" id="4_kocfj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_87jer"]
-atlas = ExtResource("1_3vvis")
+atlas = ExtResource("2_uwp12")
 region = Rect2(112, 80, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wcv5"]
-atlas = ExtResource("1_3vvis")
+atlas = ExtResource("2_uwp12")
 region = Rect2(8, 8, 16, 16)
 
 [node name="Player" type="MarginContainer"]
@@ -109,6 +109,7 @@ position = Vector2(47, 24)
 texture = ExtResource("3_nt66b")
 
 [node name="BalloonCounter" type="Label" parent="Contents"]
+layout_mode = 0
 offset_left = 37.0
 offset_top = 19.0
 offset_right = 51.0
