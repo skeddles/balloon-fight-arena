@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Character
 
+const DEBUG = false
+
 ## The proper name of the character
 @export var CharacterName:String
 ## Whether this character should be able to use a parachute while falling
@@ -70,19 +72,18 @@ func update_texture(sprite: AnimatedSprite2D, texture: Texture2D):
 	sprite.play() # Ensure the animation plays
 
 @onready var default_font = ThemeDB.fallback_font
-
-const DEBUG = false
-
 func _draw():
 	if controller:
 		if controller.has_method("debugDraw"):
 			controller.debugDraw(self)
 		if DEBUG:
 			if invincible: draw_circle(Vector2(-15,-15),1,Color(0,1,1))
-			draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color.WHITE)
+			draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+			if !$HasBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:has', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+			if !$NoBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:no', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 
 func _physics_process(delta):
-	if controller and controller.has_method("debugDraw"): queue_redraw()
+	if DEBUG or (controller and controller.has_method("debugDraw")): queue_redraw()
 	if invincible && Time.get_ticks_msec() > invincible: invincible = false
 	
 	# Falling
@@ -144,17 +145,23 @@ func _physics_process(delta):
 	
 	# Move
 	move_and_slide()
-	
+
 	# Check Collisions
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		#print("I collided with ", collision.get_collider().name)
+		var localShape = collision.get_local_shape()
+		var otherShape = collision.get_collider_shape()
+		print("shape ",	localShape, " disabled:",localShape.disabled)
+		if localShape.disabled or otherShape and otherShape.disabled: continue
+		print("I collided with ", collision.get_collider().name)
 		var collider = collision.get_collider()
 		if collider.is_in_group("character"):
 			if (falling): break
 			if current_balloons == 0 and !falling:
 				startFalling()
 				break
+			if collider.current_balloons == 0 and !collider.falling:
+				collider.startFalling()
 			var normal = collision.get_normal()
 			print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
 			
@@ -175,6 +182,7 @@ func loseBalloon ():
 	if current_balloons < 0: printerr("current_balloons dropped below 0, should be impossible", name, current_balloons)
 	$Audio/Pop.playing = true
 	if current_balloons == 0:
+		switchCollisionShape()
 		if HasParachute:
 			$Sprite.animation = "parachute"
 			$Balloons.animation = "parachute"
@@ -216,7 +224,7 @@ func _on_balloon_area_body_shape_entered(_body_rid, body, _body_shape_index, _lo
 	
 func _on_balloon_area_area_entered(area):
 	if invincible: return
-	if current_balloons == 0: return startFalling()
+	if current_balloons == 0: return
 	var otherCharacter = area.get_parent()
 	if otherCharacter.falling or otherCharacter.parachuting or otherCharacter.current_balloons < 1: return
 	if area.name == "FeetArea": 
@@ -231,6 +239,17 @@ func _on_balloon_area_area_entered(area):
 		# Set the velocities based on the bounce angles and desired speed
 		velocity = Vector2(cos(bounce_angle1), sin(bounce_angle1)) * 40
 		otherCharacter.velocity = Vector2(cos(bounce_angle2), sin(bounce_angle2)) * 75
-		
 		loseBalloon()
+
+func switchCollisionShape():
+	print("switing collision shape",current_balloons == 0)
+	if current_balloons == 0:
+		$HasBallonsCollisionShape.set_deferred("disabled", true)
+		$NoBallonsCollisionShape.set_deferred("disabled", false)
+	else:
+		$HasBallonsCollisionShape.set_deferred("disabled", false)
+		$NoBallonsCollisionShape.set_deferred("disabled", true)
+	
+	print("$HasBallonsCollisionShape.disabled",$HasBallonsCollisionShape.disabled)
+	print("$NoBallonsCollisionShape.disabled",$NoBallonsCollisionShape.disabled)
 

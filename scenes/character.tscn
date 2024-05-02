@@ -1,13 +1,17 @@
-[gd_scene load_steps=51 format=3 uid="uid://dbb6gubo3cjm4"]
+[gd_scene load_steps=52 format=3 uid="uid://dbb6gubo3cjm4"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_io5r3"]
 [ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/characters/balloon-bird-pink.png" id="2_6jrem"]
 [ext_resource type="AudioStream" uid="uid://h16yknk32i1a" path="res://sound/bf-pop.wav" id="3_x6tsq"]
 [ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_eutk4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vo41"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt8ew"]
 radius = 4.0
 height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vo41"]
+radius = 4.0
+height = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clhtm"]
 atlas = ExtResource("2_6jrem")
@@ -427,25 +431,32 @@ height = 16.0
 z_index = 1
 script = ExtResource("1_io5r3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HasBallonsCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_nt8ew")
+
+[node name="NoBallonsCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_3vo41")
+disabled = true
 
 [node name="Balloons" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bxlbw")
-animation = &"parachute"
+animation = &"2_walk"
 autoplay = "1_idle"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_q4adw")
-animation = &"electrocute"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="FeetArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeetArea"]
 position = Vector2(0, 10)
@@ -453,6 +464,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u622o")
 
 [node name="BalloonArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
