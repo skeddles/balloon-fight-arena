@@ -33,7 +33,7 @@ func is_joy_button_just_pressed(id, button):
 		
 		
 
-var DEBUG = true
+var DEBUG = false
 func debugDraw (character):
 	if not DEBUG: return
 	var default_font = ThemeDB.fallback_font
