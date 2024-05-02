@@ -69,12 +69,17 @@ func update_texture(sprite: AnimatedSprite2D, texture: Texture2D):
 	sprite.sprite_frames = updated_frames
 	sprite.play() # Ensure the animation plays
 
+@onready var default_font = ThemeDB.fallback_font
+
+const DEBUG = false
+
 func _draw():
 	if controller:
 		if controller.has_method("debugDraw"):
 			controller.debugDraw(self)
-		if "DEBUG" in controller and controller.DEBUG and invincible:
-			draw_circle(Vector2(-15,-15),1,Color(0,1,1))
+		if DEBUG:
+			if invincible: draw_circle(Vector2(-15,-15),1,Color(0,1,1))
+			draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color.WHITE)
 
 func _physics_process(delta):
 	if controller and controller.has_method("debugDraw"): queue_redraw()
@@ -211,7 +216,7 @@ func _on_balloon_area_body_shape_entered(_body_rid, body, _body_shape_index, _lo
 	
 func _on_balloon_area_area_entered(area):
 	if invincible: return
-	if current_balloons == 0: startFalling()
+	if current_balloons == 0: return startFalling()
 	var otherCharacter = area.get_parent()
 	if otherCharacter.falling or otherCharacter.parachuting or otherCharacter.current_balloons < 1: return
 	if area.name == "FeetArea": 
