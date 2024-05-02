@@ -37,7 +37,6 @@ func _ready():
 			dropdown.selected = 1
 		else:
 			dropdown.selected = NUMBER_OF_CONTROL_SCHEMES-1
-		
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
