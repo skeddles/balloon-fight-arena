@@ -2,9 +2,12 @@ extends Node2D
 
 const MAX_PLAYERS = 4
 
-
-
+var inputSchemes = ["disabled","wasd","arrows","numpad","ijkl"]
+const NUMBER_OF_CONTROLLERS = 4
 var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
+
+var NUMBER_OF_STATIC_CONTROL_SCHEMES = inputSchemes.size()
+var NUMBER_OF_CONTROL_SCHEMES = inputSchemes.size() + NUMBER_OF_CONTROLLERS + 1
 
 func _ready():
 	$TitleMusic.play()
@@ -21,6 +24,20 @@ func _ready():
 			icon_atlas.region = Rect2(8,8,16,16)
 			print(icon_atlas)
 			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
+	var inputDropdowns = get_tree().get_nodes_in_group("inputDropdown")
+	
+	for c in range(1,NUMBER_OF_CONTROLLERS+1):
+		inputSchemes.append("controller "+str(c))
+	inputSchemes.append("cpu")
+	
+	for dropdown in inputDropdowns:
+		for i in inputSchemes:
+			dropdown.add_item(i.to_upper())
+		if (inputDropdowns.find(dropdown)==0):
+			dropdown.selected = 1
+		else:
+			dropdown.selected = NUMBER_OF_CONTROL_SCHEMES-1
+		
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -68,14 +85,18 @@ func _on_start_match_button_pressed():
 
 			# Attach Controller
 			var controller
-			if controlSelection == 5: 
+			if controlSelection == NUMBER_OF_CONTROL_SCHEMES-1: 
 				controller = preload("res://scenes/cpu.tscn").instantiate()
 			else:
 				controller = preload("res://scenes/human.tscn").instantiate()
-				if controlSelection == 1: controller.InputScheme = 'wasd'
-				if controlSelection == 2: controller.InputScheme = 'arrows'
-				if controlSelection == 3: controller.InputScheme = 'numpad'
-				if controlSelection == 4: controller.InputScheme = 'ijkl'
+				print ("attach controller? ", controlSelection, " ", inputSchemes.size()," ",  inputSchemes.size() - NUMBER_OF_CONTROLLERS - 1, " ", NUMBER_OF_STATIC_CONTROL_SCHEMES)
+				if controlSelection >= NUMBER_OF_STATIC_CONTROL_SCHEMES:
+					controller.InputScheme = "controller"
+					controller.usingGamePad = true
+					controller.gamepadId = controlSelection - NUMBER_OF_STATIC_CONTROL_SCHEMES
+					print("shit you chose controller?",controller.gamepadId)
+				else:
+					controller.InputScheme = inputSchemes[controlSelection]
 			character.add_child(controller)
 			character.controller = controller
 			character.init()
@@ -93,13 +114,13 @@ func checkAtLeast2CharactersSelected():
 	return charactersSelected > 1
 
 func checkForDuplicateInputMethods():
-	if $P1Input.selected != 0 and $P1Input.selected != 5:
+	if $P1Input.selected != 0 and $P1Input.selected != inputSchemes.size()-1:
 		if $P1Input.selected == $P2Input.selected: return "player 1 and player 2"
 		if $P1Input.selected == $P3Input.selected: return "player 1 and player 3"
 		if $P1Input.selected == $P4Input.selected: return "player 1 and player 4"
-	if $P2Input.selected != 0 and $P2Input.selected != 5:
+	if $P2Input.selected != 0 and $P2Input.selected != inputSchemes.size()-1:
 		if $P2Input.selected == $P3Input.selected: return "player 2 and player 3"
 		if $P2Input.selected == $P4Input.selected: return "player 2 and player 4"
-	if $P3Input.selected != 0 and $P3Input.selected != 5:
+	if $P3Input.selected != 0 and $P3Input.selected != inputSchemes.size()-1:
 		if $P3Input.selected == $P4Input.selected: return "player 3 and player 4"
 	return "okay"

@@ -61,11 +61,8 @@ func stateFlee(character, input):
 			lastInput = Time.get_ticks_msec()
 
 func updateTarget(character):
-	
-	print("yyy ", )
-	
 	var characters = get_tree().get_nodes_in_group("character").filter(func(c): return c != character)
-	print("other chars:",characters.size())
+	# print("other chars:",characters.size())
 	if characters.size() < 1: return null
 	target = characters.reduce(func(accum: Node, c: Node):
 		var current_distance = distanceBetween(character, c)

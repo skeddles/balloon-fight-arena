@@ -16,27 +16,13 @@ offset_bottom = 349.0
 theme = ExtResource("2_yn84k")
 text = "START MATCH"
 
-[node name="P1Input" type="OptionButton" parent="."]
+[node name="P1Input" type="OptionButton" parent="." groups=["inputDropdown"]]
 offset_left = 59.0
 offset_top = 65.0
 offset_right = 284.0
 offset_bottom = 96.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 6
-selected = 1
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "WASD"
-popup/item_1/id = 1
-popup/item_2/text = "ARROW KEYS"
-popup/item_2/id = 2
-popup/item_3/text = "NUMPAD"
-popup/item_3/id = 3
-popup/item_4/text = "IJKL"
-popup/item_4/id = 4
-popup/item_5/text = "CPU"
-popup/item_5/id = 5
 
 [node name="P1Char" type="OptionButton" parent="." groups=["characterDropdown"]]
 offset_left = 59.0
@@ -70,71 +56,29 @@ offset_bottom = 254.0
 theme = ExtResource("2_yn84k")
 alignment = 1
 
-[node name="P2Input" type="OptionButton" parent="."]
+[node name="P2Input" type="OptionButton" parent="." groups=["inputDropdown"]]
 offset_left = 338.0
 offset_top = 65.0
 offset_right = 563.0
 offset_bottom = 96.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 6
-selected = 5
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "WASD"
-popup/item_1/id = 1
-popup/item_2/text = "ARROW KEYS"
-popup/item_2/id = 2
-popup/item_3/text = "NUMPAD"
-popup/item_3/id = 3
-popup/item_4/text = "IJKL"
-popup/item_4/id = 4
-popup/item_5/text = "CPU"
-popup/item_5/id = 5
 
-[node name="P3Input" type="OptionButton" parent="."]
+[node name="P3Input" type="OptionButton" parent="." groups=["inputDropdown"]]
 offset_left = 59.0
 offset_top = 184.0
 offset_right = 284.0
 offset_bottom = 215.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 6
-selected = 5
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "WASD"
-popup/item_1/id = 1
-popup/item_2/text = "ARROW KEYS"
-popup/item_2/id = 2
-popup/item_3/text = "NUMPAD"
-popup/item_3/id = 3
-popup/item_4/text = "IJKL"
-popup/item_4/id = 4
-popup/item_5/text = "CPU"
-popup/item_5/id = 5
 
-[node name="P4Input" type="OptionButton" parent="."]
+[node name="P4Input" type="OptionButton" parent="." groups=["inputDropdown"]]
 offset_left = 338.0
 offset_top = 184.0
 offset_right = 563.0
 offset_bottom = 215.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-item_count = 6
-selected = 5
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "WASD"
-popup/item_1/id = 1
-popup/item_2/text = "ARROW KEYS"
-popup/item_2/id = 2
-popup/item_3/text = "NUMPAD"
-popup/item_3/id = 3
-popup/item_4/text = "IJKL"
-popup/item_4/id = 4
-popup/item_5/text = "CPU"
-popup/item_5/id = 5
 
 [node name="p1" type="Label" parent="."]
 offset_left = 146.0

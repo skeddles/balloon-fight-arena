@@ -76,11 +76,11 @@ func _draw():
 	if controller:
 		if controller.has_method("debugDraw"):
 			controller.debugDraw(self)
-		if DEBUG:
-			if invincible: draw_circle(Vector2(-15,-15),1,Color(0,1,1))
-			draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
-			if !$HasBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:has', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
-			if !$NoBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:no', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+	if DEBUG:
+		if invincible: draw_circle(Vector2(-15,-15),1,Color(0,1,1))
+		draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+		if !$HasBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:has', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+		if !$NoBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:no', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 
 func _physics_process(delta):
 	if DEBUG or (controller and controller.has_method("debugDraw")): queue_redraw()
@@ -151,9 +151,9 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var localShape = collision.get_local_shape()
 		var otherShape = collision.get_collider_shape()
-		print("shape ",	localShape, " disabled:",localShape.disabled)
+		#print("shape ",	localShape, " disabled:",localShape.disabled)
 		if localShape.disabled or otherShape and otherShape.disabled: continue
-		print("I collided with ", collision.get_collider().name)
+		#print("I collided with ", collision.get_collider().name)
 		var collider = collision.get_collider()
 		if collider.is_in_group("character"):
 			if (falling): break
@@ -163,7 +163,7 @@ func _physics_process(delta):
 			if collider.current_balloons == 0 and !collider.falling:
 				collider.startFalling()
 			var normal = collision.get_normal()
-			print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
+			#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
 			
 			var travel = collision.get_travel() 
 			var remainder = collision.get_remainder()

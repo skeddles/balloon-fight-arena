@@ -2,15 +2,17 @@
 
 ## 2.0.0 - 2024-05-01
 
+- Added controller support for up to 4 players
 - Added players HUD during battle
-- Characters can have backup balloons
+- Characters can now have backup balloons
 - Characters with backup balloons can refill balloons while on ground
 - Added setup option to start with no balloons
 - Added parachute ability for some characters
 - Characters can walk and jump without balloons
 - Colliding with a character with no balloons kills them
 - Characters can now start with up to 99 balloons
-- Added 2 new characters (bird and fighter colored based on famicom box art)
+- Added 3 new characters (famicom box art bird and fighter, balloon kid bird)
+- Added menu music (from Balloon Fight VS)
 
 ## 1.0.0 - 2024-04-29
 
