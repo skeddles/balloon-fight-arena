@@ -9,6 +9,8 @@ const DEBUG = false
 @export var HasParachute:bool = false
 ## The PNG of this character's sprite sheet
 @export var SpriteSheet:CompressedTexture2D
+# How quickly the player comes to a stop after letting go of run button (0.0-0.1)
+@export var LandFriction:float = 0.2
 
 # set by code on setup
 var controller:Node
@@ -125,20 +127,20 @@ func _physics_process(delta):
 	
 	# Handle Movement
 	if input.dirAxis:
+		$Sprite.flip_h = input.dirAxis > 0
 		if is_on_floor():
 			velocity.x = input.dirAxis * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, input.dirAxis * SPEED, AIR_FRICTION)
-		$Sprite.flip_h = input.dirAxis > 0
+		elif input.jumped:
+			velocity.x = lerp(velocity.x, input.dirAxis * SPEED, 0.2)
 	else:
 		if is_on_floor():
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-		else:
-			velocity.x = move_toward(velocity.x, 0, 1)
+			velocity.x = lerp(velocity.x, 0.0, LandFriction)
+		#else:
+			#velocity.x = move_toward(velocity.x, 0, 1)
 	
 	# Play Animations
 	if (is_on_floor()):
-		if (velocity.x == 0): $Sprite.animation = 'idle'
+		if (abs(velocity.x) < 25): $Sprite.animation = 'idle'
 		else: $Sprite.animation = 'walk'
 	else:
 		if ($Sprite.animation != 'flap'): $Sprite.animation = 'float'

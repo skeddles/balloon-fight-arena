@@ -9,12 +9,14 @@ func getInput(_character):
 	if usingGamePad:
 		return {
 			dirAxis = round(Input.get_joy_axis(gamepadId, JOY_AXIS_LEFT_X)),
-			jumped = is_joy_button_just_pressed(gamepadId, JOY_BUTTON_A)
+			jumped = is_joy_button_just_pressed(gamepadId, JOY_BUTTON_A),
+			fill = is_joy_button_just_pressed(gamepadId, JOY_BUTTON_B),
 		}
 	else:
 		return {
 			dirAxis = Input.get_axis(InputScheme+"_left", InputScheme+"_right"),
-			jumped = Input.is_action_just_pressed(InputScheme+"_jump")
+			jumped = Input.is_action_just_pressed(InputScheme+"_jump"),
+			fill = Input.is_action_just_pressed(InputScheme+"_fill")
 		}
 
 # this should exist in godot but it doesn't
