@@ -7,6 +7,7 @@ const MAX_PLAYERS = 4
 var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
 
 func _ready():
+	$TitleMusic.play()
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
 	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
 	for f in charactersList:

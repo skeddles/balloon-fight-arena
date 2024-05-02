@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo8evtpcwfkhr"]
+[gd_scene load_steps=4 format=3 uid="uid://bo8evtpcwfkhr"]
 
 [ext_resource type="Script" path="res://scripts/debug_launcher.gd" id="1_j5hcl"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_yn84k"]
+[ext_resource type="AudioStream" uid="uid://4f6v8x01jgmj" path="res://sound/bf-vs-music.ogg" id="3_uw1tt"]
 
 [node name="DebugLauncher" type="Node2D"]
 script = ExtResource("1_j5hcl")
@@ -44,7 +45,6 @@ offset_right = 284.0
 offset_bottom = 134.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-selected = 4
 
 [node name="P2Char" type="OptionButton" parent="." groups=["characterDropdown"]]
 offset_left = 338.0
@@ -53,7 +53,6 @@ offset_right = 563.0
 offset_bottom = 134.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-selected = 2
 
 [node name="P3Char" type="OptionButton" parent="." groups=["characterDropdown"]]
 offset_left = 59.0
@@ -62,7 +61,6 @@ offset_right = 284.0
 offset_bottom = 254.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-selected = 3
 
 [node name="P4Char" type="OptionButton" parent="." groups=["characterDropdown"]]
 offset_left = 338.0
@@ -71,7 +69,6 @@ offset_right = 563.0
 offset_bottom = 254.0
 theme = ExtResource("2_yn84k")
 alignment = 1
-selected = 1
 
 [node name="P2Input" type="OptionButton" parent="."]
 offset_left = 338.0
@@ -231,5 +228,8 @@ offset_right = 344.0
 offset_bottom = 344.0
 theme = ExtResource("2_yn84k")
 button_pressed = true
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uw1tt")
 
 [connection signal="pressed" from="StartMatchButton" to="." method="_on_start_match_button_pressed"]
