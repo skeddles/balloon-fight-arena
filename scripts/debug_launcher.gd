@@ -9,6 +9,8 @@ var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
 var NUMBER_OF_STATIC_CONTROL_SCHEMES = inputSchemes.size()
 var NUMBER_OF_CONTROL_SCHEMES = inputSchemes.size() + NUMBER_OF_CONTROLLERS + 1
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	$TitleMusic.play()
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
@@ -24,6 +26,12 @@ func _ready():
 			icon_atlas.region = Rect2(8,8,16,16)
 			print(icon_atlas)
 			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
+
+	var character_pool = []
+	for i in range(charactersList.size()):	character_pool.append(i)
+	for i in range(4):
+		characterDropdowns[i].selected = character_pool.pop_at(randi() % character_pool.size())
+		
 	var inputDropdowns = get_tree().get_nodes_in_group("inputDropdown")
 	
 	for c in range(1,NUMBER_OF_CONTROLLERS+1):
