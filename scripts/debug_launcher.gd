@@ -15,7 +15,7 @@ func _ready():
 	$TitleMusic.play()
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
 	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
-	for f in charactersList:
+	charactersList = charactersList.map(func(f):
 		var path = "res://scenes/characters/"+f.replace('.remap', '')
 		var scene = load(path)
 		var instance = scene.instantiate()
@@ -26,6 +26,8 @@ func _ready():
 			icon_atlas.region = Rect2(8,8,16,16)
 			print(icon_atlas)
 			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
+		return path
+	)
 
 	var character_pool = []
 	for i in range(charactersList.size()):	character_pool.append(i)
@@ -69,7 +71,7 @@ func _on_start_match_button_pressed():
 		if controlSelection != 0:
 			# Create Character
 			print(characterSelection,charactersList[characterSelection])
-			var character = load("res://scenes/characters/"+charactersList[characterSelection]).instantiate()
+			var character = load(charactersList[characterSelection]).instantiate()
 			arenaScene.add_child(character)
 			character.position = arenaScene.find_child("Spawn"+str(i)).position
 			character.playerNumber = i
