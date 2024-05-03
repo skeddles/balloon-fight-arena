@@ -16,6 +16,10 @@
 - Characters can now start with up to 99 balloons
 - Added menu music (from Balloon Fight VS)
 
+### Changed
+
+- Player controls now more resemble NES (air movement only during flat, no friction)
+
 ### Fixed
 - Fixed multiple sprite offsets for characters
 
