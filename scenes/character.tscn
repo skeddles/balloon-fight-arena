@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dbb6gubo3cjm4"]
+[gd_scene load_steps=62 format=3 uid="uid://dbb6gubo3cjm4"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_io5r3"]
 [ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/characters/balloon-bird-pink.png" id="2_6jrem"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_eutk4"]
 [ext_resource type="AudioStream" uid="uid://bbwvmvydgxiny" path="res://sound/bk-fill.wav" id="5_32qx7"]
 [ext_resource type="AudioStream" uid="uid://dre6mybxcwmh2" path="res://sound/bk_filled.wav" id="6_tr0yw"]
+[ext_resource type="AudioStream" uid="uid://b6yv3o0egnoij" path="res://sound/bf-drown.wav" id="8_7ucb3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt8ew"]
 radius = 4.0
@@ -566,9 +567,13 @@ volume_db = -5.356
 [node name="Filled" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_tr0yw")
 
+[node name="Drown" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_7ucb3")
+
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="BalloonArea" to="." method="_on_balloon_area_area_entered"]
 [connection signal="body_shape_entered" from="BalloonArea" to="." method="_on_balloon_area_body_shape_entered"]
+[connection signal="finished" from="Audio/Drown" to="." method="_on_drown_finished"]

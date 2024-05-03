@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ctwtumk40eivu"]
+
+[ext_resource type="Texture2D" uid="uid://vri3os7g1arg" path="res://art/fx/splash.png" id="1_meu5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ar4"]
+atlas = ExtResource("1_meu5x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvqyr"]
+atlas = ExtResource("1_meu5x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he0jm"]
+atlas = ExtResource("1_meu5x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb3th"]
+atlas = ExtResource("1_meu5x")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ar4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvqyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he0jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb3th")
+}],
+"loop": false,
+"name": &"splash",
+"speed": 10.0
+}]

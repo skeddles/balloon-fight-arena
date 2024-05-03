@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0 - 2024-05-03
+
+### Added
+- Water tiles and death by water
+
 ## 2.0.0 - 2024-05-03
 
 ### Added

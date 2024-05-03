@@ -68,7 +68,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = lerp(velocity.x,sin(Time.get_ticks_msec() / 500 ) * 32, 0.1)
 			velocity.y += gravity*BalloonGravity*0.25 * delta
-			if position.y > 360: queue_free()
+			if position.y > 400: queue_free()
 			return move_and_slide()
 	# Jumping without balloon
 	elif not is_on_floor() and current_balloons == 0:
@@ -139,9 +139,9 @@ func _physics_process(delta):
 		var localShape = collision.get_local_shape()
 		var otherShape = collision.get_collider_shape()
 		#print("shape ",	localShape, " disabled:",localShape.disabled)
-		if localShape.disabled or otherShape and otherShape.disabled: continue
-		#print("I collided with ", collision.get_collider().name)
+		if localShape.disabled or (otherShape and otherShape.disabled): continue
 		var collider = collision.get_collider()
+		print("I collided with ", collider.name)
 		if collider.is_in_group("character"):
 			if (falling): break
 			if current_balloons == 0 and !falling:
@@ -161,6 +161,12 @@ func _physics_process(delta):
 			velocity = newVel.bounce(collision.get_normal())
 			print("new velocity",velocity)	
 			break
+		elif collider.is_in_group("water"):
+			$Audio/Drown.play()
+			splash()
+			falling = true
+			playerHUD.update()
+			
 
 func loseBalloon ():
 	print("POOOPPPPPPPPPPPPPPPPPPPPPPPPPP",name)
@@ -305,3 +311,14 @@ func _draw():
 		if current_fill_amount > 0:
 			draw_string(default_font, Vector2(0, -15), str(current_fill_amount), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 	
+func _on_drown_finished():
+	queue_free()
+
+func splash():
+	var sprite = AnimatedSprite2D.new()
+	sprite.sprite_frames = load("res://art/fx/splash.tres")
+	sprite.connect("animation_finished", Callable(delete_on_animation_complete).bind(sprite))
+	sprite.position = Vector2(position.x,310)
+	sprite.play("splash")
+	get_tree().root.add_child(sprite)
+func delete_on_animation_complete(e): e.queue_free()
