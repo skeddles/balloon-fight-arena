@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cnjjw2dvtwsbf" path="res://art/characters/balloon-bird-green.png" id="2_kv2vg"]
 
 [node name="Character" instance=ExtResource("1_8u8aw")]
-CharacterName = "Balloon Bird (Green)"
-HasParachute = true
 SpriteSheet = ExtResource("2_kv2vg")
+CharacterName = "Balloon Bird (Green)"
+CharacterSource = "Balloon Fight (1984)"
+HasParachute = true
+TopLandSpeed = 85.0
+FlapStrength = 0.25

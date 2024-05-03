@@ -4,5 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bpq88n8kuuhxn" path="res://art/characters/balloon-fighter-famicom.png" id="2_gu2hb"]
 
 [node name="Character" instance=ExtResource("1_v81vv")]
-CharacterName = "Balloon Fighter (Famicom)"
 SpriteSheet = ExtResource("2_gu2hb")
+CharacterName = "Balloon Fighter (Famicom)"
+CharacterSource = "Balloon Fight (1984)"
+CharacterSourceType = 1
+TopAirSpeed = 120.0

@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ct3mav1a2c6r" path="res://art/characters/balloon-bird-famicom.png" id="2_rc7lr"]
 
 [node name="Balloon Bird (Famicom)" instance=ExtResource("1_xvdw2")]
-CharacterName = "Balloon Bird (Famicom)"
-HasParachute = true
 SpriteSheet = ExtResource("2_rc7lr")
+CharacterName = "Balloon Bird (Famicom)"
+CharacterSource = "Balloon Fight (1984)"
+CharacterSourceType = 1
+HasParachute = true
+TopLandSpeed = 85.0
+FlapStrength = 0.25

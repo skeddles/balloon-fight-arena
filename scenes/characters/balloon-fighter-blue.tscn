@@ -4,5 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dn4o2i36skm8j" path="res://art/characters/balloon-fighter-blue.png" id="2_phc5g"]
 
 [node name="Character" instance=ExtResource("1_72n1x")]
-CharacterName = "Balloon Fighter (Blue)"
 SpriteSheet = ExtResource("2_phc5g")
+CharacterName = "Balloon Fighter (Blue)"
+CharacterSource = "Balloon Fight"
+TopAirSpeed = 120.0

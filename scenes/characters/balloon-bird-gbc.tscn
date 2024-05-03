@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://v5x72ibxe7qr" path="res://art/characters/balloon-bird-gbc.png" id="2_1lrce"]
 
 [node name="Balloon Bird (GBC)" instance=ExtResource("1_saudu")]
-CharacterName = "Balloon Bird (GBC)"
-HasParachute = true
 SpriteSheet = ExtResource("2_1lrce")
+CharacterName = "Balloon Bird (GBC)"
+CharacterSource = "Balloon Fight GB (2000)"
+HasParachute = true
+LandFriction = 0.15
+TopLandSpeed = 85.0
+FlapStrength = 0.25

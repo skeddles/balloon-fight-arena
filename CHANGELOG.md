@@ -2,6 +2,7 @@
 
 ## 2.0.0 - 2024-05-03
 
+- Added 5 new characters (famicom box art bird and fighter, balloon kid bird, mario and luigi)
 - Added controller support for up to 4 players
 - Added players HUD during battle
 - Characters can now have backup balloons
@@ -10,8 +11,8 @@
 - Added parachute ability for some characters
 - Characters can walk and jump without balloons
 - Colliding with a character with no balloons kills them
+- Characters can now have unique stats (balloon birds are slower but accelerate faster, mario and luigi jump higher)
 - Characters can now start with up to 99 balloons
-- Added 3 new characters (famicom box art bird and fighter, balloon kid bird)
 - Added menu music (from Balloon Fight VS)
 
 ## 1.0.0 - 2024-04-29

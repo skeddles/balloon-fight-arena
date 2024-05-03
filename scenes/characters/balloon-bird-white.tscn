@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dbe0l46sn6hq4" path="res://art/characters/balloon-bird-white.png" id="2_ydlkv"]
 
 [node name="Character" instance=ExtResource("1_vmdeo")]
-CharacterName = "Balloon Bird (White)"
-HasParachute = true
 SpriteSheet = ExtResource("2_ydlkv")
+CharacterName = "Balloon Bird (White)"
+CharacterSource = "Balloon Fight (1984)"
+HasParachute = true
+TopLandSpeed = 85.0

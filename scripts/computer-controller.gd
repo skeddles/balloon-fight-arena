@@ -1,6 +1,6 @@
 extends Node
 
-const DEBUG = true
+const DEBUG = false
 
 enum {CHASE,FLEE,FILL}
 var target
@@ -14,7 +14,7 @@ var p = false
 
 func updateState(character):
 	if not character or not target: return
-	print(p,"state check: ", character.current_balloons == 0, " ", distanceBetween(target,character) > 50)
+	#print(p,"state check: ", character.current_balloons == 0, " ", distanceBetween(target,character) > 50)
 	if character.current_balloons == 0 and distanceBetween(target,character) > 50:
 		state = FILL
 	elif character.is_on_floor() and character.current_balloons < 4 and character.stored_balloons > 0 and distanceBetween(target,character) > 150:
