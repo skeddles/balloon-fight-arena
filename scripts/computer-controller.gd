@@ -1,17 +1,22 @@
 extends Node
 
-const DEBUG = false
+const DEBUG = true
 
-enum {CHASE,FLEE}
+enum {CHASE,FLEE,FILL}
 var target
 var lastUpdate = 0
 var lastInput = 0
-const INPUT_LIMIT = 1000
+const INPUT_LIMIT = 500
 var rng = RandomNumberGenerator.new()
 var state = CHASE
 
 func updateState(character):
 	if not character or not target: return
+	print(distanceBetween(target,character))
+	if character.current_balloons == 0 and distanceBetween(target,character) > 50:
+		state = FILL
+	if character.is_on_floor() and character.current_balloons < 4 and character.stored_balloons > 0 and distanceBetween(target,character) > 150:
+		state = FILL
 	if character.current_balloons < 1:
 		state = FLEE
 	elif target.current_balloons < 1:
@@ -24,7 +29,8 @@ func updateState(character):
 func getInput(character):
 	var input = {
 		dirAxis = 0,
-		jumped = false
+		jumped = false,
+		fill = false
 	}
 	
 	
@@ -35,7 +41,7 @@ func getInput(character):
 	if target and character:
 		if state == CHASE: stateChase(character, input)
 		if state == FLEE: stateFlee(character, input)
-	
+		if state == FILL: stateFill(character, input)
 	return input
 
 func stateChase(character, input):
@@ -44,7 +50,7 @@ func stateChase(character, input):
 	if directionOfTarget.x < -0.25: input.dirAxis = -1
 	if directionOfTarget.x > 0.25: input.dirAxis = 1
 	
-	if Time.get_ticks_msec() - lastInput > 1000:
+	if Time.get_ticks_msec() - lastInput > INPUT_LIMIT:
 		if (directionOfTarget.y < 0.5):
 			input.jumped = true
 			lastInput = Time.get_ticks_msec()
@@ -55,10 +61,14 @@ func stateFlee(character, input):
 	if directionOfTarget.x < -0.25: input.dirAxis = 1
 	if directionOfTarget.x > 0.25: input.dirAxis = -1
 	
-	if Time.get_ticks_msec() - lastInput > 1000:
+	if Time.get_ticks_msec() - lastInput > INPUT_LIMIT:
 		if (directionOfTarget.y < 0.5):
 			input.jumped = true
 			lastInput = Time.get_ticks_msec()
+
+func stateFill(character, input):
+	if Time.get_ticks_msec() - lastInput > INPUT_LIMIT:
+		input.fill = true
 
 func updateTarget(character):
 	var characters = get_tree().get_nodes_in_group("character").filter(func(c): return c != character)
@@ -83,3 +93,4 @@ func debugDraw (character):
 	
 	if (state == CHASE): character.draw_circle(Vector2(15,-15),1,Color(1,0,0))
 	if (state == FLEE): character.draw_circle(Vector2(15,-15),1,Color(1,1,0))
+	if (state == FILL): character.draw_circle(Vector2(15,-15),1,Color(0,1,1))

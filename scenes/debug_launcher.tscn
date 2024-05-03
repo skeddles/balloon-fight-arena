@@ -175,5 +175,6 @@ button_pressed = true
 
 [node name="TitleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_uw1tt")
+volume_db = -6.789
 
 [connection signal="pressed" from="StartMatchButton" to="." method="_on_start_match_button_pressed"]

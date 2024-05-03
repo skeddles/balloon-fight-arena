@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 - 2024-05-01
+## 2.0.0 - 2024-05-03
 
 - Added controller support for up to 4 players
 - Added players HUD during battle

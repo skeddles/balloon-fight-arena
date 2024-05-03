@@ -1,9 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://dbb6gubo3cjm4"]
+[gd_scene load_steps=61 format=3 uid="uid://dbb6gubo3cjm4"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_io5r3"]
 [ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/characters/balloon-bird-pink.png" id="2_6jrem"]
+[ext_resource type="Texture2D" uid="uid://bk8mxsw15cdlw" path="res://art/ui/blank.png" id="3_r337b"]
 [ext_resource type="AudioStream" uid="uid://h16yknk32i1a" path="res://sound/bf-pop.wav" id="3_x6tsq"]
 [ext_resource type="AudioStream" uid="uid://cq42vertbdmut" path="res://sound/bf-falling.wav" id="4_eutk4"]
+[ext_resource type="AudioStream" uid="uid://bbwvmvydgxiny" path="res://sound/bk-fill.wav" id="5_32qx7"]
+[ext_resource type="AudioStream" uid="uid://dre6mybxcwmh2" path="res://sound/bk_filled.wav" id="6_tr0yw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt8ew"]
 radius = 4.0
@@ -107,6 +110,11 @@ region = Rect2(224, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxlbw"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"0_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_clhtm")
@@ -148,6 +156,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_r5oh1")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qphpb")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vs2gm")
 }],
 "loop": true,
@@ -178,6 +189,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_wd1le")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ocfnc")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o3mwc")
 }],
 "loop": true,
@@ -206,6 +220,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2mc00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbcug")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oewik")
@@ -289,13 +306,13 @@ region = Rect2(8, 8, 16, 16)
 atlas = ExtResource("2_6jrem")
 region = Rect2(8, 200, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0c4m"]
-atlas = ExtResource("2_6jrem")
-region = Rect2(8, 176, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8e3co"]
 atlas = ExtResource("2_6jrem")
 region = Rect2(32, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0c4m"]
+atlas = ExtResource("2_6jrem")
+region = Rect2(8, 176, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrocc"]
 atlas = ExtResource("2_6jrem")
@@ -384,14 +401,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8e3co")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_y0c4m")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8e3co")
 }],
-"loop": true,
+"loop": false,
 "name": &"refill",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -419,6 +439,59 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wip1b"]
+atlas = ExtResource("3_r337b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpts8"]
+atlas = ExtResource("2_6jrem")
+region = Rect2(200, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys6pq"]
+atlas = ExtResource("2_6jrem")
+region = Rect2(176, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaky1"]
+atlas = ExtResource("2_6jrem")
+region = Rect2(224, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikyrv"]
+atlas = ExtResource("2_6jrem")
+region = Rect2(200, 8, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqckv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wip1b")
+}],
+"loop": false,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpts8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys6pq")
+}],
+"loop": false,
+"name": &"fill_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaky1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikyrv")
+}],
+"loop": false,
+"name": &"fill_2",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u622o"]
 radius = 3.0
 height = 10.0
@@ -444,14 +517,19 @@ disabled = true
 [node name="Balloons" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bxlbw")
-animation = &"2_walk"
+animation = &"parachute"
 autoplay = "1_idle"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_q4adw")
-animation = &"idle"
+animation = &"refill"
 autoplay = "idle"
+
+[node name="BalloonFilling" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, 4)
+sprite_frames = SubResource("SpriteFrames_qqckv")
+animation = &"blank"
 
 [node name="FeetArea" type="Area2D" parent="."]
 visible = false
@@ -480,6 +558,13 @@ stream = ExtResource("3_x6tsq")
 
 [node name="Falling" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_eutk4")
+
+[node name="Fill" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_32qx7")
+volume_db = -5.356
+
+[node name="Filled" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_tr0yw")
 
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]

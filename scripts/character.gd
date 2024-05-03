@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
-const DEBUG = false
+
 
 ## The proper name of the character
 @export var CharacterName:String
@@ -31,6 +31,7 @@ var stored_balloons = 0
 var falling = false
 var parachuting = false
 var invincible = false
+var current_fill_amount = 0
 
 func init():
 	$Balloons.animation = str(current_balloons) + "_idle"
@@ -72,7 +73,8 @@ func update_texture(sprite: AnimatedSprite2D, texture: Texture2D):
 	updated_frames.remove_animation("default")
 	sprite.sprite_frames = updated_frames
 	sprite.play() # Ensure the animation plays
-
+	
+const DEBUG = true
 @onready var default_font = ThemeDB.fallback_font
 func _draw():
 	if controller:
@@ -83,6 +85,9 @@ func _draw():
 		draw_string(default_font, Vector2(10, -5), str(current_balloons), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 		if !$HasBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:has', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 		if !$NoBallonsCollisionShape.disabled: draw_string(default_font, Vector2(10, 5),'c:no', HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+		if current_fill_amount > 0:
+			draw_string(default_font, Vector2(0, -15), str(current_fill_amount), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
+		
 
 func _physics_process(delta):
 	if DEBUG or (controller and controller.has_method("debugDraw")): queue_redraw()
@@ -97,7 +102,7 @@ func _physics_process(delta):
 	elif parachuting:
 		if is_on_floor():
 			parachuting = false
-			$Balloons.visible = false
+			$Balloons.animation = "0_idle"
 		else:
 			velocity.x = lerp(velocity.x,sin(Time.get_ticks_msec() / 500 ) * 32, 0.1)
 			velocity.y += gravity*GRAVITY_MULTIPLIER*0.25 * delta
@@ -125,9 +130,29 @@ func _physics_process(delta):
 			$Sprite.play()
 			velocity.y = lerp(velocity.y, FLAP_VELOCITY, 0.15)
 	
+	# Balloon Filling
+	var filling=false
+	if $Sprite.animation == 'refill': filling = true
+	if input.fill and is_on_floor() and velocity.x < 5:
+		if $Sprite.animation != 'refill' or !$Sprite.is_playing():
+			if stored_balloons > 0 and current_balloons < 4:
+				current_fill_amount+=1
+				filling = true
+				$Audio/Fill.play()
+				$Sprite.play("refill")
+				if current_fill_amount>2: $BalloonFilling.play("fill_2")
+				else: $BalloonFilling.play("fill_1")
+			else: # TODO play nono sound effect
+				pass
+	if input.dirAxis or input.jumped:
+		current_fill_amount = 0
+		filling=false
+		$BalloonFilling.play("blank")
+		
 	# Handle Movement
 	if input.dirAxis:
 		$Sprite.flip_h = input.dirAxis > 0
+
 		if is_on_floor():
 			velocity.x = input.dirAxis * SPEED
 		elif input.jumped:
@@ -135,12 +160,12 @@ func _physics_process(delta):
 	else:
 		if is_on_floor():
 			velocity.x = lerp(velocity.x, 0.0, LandFriction)
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, 1)
-	
+
+
 	# Play Animations
-	if (is_on_floor()):
-		if (abs(velocity.x) < 25): $Sprite.animation = 'idle'
+	if is_on_floor():
+		if filling: $Sprite.animation = 'refill'
+		elif abs(velocity.x) < 25: $Sprite.animation = 'idle'
 		else: $Sprite.animation = 'walk'
 	else:
 		if ($Sprite.animation != 'flap'): $Sprite.animation = 'float'
@@ -205,7 +230,17 @@ func startFalling():
 	playerHUD.update()
 
 func _on_sprite_animation_finished():
-	if $Sprite.animation == 'flap':	$Sprite.animation = 'float'
+	if $Sprite.animation == 'flap':	
+		$Sprite.animation = 'float'
+	if $Sprite.animation == 'refill':
+		if stored_balloons > 0 and current_fill_amount>=4:
+			current_fill_amount = 0
+			stored_balloons -= 1
+			current_balloons += 1
+			playerHUD.update()
+			$BalloonFilling.play("blank")
+			$Balloons.animation = str(current_balloons) + "_idle"
+			$Audio/Filled.play()
 
 func _on_sprite_animation_changed():
 	$Sprite.play()
@@ -216,10 +251,8 @@ func _on_balloons_animation_changed():
 func _on_balloons_animation_finished():
 	print("finito",$Balloons.animation)
 	if $Balloons.animation.ends_with("pop"):
-		if (current_balloons > 0):
-			$Balloons.animation = str(current_balloons) + "_idle"
-		else:
-			$Balloons.visible = false
+		$Balloons.animation = str(current_balloons) + "_idle"
+
 
 func _on_balloon_area_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	print("balloon shape entered", body.name)
