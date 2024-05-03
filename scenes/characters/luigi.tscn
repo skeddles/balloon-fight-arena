@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckslsgtfdjm88"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_0slnp"]
+[ext_resource type="Texture2D" uid="uid://cxwkibct406gb" path="res://art/characters/luigi.png" id="2_rtclb"]
+
+[node name="Character" instance=ExtResource("1_0slnp")]
+SpriteSheet = ExtResource("2_rtclb")
+CharacterName = "Luigi"
+CharacterSource = "Balloon Mario (1999)"
+CharacterSourceType = 3
+OriginalArtist = "Rinkaku"
+LandFriction = 0.05
+TopLandSpeed = 110.0
+JumpHeight = 110.0
+FlapStrength = 0.18

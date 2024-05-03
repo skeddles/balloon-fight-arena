@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvl8frh6lywop"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_aqcuw"]
+[ext_resource type="Texture2D" uid="uid://c8fwpdnc80uwn" path="res://art/characters/mario.png" id="2_81cfj"]
+
+[node name="Character" instance=ExtResource("1_aqcuw")]
+SpriteSheet = ExtResource("2_81cfj")
+CharacterName = "Mario"
+CharacterSource = "Balloon Mario (1999)"
+CharacterSourceType = 3
+OriginalArtist = "Rinkaku"
+JumpHeight = 90.0
