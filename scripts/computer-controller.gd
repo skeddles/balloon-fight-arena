@@ -10,14 +10,16 @@ const INPUT_LIMIT = 500
 var rng = RandomNumberGenerator.new()
 var state = CHASE
 
+var p = false
+
 func updateState(character):
 	if not character or not target: return
-	print(distanceBetween(target,character))
+	print(p,"state check: ", character.current_balloons == 0, " ", distanceBetween(target,character) > 50)
 	if character.current_balloons == 0 and distanceBetween(target,character) > 50:
 		state = FILL
-	if character.is_on_floor() and character.current_balloons < 4 and character.stored_balloons > 0 and distanceBetween(target,character) > 150:
+	elif character.is_on_floor() and character.current_balloons < 4 and character.stored_balloons > 0 and distanceBetween(target,character) > 150:
 		state = FILL
-	if character.current_balloons < 1:
+	elif character.current_balloons < 1:
 		state = FLEE
 	elif target.current_balloons < 1:
 		state = CHASE
@@ -71,6 +73,7 @@ func stateFill(character, input):
 		input.fill = true
 
 func updateTarget(character):
+	if not p and character: p = "p"+str(character.playerNumber)+"-"+character.CharacterName+"| "
 	var characters = get_tree().get_nodes_in_group("character").filter(func(c): return c != character)
 	# print("other chars:",characters.size())
 	if characters.size() < 1: return null
