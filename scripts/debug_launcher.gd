@@ -9,11 +9,17 @@ var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
 var NUMBER_OF_STATIC_CONTROL_SCHEMES = inputSchemes.size()
 var NUMBER_OF_CONTROL_SCHEMES = inputSchemes.size() + NUMBER_OF_CONTROLLERS + 1
 
+var stageList = Array(DirAccess.get_files_at("res://scenes/stages"))
+
 var rng = RandomNumberGenerator.new()
 
+
 func _ready():
+	# initialize room
 	$TitleMusic.play()
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
+	
+	# SETUP CHARACTER DROPDOWNS
 	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
 	charactersList = charactersList.map(func(f):
 		var path = "res://scenes/characters/"+f.replace('.remap', '')
@@ -33,7 +39,8 @@ func _ready():
 	for i in range(charactersList.size()):	character_pool.append(i)
 	for i in range(4):
 		characterDropdowns[i].selected = character_pool.pop_at(randi() % character_pool.size())
-		
+	
+	# SETUP INPUT DROPDOWNS
 	var inputDropdowns = get_tree().get_nodes_in_group("inputDropdown")
 	
 	for c in range(1,NUMBER_OF_CONTROLLERS+1):
@@ -47,6 +54,15 @@ func _ready():
 			dropdown.selected = 1
 		else:
 			dropdown.selected = NUMBER_OF_CONTROL_SCHEMES-1
+	
+	# SETUP STAGE DROPDOWN
+	stageList = stageList.map(func(s):
+		var name = s.replace('.tscn', '').replace('.remap', '')
+		var path = "res://scenes/stages/"+s.replace('.remap', '')
+		$StageSelect.add_item(name.to_upper())
+		return path
+	)
+	stageList.push_front('random')
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -57,8 +73,13 @@ func _on_start_match_button_pressed():
 	if dupInput != "okay": 
 		OS.alert(dupInput + ' cant have the same input method','selection error')
 		return
-	
-	var arenaScene = preload("res://scenes/main.tscn").instantiate()
+		
+		
+	var chosenArena = $StageSelect.selected
+	if chosenArena == 0: chosenArena = stageList.pick_random()
+	else: chosenArena = stageList[chosenArena]
+	print("chosent arena ", $StageSelect.selected, chosenArena, stageList)
+	var arenaScene = load(chosenArena).instantiate()
 	
 	get_tree().root.add_child(arenaScene)
 	var balloonCount = int($BalloonCount.value)
