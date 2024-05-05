@@ -62,7 +62,11 @@ func _ready():
 		$StageSelect.add_item(name.to_upper())
 		return path
 	)
-	stageList.push_front('random')
+	
+	# DEBUG SETTINGS FORCE
+	#$StageSelect.selected=2
+	#$P3Input.selected = 0
+	#$P4Input.selected = 0
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -74,10 +78,9 @@ func _on_start_match_button_pressed():
 		OS.alert(dupInput + ' cant have the same input method','selection error')
 		return
 		
-		
 	var chosenArena = $StageSelect.selected
 	if chosenArena == 0: chosenArena = stageList.pick_random()
-	else: chosenArena = stageList[chosenArena]
+	else: chosenArena = stageList[chosenArena-1]
 	print("chosent arena ", $StageSelect.selected, chosenArena, stageList)
 	var arenaScene = load(chosenArena).instantiate()
 	
@@ -116,9 +119,9 @@ func _on_start_match_button_pressed():
 			# Attach Controller
 			var controller
 			if controlSelection == NUMBER_OF_CONTROL_SCHEMES-1: 
-				controller = preload("res://scenes/cpu.tscn").instantiate()
+				controller = preload("res://scenes/controls/cpu.tscn").instantiate()
 			else:
-				controller = preload("res://scenes/human.tscn").instantiate()
+				controller = preload("res://scenes/controls/human.tscn").instantiate()
 				print ("attach controller? ", controlSelection, " ", inputSchemes.size()," ",  inputSchemes.size() - NUMBER_OF_CONTROLLERS - 1, " ", NUMBER_OF_STATIC_CONTROL_SCHEMES)
 				if controlSelection >= NUMBER_OF_STATIC_CONTROL_SCHEMES:
 					controller.InputScheme = "controller"

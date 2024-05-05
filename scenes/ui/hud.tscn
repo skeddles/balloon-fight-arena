@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nehwgbvojxei"]
 
-[ext_resource type="PackedScene" uid="uid://balt60cletle5" path="res://scenes/hud_player.tscn" id="1_nm6lv"]
+[ext_resource type="PackedScene" uid="uid://balt60cletle5" path="res://scenes/ui/hud_player.tscn" id="1_nm6lv"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggftk"]
 bg_color = Color(0, 0, 0, 1)

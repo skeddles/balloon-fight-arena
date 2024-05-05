@@ -1,13 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx8grj6sehrcl"]
+[gd_scene load_steps=25 format=3 uid="uid://c0bmom7ovut57"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_mmbnk"]
-[ext_resource type="Texture2D" uid="uid://du0cdw1j5f083" path="res://art/tiles/tileset.png" id="2_l51ge"]
-[ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="3_4b6q1"]
-[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="4_3r8oy"]
-[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="4_xx4ci"]
-[ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/hud.tscn" id="5_t13no"]
-[ext_resource type="SpriteFrames" uid="uid://ctwtumk40eivu" path="res://art/fx/splash.tres" id="7_657pu"]
-[ext_resource type="Script" path="res://scripts/delete-after-animation.gd" id="7_t1fs7"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_nwi6a"]
+[ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_d4xvl"]
+[ext_resource type="Texture2D" uid="uid://du0cdw1j5f083" path="res://art/tiles/tileset.png" id="3_nvf4p"]
+[ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_dm7f1"]
+[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_ikj4g"]
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="6_6cxpu"]
+[ext_resource type="SpriteFrames" uid="uid://ctwtumk40eivu" path="res://art/fx/splash.tres" id="7_l5fby"]
+[ext_resource type="Script" path="res://scripts/delete-after-animation.gd" id="8_bmbtv"]
+[ext_resource type="PackedScene" uid="uid://262qxkcgbinr" path="res://scenes/characters/balloon-fighter-red.tscn" id="9_higl2"]
+[ext_resource type="PackedScene" uid="uid://bcft65j013o62" path="res://scenes/characters/balloon-bird-pink.tscn" id="10_r4r2q"]
+[ext_resource type="PackedScene" uid="uid://feu4pn66m67n" path="res://scenes/controls/human.tscn" id="10_tyvln"]
+[ext_resource type="PackedScene" uid="uid://do0s1u1ylwb14" path="res://scenes/controls/cpu.tscn" id="12_ui03q"]
+
 
 [sub_resource type="Gradient" id="Gradient_y6ol7"]
 interpolation_mode = 1
@@ -17,8 +22,22 @@ colors = PackedColorArray(0.486275, 0.0313726, 0, 1, 0, 0.266667, 0, 1, 0.298039
 [sub_resource type="TileMapPattern" id="TileMapPattern_8sida"]
 tile_data = PackedInt32Array(0, 458752, 3, 65536, 458752, 4, 131072, 458752, 5, 196608, 458752, 6, 1, 524288, 3, 65537, 524288, 4, 131073, 524288, 5, 196609, 524288, 6, 2, 589824, 3, 65538, 589824, 4, 131074, 589824, 5, 196610, 589824, 6, 3, 655360, 3, 65539, 655360, 4, 131075, 655360, 5, 196611, 655360, 6)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_masg6"]
+vertices = PackedVector2Array(4, 4, -4, 4, -4, -4, 4, -4)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0gqjd"]
+vertices = PackedVector2Array(4, 4, -4, 4, -4, -4, 4, -4)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsjxk"]
-texture = ExtResource("2_l51ge")
+texture = ExtResource("3_nvf4p")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -283,15 +302,19 @@ texture_region_size = Vector2i(8, 8)
 7:3/0 = 0
 7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:3/0/physics_layer_0/angular_velocity = 0.0
+7:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 8:3/0 = 0
 8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_0/angular_velocity = 0.0
+8:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 9:3/0 = 0
 9:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:3/0/physics_layer_0/angular_velocity = 0.0
+9:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 10:3/0 = 0
 10:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:3/0/physics_layer_0/angular_velocity = 0.0
+10:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 0:4/0 = 0
 0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_0/angular_velocity = 0.0
@@ -323,15 +346,19 @@ texture_region_size = Vector2i(8, 8)
 7:4/0 = 0
 7:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:4/0/physics_layer_0/angular_velocity = 0.0
+7:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 8:4/0 = 0
 8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:4/0/physics_layer_0/angular_velocity = 0.0
+8:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 9:4/0 = 0
 9:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:4/0/physics_layer_0/angular_velocity = 0.0
+9:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 10:4/0 = 0
 10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:4/0/physics_layer_0/angular_velocity = 0.0
+10:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 0:5/0 = 0
 0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:5/0/physics_layer_0/angular_velocity = 0.0
@@ -355,15 +382,19 @@ texture_region_size = Vector2i(8, 8)
 7:5/0 = 0
 7:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:5/0/physics_layer_0/angular_velocity = 0.0
+7:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 8:5/0 = 0
 8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:5/0/physics_layer_0/angular_velocity = 0.0
+8:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 9:5/0 = 0
 9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:5/0/physics_layer_0/angular_velocity = 0.0
+9:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 10:5/0 = 0
 10:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:5/0/physics_layer_0/angular_velocity = 0.0
+10:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 0:6/0 = 0
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
@@ -395,15 +426,19 @@ texture_region_size = Vector2i(8, 8)
 7:6/0 = 0
 7:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:6/0/physics_layer_0/angular_velocity = 0.0
+7:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 8:6/0 = 0
 8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:6/0/physics_layer_0/angular_velocity = 0.0
+8:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 9:6/0 = 0
 9:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:6/0/physics_layer_0/angular_velocity = 0.0
+9:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 10:6/0 = 0
 10:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:6/0/physics_layer_0/angular_velocity = 0.0
+10:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_masg6")
 0:7/0 = 0
 0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:7/0/physics_layer_0/angular_velocity = 0.0
@@ -544,6 +579,10 @@ texture_region_size = Vector2i(8, 8)
 9:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:7/0/physics_layer_0/angular_velocity = 0.0
 9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+10:7/0 = 0
+10:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:7/0/physics_layer_0/angular_velocity = 0.0
+10:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0gqjd")
 
 [sub_resource type="TileSet" id="TileSet_b0ndn"]
 tile_size = Vector2i(8, 8)
@@ -551,6 +590,7 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grass"
 terrain_set_0/terrain_0/color = Color(0.698039, 0, 0.388235, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_wsjxk")
 pattern_0 = SubResource("TileMapPattern_8sida")
 
@@ -569,10 +609,16 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8r1ka"]
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_mmbnk")
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6fcqy"]
+vertices = PackedVector2Array(614, 286, 26, 286, 26, 26, 614, 26)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 16, 624, 16, 624, 296, 16, 296)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="HUD" parent="." instance=ExtResource("5_t13no")]
+[node name="Level" type="Node2D"]
+script = ExtResource("1_nwi6a")
+
+[node name="HUD" parent="." instance=ExtResource("2_d4xvl")]
 z_index = 100
 
 [node name="Stars" type="CPUParticles2D" parent="."]
@@ -606,25 +652,13 @@ position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_lf10b")
 one_way_collision_margin = 54.2
 
-[node name="Spawn1" type="Marker2D" parent="."]
-position = Vector2(82, 290)
-
-[node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(626, 290)
-
-[node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(136, 144)
-
-[node name="Spawn4" type="Marker2D" parent="."]
-position = Vector2(536, 144)
-
 [node name="Sound" type="Node" parent="."]
 
 [node name="MatchOver" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("3_4b6q1")
+stream = ExtResource("4_dm7f1")
 
 [node name="Music" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("4_xx4ci")
+stream = ExtResource("5_ikj4g")
 volume_db = -13.048
 autoplay = true
 
@@ -647,7 +681,7 @@ offset_left = 256.0
 offset_top = 144.0
 offset_right = 388.0
 offset_bottom = 167.0
-theme = ExtResource("4_3r8oy")
+theme = ExtResource("6_6cxpu")
 theme_override_font_sizes/font_size = 14
 text = "MATCH OVER"
 horizontal_alignment = 1
@@ -661,7 +695,7 @@ offset_left = 256.0
 offset_top = 168.0
 offset_right = 388.0
 offset_bottom = 191.0
-theme = ExtResource("4_3r8oy")
+theme = ExtResource("6_6cxpu")
 text = "WINNER: XXX"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -673,11 +707,25 @@ position = Vector2(0, 360)
 shape = SubResource("WorldBoundaryShape2D_8r1ka")
 
 [node name="Splash" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("7_657pu")
+sprite_frames = ExtResource("7_l5fby")
 animation = &"splash"
 autoplay = "splash"
 frame = 3
 frame_progress = 1.0
-script = ExtResource("7_t1fs7")
+script = ExtResource("8_bmbtv")
+
+[node name="Character" parent="." instance=ExtResource("9_higl2")]
+position = Vector2(155, 289)
+
+[node name="human" parent="Character" instance=ExtResource("10_tyvln")]
+InputScheme = "wasd"
+
+[node name="Character2" parent="." instance=ExtResource("10_r4r2q")]
+position = Vector2(564, 291)
+
+[node name="cpu" parent="Character2" instance=ExtResource("12_ui03q")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6fcqy")
 
 [connection signal="finished" from="Sound/MatchOver" to="." method="_on_match_over_finished"]

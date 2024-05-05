@@ -3,7 +3,12 @@
 ## 3.0.0 - 2024-05-03
 
 ### Added
+- 3 New Stages
+- Select stage (or random) in setup
 - Water tiles and death by water
+
+### Changed
+- Greatly revamped CPU controls with pathfinding and smarter state-switching
 
 ## 2.0.0 - 2024-05-03
 

@@ -570,6 +570,8 @@ stream = ExtResource("6_tr0yw")
 [node name="Drown" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_7ucb3")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
 [connection signal="animation_finished" from="Balloons" to="." method="_on_balloons_animation_finished"]
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
