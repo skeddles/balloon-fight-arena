@@ -1,9 +1,9 @@
 # Changelog
 
-## 3.0.0 - 2024-05-03
+## 3.0.0 - 2024-05-05
 
 ### Added
-- 3 New Stages
+- 4 New Stages
 - Select stage (or random) in setup
 - Water tiles and death by water
 
