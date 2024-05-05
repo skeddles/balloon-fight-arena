@@ -30,7 +30,6 @@ func _ready():
 			var icon_atlas = AtlasTexture.new()
 			icon_atlas.atlas = instance.SpriteSheet
 			icon_atlas.region = Rect2(8,8,16,16)
-			print(icon_atlas)
 			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
 		return path
 	)

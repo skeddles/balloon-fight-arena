@@ -59,13 +59,10 @@ func stateAttack(input, character):
 
 
 func updateAttackTarget(character):
-	if not character or not target.character: 
-		print("NO ATTACK", not character, "/", not target.character)
-		return
+	if not character or not target.character: return
 	character.get_node("NavigationAgent2D").target_position = target.character.position
 	target.point = character.get_node("NavigationAgent2D").get_next_path_position() + Vector2(0,-10)
 	target.direction = character.to_local(character.get_node("NavigationAgent2D").get_next_path_position()).normalized()
-	print("updateatk")
 	last_update_target = Time.get_ticks_msec() + rng.randi_range(-UPDATE_TARGET_FREQUENCY/4, UPDATE_TARGET_FREQUENCY/4)
 
 func setInputsToMoveTowardsTargetPoint(input, character, point, direction):
@@ -134,7 +131,6 @@ func distanceBetweenPoint(c1,c2):
 
 func getClosestCharacter(character):
 	var characters = get_tree().get_nodes_in_group("character").filter(func(c): return c != character)
-	# print("other chars:",characters.size())
 	if characters.size() < 1: return null
 	var targetCharacter = characters.reduce(func(accum: Node, c: Node):
 		var current_distance = distanceBetween(character, c)
