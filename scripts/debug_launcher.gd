@@ -9,11 +9,17 @@ var charactersList = Array(DirAccess.get_files_at("res://scenes/characters"))
 var NUMBER_OF_STATIC_CONTROL_SCHEMES = inputSchemes.size()
 var NUMBER_OF_CONTROL_SCHEMES = inputSchemes.size() + NUMBER_OF_CONTROLLERS + 1
 
+var stageList = Array(DirAccess.get_files_at("res://scenes/stages"))
+
 var rng = RandomNumberGenerator.new()
 
+
 func _ready():
+	# initialize room
 	$TitleMusic.play()
 	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
+	
+	# SETUP CHARACTER DROPDOWNS
 	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
 	charactersList = charactersList.map(func(f):
 		var path = "res://scenes/characters/"+f.replace('.remap', '')
@@ -24,7 +30,6 @@ func _ready():
 			var icon_atlas = AtlasTexture.new()
 			icon_atlas.atlas = instance.SpriteSheet
 			icon_atlas.region = Rect2(8,8,16,16)
-			print(icon_atlas)
 			dropdown.set_item_icon(dropdown.item_count-1,icon_atlas)
 		return path
 	)
@@ -33,7 +38,8 @@ func _ready():
 	for i in range(charactersList.size()):	character_pool.append(i)
 	for i in range(4):
 		characterDropdowns[i].selected = character_pool.pop_at(randi() % character_pool.size())
-		
+	
+	# SETUP INPUT DROPDOWNS
 	var inputDropdowns = get_tree().get_nodes_in_group("inputDropdown")
 	
 	for c in range(1,NUMBER_OF_CONTROLLERS+1):
@@ -47,6 +53,19 @@ func _ready():
 			dropdown.selected = 1
 		else:
 			dropdown.selected = NUMBER_OF_CONTROL_SCHEMES-1
+	
+	# SETUP STAGE DROPDOWN
+	stageList = stageList.map(func(s):
+		var name = s.replace('.tscn', '').replace('.remap', '')
+		var path = "res://scenes/stages/"+s.replace('.remap', '')
+		$StageSelect.add_item(name.to_upper())
+		return path
+	)
+	
+	# DEBUG SETTINGS FORCE
+	#$StageSelect.selected=2
+	#$P3Input.selected = 0
+	#$P4Input.selected = 0
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -57,8 +76,12 @@ func _on_start_match_button_pressed():
 	if dupInput != "okay": 
 		OS.alert(dupInput + ' cant have the same input method','selection error')
 		return
-	
-	var arenaScene = preload("res://scenes/main.tscn").instantiate()
+		
+	var chosenArena = $StageSelect.selected
+	if chosenArena == 0: chosenArena = stageList.pick_random()
+	else: chosenArena = stageList[chosenArena-1]
+	print("chosent arena ", $StageSelect.selected, chosenArena, stageList)
+	var arenaScene = load(chosenArena).instantiate()
 	
 	get_tree().root.add_child(arenaScene)
 	var balloonCount = int($BalloonCount.value)
@@ -95,9 +118,9 @@ func _on_start_match_button_pressed():
 			# Attach Controller
 			var controller
 			if controlSelection == NUMBER_OF_CONTROL_SCHEMES-1: 
-				controller = preload("res://scenes/cpu.tscn").instantiate()
+				controller = preload("res://scenes/controls/cpu.tscn").instantiate()
 			else:
-				controller = preload("res://scenes/human.tscn").instantiate()
+				controller = preload("res://scenes/controls/human.tscn").instantiate()
 				print ("attach controller? ", controlSelection, " ", inputSchemes.size()," ",  inputSchemes.size() - NUMBER_OF_CONTROLLERS - 1, " ", NUMBER_OF_STATIC_CONTROL_SCHEMES)
 				if controlSelection >= NUMBER_OF_STATIC_CONTROL_SCHEMES:
 					controller.InputScheme = "controller"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do0s1u1ylwb14"]
+
+[ext_resource type="Script" path="res://scripts/cpu2.gd" id="1_um3bu"]
+
+[node name="cpu" type="Node"]
+script = ExtResource("1_um3bu")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8u0gkkp2ngau"]
+
+[ext_resource type="Script" path="res://scripts/testing/priority-test-interactive.gd" id="1_0wmos"]
+[ext_resource type="Texture2D" uid="uid://lrpks7yyj6tf" path="res://art/characters/balloon-fighter.png" id="2_xopaw"]
+[ext_resource type="Texture2D" uid="uid://dn4o2i36skm8j" path="res://art/characters/balloon-fighter-blue.png" id="3_05eou"]
+[ext_resource type="TileSet" uid="uid://dklr7gbpni7mk" path="res://scenes/tileset.tres" id="4_0njqn"]
+
+[node name="PriorityTest" type="Node2D" node_paths=PackedStringArray("character1", "character2")]
+script = ExtResource("1_0wmos")
+character1 = NodePath("Sprite2D")
+character2 = NodePath("Sprite2D2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(533, 186)
+texture = ExtResource("2_xopaw")
+region_enabled = true
+region_rect = Rect2(80, 8, 24, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(76, 199)
+texture = ExtResource("3_05eou")
+region_enabled = true
+region_rect = Rect2(80, 8, 24, 16)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_0njqn")
+format = 2
+layer_0/tile_data = PackedInt32Array(2097172, 458752, 2)
