@@ -2,6 +2,9 @@
 
 ## 4.0.0 - 2024-05-06
 
+### Changed
+- Characters now bounce off tiles and world boundaries
+
 ## 3.0.0 - 2024-05-05
 
 ### Added

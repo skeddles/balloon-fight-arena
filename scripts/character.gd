@@ -141,7 +141,7 @@ func _physics_process(delta):
 		#print("shape ",	localShape, " disabled:",localShape.disabled)
 		if localShape.disabled or (otherShape and otherShape.disabled): continue
 		var collider = collision.get_collider()
-		#print("I collided with ", collider.name)
+		print("I collided with ", collider.name, ' [is in bounce group: ', collider.is_in_group("ground"),"]")
 		if collider.is_in_group("character"):
 			if (falling): break
 			if current_balloons == 0 and !falling:
@@ -149,25 +149,33 @@ func _physics_process(delta):
 				break
 			if collider.current_balloons == 0 and !collider.falling:
 				collider.startFalling()
-			var normal = collision.get_normal()
-			#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
 			
-			var travel = collision.get_travel() 
-			var remainder = collision.get_remainder()
-			var newVel = (travel + remainder) / delta
-			
-			print ('travel: ',travel, " | remainder: ", remainder, " | newVel: ", newVel)
-			
-			velocity = newVel.bounce(collision.get_normal())
-			print("new velocity",velocity)	
+			bounce(collision, delta)
+			break
+		elif collider.is_in_group("bounce") and not is_on_floor():
+			bounce(collision, delta)
 			break
 		elif collider.is_in_group("water"):
 			$Audio/Drown.play()
 			splash()
 			falling = true
 			playerHUD.update()
-			
+			break
 
+func bounce(collision, delta):
+	var normal = collision.get_normal()
+	#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
+	
+	var travel = collision.get_travel() 
+	var remainder = collision.get_remainder()
+	var newVel = (travel + remainder) / delta
+	
+	print ('travel: ',travel, " | remainder: ", remainder, " | newVel: ", newVel)
+	
+	velocity = newVel.bounce(collision.get_normal())
+	print("new velocity",velocity)	
+	$Audio/Bounce.play()
+	
 func loseBalloon ():
 	print("POOOPPPPPPPPPPPPPPPPPPPPPPPPPP",name)
 	$Balloons.animation = str(current_balloons) + "_pop"
