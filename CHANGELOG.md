@@ -3,7 +3,8 @@
 ## 3.0.0 - 2024-05-05
 
 ### Added
-- 4 New Stages
+- 4 new Stages (canyon, mountain, ocean, terrace)
+- 1 new character (Tingle)
 - Select stage (or random) in setup
 - Water tiles and death by water
 
