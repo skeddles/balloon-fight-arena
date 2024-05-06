@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://vesn4onvo1we"]
+[gd_scene load_steps=12 format=3 uid="uid://vesn4onvo1we"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_cbhp7"]
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_2nt05"]
 [ext_resource type="TileSet" uid="uid://dklr7gbpni7mk" path="res://scenes/tileset.tres" id="3_uv018"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_6vt0v"]
 [ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_w3oq3"]
-[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="6_47iav"]
+[ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_mx7hx"]
 
 [sub_resource type="Gradient" id="Gradient_y6ol7"]
 interpolation_mode = 1
@@ -21,9 +21,6 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lf10b"]
 normal = Vector2(-1, 0)
 distance = -640.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sg6g"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8r1ka"]
 
@@ -93,43 +90,8 @@ stream = ExtResource("5_w3oq3")
 volume_db = -13.048
 autoplay = true
 
-[node name="MatchOver" type="Node2D" parent="."]
+[node name="MatchOver" parent="." instance=ExtResource("6_mx7hx")]
 visible = false
-
-[node name="Panel" type="Panel" parent="MatchOver"]
-offset_left = 232.0
-offset_top = 128.0
-offset_right = 416.0
-offset_bottom = 200.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6sg6g")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="MatchOver"]
-anchors_preset = -1
-anchor_left = -0.0375
-anchor_right = 0.05625
-offset_left = 256.0
-offset_top = 144.0
-offset_right = 388.0
-offset_bottom = 167.0
-theme = ExtResource("6_47iav")
-theme_override_font_sizes/font_size = 14
-text = "MATCH OVER"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Winner" type="Label" parent="MatchOver"]
-anchors_preset = -1
-anchor_left = -0.0375
-anchor_right = 0.05625
-offset_left = 256.0
-offset_top = 168.0
-offset_right = 388.0
-offset_bottom = 191.0
-theme = ExtResource("6_47iav")
-text = "WINNER: XXX"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Water" type="StaticBody2D" parent="." groups=["water"]]
 position = Vector2(0, 360)

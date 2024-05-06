@@ -8,7 +8,11 @@ func _process(_delta):
 		var winner = get_tree().get_nodes_in_group("character")[0]
 		$Sound/Music.playing = false
 		$Sound/MatchOver.playing = true
-		$MatchOver/Winner.text = "WINNER: PLAYER "+ str(winner.playerNumber)
+		$MatchOver.get_node("CharacterName").text = winner.CharacterName.to_upper()
+		if (winner.controller.is_in_group("cpu_controller")):
+			$MatchOver/PlayerNumber.text = "[PLAYER "+ str(winner.playerNumber) +" CPU]"
+		else:
+			$MatchOver/PlayerNumber.text = "[PLAYER "+ str(winner.playerNumber) +"]"
 		$MatchOver.visible = true
 		
 func _on_match_over_finished():

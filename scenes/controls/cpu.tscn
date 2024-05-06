@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/cpu2.gd" id="1_um3bu"]
 
-[node name="cpu" type="Node"]
+[node name="cpu" type="Node" groups=["cpu_controller"]]
 script = ExtResource("1_um3bu")
