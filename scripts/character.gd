@@ -141,7 +141,7 @@ func _physics_process(delta):
 		#print("shape ",	localShape, " disabled:",localShape.disabled)
 		if localShape.disabled or (otherShape and otherShape.disabled): continue
 		var collider = collision.get_collider()
-		print("I collided with ", collider.name, ' [is in bounce group: ', collider.is_in_group("ground"),"]")
+		#print("I collided with ", collider.name, ' [is in bounce group: ', collider.is_in_group("ground"),"]")
 		if collider.is_in_group("character"):
 			if (falling): break
 			if current_balloons == 0 and !falling:

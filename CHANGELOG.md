@@ -4,6 +4,7 @@
 
 ### Changed
 - Characters now bounce off tiles and world boundaries
+- Upgraded match over screen
 
 ## 3.0.0 - 2024-05-05
 

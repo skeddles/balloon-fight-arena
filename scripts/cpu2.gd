@@ -50,12 +50,8 @@ func stateAttack(input, character):
 	if not character or not target: return
 	if Time.get_ticks_msec() - last_update_target > UPDATE_TARGET_FREQUENCY: 
 		updateAttackTarget(character)
-		
-	input.dirAxis = round(target.direction.x)
-	if Time.get_ticks_msec() - last_input > INPUT_COOLDOWN: 
-		if (target.point.y < character.position.y): 
-			input.jumped = true
-			last_input = Time.get_ticks_msec()
+
+	setInputsToMoveTowardsTargetPoint(input, character, target.point, target.direction)
 
 
 func updateAttackTarget(character):
