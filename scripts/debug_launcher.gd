@@ -63,9 +63,13 @@ func _ready():
 	)
 	
 	# DEBUG SETTINGS FORCE
-	#$StageSelect.selected=2
-	#$P3Input.selected = 0
+	#$StageSelect.selected=5
+	#$P1Char.selected = 0
+	#$P1Input.selected = 0
+	#$P3Char.selected = 10
+	#$P3Input.selected = 1
 	#$P4Input.selected = 0
+	#$BalloonCount.value = 10
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -119,6 +123,7 @@ func _on_start_match_button_pressed():
 			var controller
 			if controlSelection == NUMBER_OF_CONTROL_SCHEMES-1: 
 				controller = preload("res://scenes/controls/cpu.tscn").instantiate()
+				pass
 			else:
 				controller = preload("res://scenes/controls/human.tscn").instantiate()
 				print ("attach controller? ", controlSelection, " ", inputSchemes.size()," ",  inputSchemes.size() - NUMBER_OF_CONTROLLERS - 1, " ", NUMBER_OF_STATIC_CONTROL_SCHEMES)

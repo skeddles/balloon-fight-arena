@@ -1,0 +1,203 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo8evtpcwfkhr"]
+
+[ext_resource type="Script" path="res://scripts/debug_launcher.gd" id="1_j5hcl"]
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_yn84k"]
+[ext_resource type="AudioStream" uid="uid://4f6v8x01jgmj" path="res://sound/bf-vs-music.ogg" id="3_uw1tt"]
+
+[node name="DebugLauncher" type="Node2D"]
+script = ExtResource("1_j5hcl")
+metadata/_edit_horizontal_guides_ = [335.0]
+
+[node name="StartMatchButton" type="Button" parent="."]
+offset_left = 490.0
+offset_top = 318.0
+offset_right = 621.0
+offset_bottom = 349.0
+theme = ExtResource("2_yn84k")
+text = "START MATCH"
+
+[node name="P1Input" type="OptionButton" parent="." groups=["inputDropdown"]]
+offset_left = 59.0
+offset_top = 65.0
+offset_right = 284.0
+offset_bottom = 96.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P1Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 59.0
+offset_top = 103.0
+offset_right = 284.0
+offset_bottom = 134.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P2Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 338.0
+offset_top = 103.0
+offset_right = 563.0
+offset_bottom = 134.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P3Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 59.0
+offset_top = 223.0
+offset_right = 284.0
+offset_bottom = 254.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P4Char" type="OptionButton" parent="." groups=["characterDropdown"]]
+offset_left = 338.0
+offset_top = 223.0
+offset_right = 563.0
+offset_bottom = 254.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P2Input" type="OptionButton" parent="." groups=["inputDropdown"]]
+offset_left = 338.0
+offset_top = 65.0
+offset_right = 563.0
+offset_bottom = 96.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P3Input" type="OptionButton" parent="." groups=["inputDropdown"]]
+offset_left = 59.0
+offset_top = 184.0
+offset_right = 284.0
+offset_bottom = 215.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="P4Input" type="OptionButton" parent="." groups=["inputDropdown"]]
+offset_left = 338.0
+offset_top = 184.0
+offset_right = 563.0
+offset_bottom = 215.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+
+[node name="p1" type="Label" parent="."]
+offset_left = 146.0
+offset_top = 46.0
+offset_right = 208.0
+offset_bottom = 59.0
+theme = ExtResource("2_yn84k")
+text = "PLAYER 1"
+
+[node name="Select Players" type="Label" parent="."]
+offset_left = 277.0
+offset_top = 12.0
+offset_right = 379.0
+offset_bottom = 35.0
+theme = ExtResource("2_yn84k")
+text = "SELECT PLAYERS"
+
+[node name="p2" type="Label" parent="."]
+offset_left = 430.0
+offset_top = 45.0
+offset_right = 492.0
+offset_bottom = 56.0
+theme = ExtResource("2_yn84k")
+text = "PLAYER 2
+"
+
+[node name="p3" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 163.0
+offset_right = 209.0
+offset_bottom = 173.0
+theme = ExtResource("2_yn84k")
+text = "PLAYER 3
+"
+
+[node name="p4" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 162.0
+offset_right = 493.0
+offset_bottom = 177.0
+theme = ExtResource("2_yn84k")
+text = "PLAYER 4
+
+"
+
+[node name="bc" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 288.0
+offset_right = 119.0
+offset_bottom = 311.0
+theme = ExtResource("2_yn84k")
+text = "BALLOONS:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="filled" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 320.0
+offset_right = 118.0
+offset_bottom = 343.0
+theme = ExtResource("2_yn84k")
+text = "START FILLED:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BalloonCount" type="SpinBox" parent="."]
+offset_left = 128.0
+offset_top = 288.0
+offset_right = 176.0
+offset_bottom = 310.0
+theme = ExtResource("2_yn84k")
+min_value = 1.0
+max_value = 99.0
+value = 2.0
+rounded = true
+alignment = 1
+
+[node name="Version" type="Label" parent="."]
+offset_left = 556.0
+offset_top = 4.0
+offset_right = 637.0
+offset_bottom = 15.0
+theme = ExtResource("2_yn84k")
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "V0.0.0"
+horizontal_alignment = 2
+
+[node name="StartFilled" type="CheckBox" parent="."]
+offset_left = 136.0
+offset_top = 320.0
+offset_right = 152.0
+offset_bottom = 344.0
+theme = ExtResource("2_yn84k")
+button_pressed = true
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uw1tt")
+volume_db = -6.789
+
+[node name="stage" type="Label" parent="."]
+offset_left = 303.0
+offset_top = 288.0
+offset_right = 455.0
+offset_bottom = 311.0
+theme = ExtResource("2_yn84k")
+text = "STAGE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StageSelect" type="OptionButton" parent="."]
+offset_left = 317.0
+offset_top = 318.0
+offset_right = 453.0
+offset_bottom = 349.0
+theme = ExtResource("2_yn84k")
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "RANDOM"
+popup/item_0/id = 0
+
+[connection signal="pressed" from="StartMatchButton" to="." method="_on_start_match_button_pressed"]

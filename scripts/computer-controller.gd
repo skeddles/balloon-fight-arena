@@ -32,7 +32,7 @@ func getInput(character):
 	var input = {
 		dirAxis = 0,
 		jumped = false,
-		fill = false
+		fill = false,
 	}
 	
 	

@@ -27,7 +27,8 @@ func getInput(character):
 	var input = {
 		dirAxis = 0,
 		jumped = false,
-		fill = false
+		fill = false,
+		action = false
 	}
 	
 	if Time.get_ticks_msec() - last_update_state > UPDATE_STATE_FREQUENCY: 
@@ -208,11 +209,12 @@ func getAllHazardTilesOnMap():
 const DEBUG = false
 @onready var default_font = ThemeDB.fallback_font
 func debugDraw (character):
-	if not character or not target.character: return
-	if not DEBUG: return
+	if not DEBUG or not character or not target.character: return
+
 	var charpos = character.get_global_position()
+	
 	if is_instance_valid(target) and is_instance_valid(character): 
-		character.draw_line(Vector2.ZERO, target.get_global_position()-charpos, Color(0,0,0.2), 1)
+		character.draw_line(Vector2.ZERO, target.get_global_position()-charpos, Color(0,0,0.3), 1)
 	
 	character.draw_string(default_font, Vector2(0, -15), str(current_state), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)
 	
