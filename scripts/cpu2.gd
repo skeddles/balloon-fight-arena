@@ -8,7 +8,7 @@ var StateAvoid = preload("res://scripts/cpu/state-avoid.gd").new()
 
 var state = StateIdle
 
-const hazardTileList = [Vector2(7,2), Vector2(8,2),Vector2(9,2), Vector2(10,2)]
+const hazardTileList = [Vector2(7,2), Vector2(8,2),Vector2(9,2), Vector2(10,2), Vector2(8,22)]
 @onready var hazardTiles = getAllHazardTilesOnMap()
 func getAllHazardTilesOnMap():
 	var hazardTilesFound = []
