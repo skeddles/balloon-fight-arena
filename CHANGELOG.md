@@ -4,6 +4,8 @@
 
 ### Changed
 - Added new character Alice, with new dropping ability
+- Added new stage Pencilvania
+- Added killable tiles
 - Characters now bounce off tiles and world boundaries
 - Upgraded match over screen
 

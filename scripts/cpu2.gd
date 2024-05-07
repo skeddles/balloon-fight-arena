@@ -61,6 +61,7 @@ func updateState(character):
 	state.target = priority.target
 
 const DEBUG = false
+var debugDrawCanvas
 func debugDraw (character):
 	if not DEBUG or not state: return
 
@@ -69,7 +70,11 @@ func debugDraw (character):
 		
 	if state.has_method("debugDraw"): state.debugDraw(character)
 	
-	#if get_node("/root/Level/DebugDraw"):
-	#	get_node("/root/Level/DebugDraw").rects = []
-	#	for ht in hazardTiles:
-	#		get_node("/root/Level/DebugDraw").rects.append([Rect2(ht.x*8,ht.y*8, 8,8), Color(1,1,0,0.5)])
+	if not debugDrawCanvas:
+		debugDrawCanvas = Node2D.new()
+		debugDrawCanvas.set_script(load("res://scripts/testing/debug_draw.gd"))
+		get_node("/root/Level").add_child(debugDrawCanvas)
+		
+		debugDrawCanvas.rects = []
+		for ht in hazardTiles:
+			debugDrawCanvas.rects.append([Rect2(ht.x*8,ht.y*8, 8,8), Color(1,0,0,0.1)])

@@ -63,13 +63,15 @@ func _ready():
 	)
 	
 	# DEBUG SETTINGS FORCE
-	#$StageSelect.selected=5
+	$StageSelect.selected=5
 	#$P1Char.selected = 0
 	#$P1Input.selected = 0
 	#$P3Char.selected = 10
-	#$P3Input.selected = 1
+	#$P2Input.selected = 2
+	#$P3Input.selected = 0
 	#$P4Input.selected = 0
 	#$BalloonCount.value = 10
+	#Engine.time_scale = 10
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():

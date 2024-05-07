@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drv7kku3qpg1o"]
+[gd_scene load_steps=12 format=3 uid="uid://drv7kku3qpg1o"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_x1331"]
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_yuo3j"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_iok7r"]
 [ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_0l4xt"]
 [ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_2m7ru"]
-[ext_resource type="Script" path="res://scripts/testing/debug_draw.gd" id="9_vh7ps"]
 
 [sub_resource type="Gradient" id="Gradient_y6ol7"]
 interpolation_mode = 1
@@ -97,9 +96,5 @@ position = Vector2(0, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
 shape = SubResource("WorldBoundaryShape2D_8r1ka")
-
-[node name="DebugDraw" type="Node2D" parent="."]
-z_index = 4096
-script = ExtResource("9_vh7ps")
 
 [connection signal="finished" from="Sound/MatchOver" to="." method="_on_match_over_finished"]

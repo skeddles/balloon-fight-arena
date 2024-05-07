@@ -50,9 +50,9 @@ func calculateAttackPriority(distance, enemy_position, balloons):
 	var eposScore = 1.25+enemy_position #pow(2,1-enemy_position)-1
 	return round(distScore + ballScore) * eposScore
 
-func calculateAvoidPriority(distance, enemy_position, balloons):
+func calculateAvoidPriority(distance,  balloons, velocity):
 	if distance > 128: return 1
-	var distScore = 128.0 * pow(40, -log(distance / 128.0))
+	var distScore = 128.0 * pow(velocity, -log(distance / 128.0))
 	var ballScore = pow(10,4-balloons)
 	return round(distScore + ballScore) / 2
 
