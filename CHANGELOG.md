@@ -3,6 +3,7 @@
 ## 4.0.0 - 2024-05-06
 
 ### Changed
+- Added new character Alice, with new dropping ability
 - Characters now bounce off tiles and world boundaries
 - Upgraded match over screen
 

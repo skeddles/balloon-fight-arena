@@ -139,7 +139,6 @@ func _physics_process(delta):
 				velocity.x = 0
 				velocity.y = 50
 				$Sprite.play("dropping")
-				print(CharacterName, " play dropping?", $Sprite.animation)
 				$Balloons.animation = "0_idle"
 				$Audio/Drop.play()
 				
@@ -152,7 +151,6 @@ func _physics_process(delta):
 		else: $Sprite.animation = 'walk'
 	elif not parachuting and not dropping:
 		if ($Sprite.animation != 'flap'): $Sprite.animation = 'float'
-		print(CharacterName, " play dropping?", $Sprite.animation)
 	
 	# Move
 	move_and_slide()
