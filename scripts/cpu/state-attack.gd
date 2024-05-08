@@ -1,4 +1,5 @@
 extends Node
+
 var MoveTowardsPoint = preload("res://scripts/cpu/util/move-towards-point.gd").new()
 
 const UPDATE_TARGET_FREQUENCY = 100

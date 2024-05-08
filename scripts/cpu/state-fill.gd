@@ -1,7 +1,5 @@
 extends Node
-
-const INPUT_COOLDOWN = 100
-var last_input = 0
+var Cooldown = preload("res://scripts/cpu/util/cooldown.gd").new()
 
 var target
 
@@ -13,7 +11,8 @@ func calculatePriority(distance, enemy_position, balloons):
 
 func getInput(input, character):
 	if character.is_on_floor():
-		if Time.get_ticks_msec() - last_input > INPUT_COOLDOWN:
+		Cooldown.ifCool("inputCooldown", 100, func(): 
 			input.fill = true
+		)
 
 

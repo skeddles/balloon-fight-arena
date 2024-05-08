@@ -1,6 +1,7 @@
 extends Node
 var Escape = preload("res://scripts/cpu/util/escape.gd").new()
 var MoveTowardsPoint = preload("res://scripts/cpu/util/move-towards-point.gd").new()
+var Cooldown = preload("res://scripts/cpu/util/cooldown.gd").new()
 
 const UPDATE_TARGET_FREQUENCY = 250
 
@@ -17,10 +18,11 @@ func calculatePriority(distance, enemy_position, balloons):
 
 func getInput(input, character):
 	if not character or not target: return
-	if Time.get_ticks_msec() - last_update_target > UPDATE_TARGET_FREQUENCY: 
+	Cooldown.ifCool("updateTarget", 250, func(): 
 		var newFleeTarget = Escape.getNewFleeTarget(character, target.position)
 		fleeTargetPoint = newFleeTarget[0]
 		fleeTargetDirection = newFleeTarget[1]
+	)
 	MoveTowardsPoint.adjustInput(input, character, fleeTargetPoint, fleeTargetDirection)
 	
 func debugDraw(character):

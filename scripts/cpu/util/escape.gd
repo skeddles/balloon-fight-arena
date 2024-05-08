@@ -1,23 +1,24 @@
 extends Node
 
+const ESCAPE_POINT_COUNT = 16
+const ESCAPE_RADIUS = 96
+
+
 func getNewFleeTarget (character, escapeFromPoint):
 	if not character: return
-	var newTarget = [
-		getEscapeRouteQuality(character,character.position+Vector2(128,0), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(-128,0), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(0,-128), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(0,128), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(128,128), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(-128,-128), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(-128,128), escapeFromPoint),
-		getEscapeRouteQuality(character,character.position+Vector2(128,-128), escapeFromPoint),
-	]
-	newTarget = newTarget.reduce(func(a,b):return b if b.score>a.score else a,{score=-1})
+	var possibleTargets = []
 	
+	for i in range(ESCAPE_POINT_COUNT):
+		var angle = (i / ESCAPE_POINT_COUNT) * 2.0 * PI
+		var x = cos(angle) * ESCAPE_RADIUS
+		var y = sin(angle) * ESCAPE_RADIUS
+		var pointOffset = Vector2(x,y)
+		possibleTargets.append(getEscapeRouteQuality(character,character.position+pointOffset, escapeFromPoint))
+	
+	var newTarget = possibleTargets.reduce(func(a,b):return b if b.score>a.score else a,{score=-1})
 	character.get_node("NavigationAgent2D").target_position = newTarget.position
 	var fleeTargetPoint = character.get_node("NavigationAgent2D").get_next_path_position() + Vector2(0,-10)
 	var fleeTargetDirection = character.to_local(character.get_node("NavigationAgent2D").get_next_path_position()).normalized()
-	
 	return [fleeTargetPoint,fleeTargetDirection]
 
 func getEscapeRouteQuality(character, escapeLocationOptionPoint:Vector2, escapeFromPoint:Vector2):
