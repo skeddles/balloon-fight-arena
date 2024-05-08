@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://doct7j5cxamfx"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_bbb6k"]
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="1_uq1hy"]
+[ext_resource type="AudioStream" uid="uid://dv3gkl8kamxwm" path="res://sound/bf-pause.wav" id="3_4pg14"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5trg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.435294, 0.435294, 0.435294, 1)
+anti_aliasing = false
+
+[node name="PauseMenu" type="Node2D"]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+script = ExtResource("1_bbb6k")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 109.0
+offset_top = 89.0
+offset_right = 539.0
+offset_bottom = 273.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5trg")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 25.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme = ExtResource("1_uq1hy")
+theme_override_font_sizes/font_size = 28
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 262.0
+offset_top = 170.0
+offset_right = 393.0
+offset_bottom = 201.0
+theme = ExtResource("1_uq1hy")
+text = "RESUME
+"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 262.0
+offset_top = 211.0
+offset_right = 393.0
+offset_bottom = 242.0
+theme = ExtResource("1_uq1hy")
+text = "EXIT
+"
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4pg14")
+
+[connection signal="pressed" from="ResumeButton" to="." method="unpause"]
+[connection signal="pressed" from="ExitButton" to="." method="exit"]

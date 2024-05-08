@@ -2,7 +2,7 @@ extends Node2D
 
 var endedMatch = false
 
-func _process(_delta):
+func _process(_delta):	
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
 		endedMatch = true
 		var winner = get_tree().get_nodes_in_group("character")[0]

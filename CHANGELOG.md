@@ -1,11 +1,14 @@
 # Changelog
 
-## 4.0.0 - 2024-05-06
+## 4.0.0 - 2024-05-08
+
+# Added 
+- New character: Alice, with new dropping ability
+- New stage: Pencilvania
+- Added killable tiles
+- Pause Menu
 
 ### Changed
-- Added new character Alice, with new dropping ability
-- Added new stage Pencilvania
-- Added killable tiles
 - Characters now bounce off tiles and world boundaries
 - Upgraded match over screen
 
