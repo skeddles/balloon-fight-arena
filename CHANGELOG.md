@@ -4,7 +4,7 @@
 
 # Added 
 - New character: Alice, with new dropping ability
-- New stage: Pencilvania
+- New stages: Pencilvania, Cliff
 - Added killable tiles
 - Pause Menu
 
