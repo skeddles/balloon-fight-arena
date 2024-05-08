@@ -456,6 +456,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xy5m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvqbw")
 }],
 "loop": true,
 "name": &"walk",
@@ -546,7 +549,7 @@ autoplay = "1_idle"
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_q4adw")
-animation = &"dropping"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="BalloonFilling" type="AnimatedSprite2D" parent="."]
