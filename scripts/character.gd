@@ -155,7 +155,7 @@ func _physics_process(delta):
 	
 	# Move
 	move_and_slide()
-	print("frame")
+
 	# Check Collisions
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)

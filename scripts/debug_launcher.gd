@@ -90,7 +90,6 @@ func _on_start_match_button_pressed():
 	var arenaScene = load(chosenArena).instantiate()
 	
 	get_tree().root.add_child(arenaScene)
-	var balloonCount = int($BalloonCount.value)
 	var enabledCharacters = []
 	for i in range(1,MAX_PLAYERS+1):
 		print("char",i," P"+str(i)+"Input")
@@ -109,17 +108,8 @@ func _on_start_match_button_pressed():
 			enabledCharacters.append(character)
 			
 			# Set Balloons
-			if balloonCount > 4:
-				if $StartFilled.button_pressed:
-					character.current_balloons = 4
-					character.stored_balloons = balloonCount - 4
-				else:
-					character.stored_balloons = balloonCount
-			else:
-				if $StartFilled.button_pressed:
-					character.current_balloons = balloonCount
-				else:
-					character.stored_balloons = balloonCount
+			character.current_balloons = int($StartingBalloonCount.value)
+			character.stored_balloons = int($BackupBalloonCount.value)
 
 			# Attach Controller
 			var controller
