@@ -1,9 +1,8 @@
 extends CharacterBody2D
 class_name Character
+
 ## The PNG of this character's sprite sheet
 @export var SpriteSheet:CompressedTexture2D
-
-
 
 @export_group("Character Source")
 ## The proper name of the character
@@ -195,7 +194,7 @@ func _physics_process(delta):
 				print("stop drop and roll")
 				dropping = false
 				$Sprite.animation = "0_idle"
-			if falling:
+			if parachuting:
 				parachuting = false
 				$Balloons.animation = "0_idle"
 		elif collider.is_in_group("water"):
