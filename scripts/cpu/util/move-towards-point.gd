@@ -1,16 +1,12 @@
 extends Node
 var Cooldown = preload("res://scripts/cpu/util/cooldown.gd").new()
 
-
-
 func adjustInput(input, character, point, direction):
 	var currentAxis = 1 if character.get_node("Sprite").flip_h else -1
 	var desiredAxis = round(direction.x)
 	
 	if desiredAxis != currentAxis:
-		print("wanna flip?")
 		Cooldown.ifCool("flipSprite", 200, func(): 
-			print("fleep")
 			input.dirAxis = round(direction.x)
 		)
 	else:

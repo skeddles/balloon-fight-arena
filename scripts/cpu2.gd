@@ -25,7 +25,6 @@ func getInput(character):
 		fill = false,
 		action = false
 	}
-	
 	Cooldown.ifCool("updateState", 100, func(): updateState(character))
 	state.getInput(input, character)
 	return input
