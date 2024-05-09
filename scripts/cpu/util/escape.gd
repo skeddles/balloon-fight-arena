@@ -6,15 +6,8 @@ const ESCAPE_RADIUS = 96
 
 func getNewFleeTarget (character, escapeFromPoint):
 	if not character: return
-	var possibleTargets = []
-	
-	for i in range(ESCAPE_POINT_COUNT):
-		var angle = (i / ESCAPE_POINT_COUNT) * 2.0 * PI
-		var x = cos(angle) * ESCAPE_RADIUS
-		var y = sin(angle) * ESCAPE_RADIUS
-		var pointOffset = Vector2(x,y)
-		possibleTargets.append(getEscapeRouteQuality(character,character.position+pointOffset, escapeFromPoint))
-	
+	var possibleTargets = getPossibleTargets()
+	possibleTargets = possibleTargets.map(func(t): return getEscapeRouteQuality(character,character.position+t, escapeFromPoint))
 	var newTarget = possibleTargets.reduce(func(a,b):return b if b.score>a.score else a,{score=-1})
 	character.get_node("NavigationAgent2D").target_position = newTarget.position
 	var fleeTargetPoint = character.get_node("NavigationAgent2D").get_next_path_position() + Vector2(0,-10)
@@ -46,3 +39,13 @@ func getClosestPositionOnLine(l1,l2,targetPos):
 	var distance_along_line = max(32, min(distance, (l2 - l1).length()))
 	var closest_position = l1 + distance_along_line * line_direction
 	return closest_position
+
+func getPossibleTargets():
+	var possibleTargets = []
+	for i in range(ESCAPE_POINT_COUNT):
+		var angle = (i / ESCAPE_POINT_COUNT) * 2.0 * PI
+		var x = cos(angle) * ESCAPE_RADIUS
+		var y = sin(angle) * ESCAPE_RADIUS
+		var pointOffset = Vector2(x,y)
+		possibleTargets.append(pointOffset)
+	return possibleTargets
