@@ -2,6 +2,14 @@ extends Node2D
 
 var endedMatch = false
 
+func _ready():
+	var bg = ColorRect.new()
+	bg.size = Vector2(640,360)
+	bg.color = Color.BLACK
+	bg.z_index = -99
+	bg.z_as_relative = false
+	add_child(bg)
+
 func _process(_delta):	
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
 		endedMatch = true

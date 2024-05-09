@@ -28,12 +28,6 @@ distance = -640.0
 [node name="Level" type="Node2D"]
 script = ExtResource("1_k2pm4")
 
-[node name="BG" type="ColorRect" parent="."]
-visible = false
-offset_right = 640.0
-offset_bottom = 328.0
-color = Color(0, 0, 0, 1)
-
 [node name="HUD" parent="." instance=ExtResource("2_a1kqe")]
 z_index = 100
 
@@ -58,7 +52,7 @@ position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_sss8b")
 one_way_collision_margin = 54.2
 
-[node name="TopEdge" type="CollisionShape2D" parent="Walls"]
+[node name="TopEdge" type="CollisionShape2D" parent="Walls" groups=["ceiling"]]
 position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_ohtge")
 one_way_collision_margin = 54.2
@@ -72,7 +66,7 @@ one_way_collision_margin = 54.2
 position = Vector2(82, 290)
 
 [node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(560, 272)
+position = Vector2(624, 304)
 
 [node name="Spawn3" type="Marker2D" parent="."]
 position = Vector2(136, 144)
