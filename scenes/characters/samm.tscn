@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://e4v8uf7nbpna"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_c8abv"]
+[ext_resource type="Texture2D" uid="uid://dajsofakdkf8v" path="res://art/characters/samm.png" id="2_b1jh2"]
+
+[node name="Character" instance=ExtResource("1_c8abv")]
+SpriteSheet = ExtResource("2_b1jh2")
+CharacterName = "Samm"
+CharacterSource = "Balloon Kid (1990)"
+HasDropping = true
+DroppingGravity = 1.0
+TopAirSpeed = 65.0
+TopLandSpeed = 85.0
+FlapStrength = 0.5
