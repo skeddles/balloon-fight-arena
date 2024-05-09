@@ -170,7 +170,7 @@ func _physics_process(delta):
 			var coords = collider.get_coords_for_body_rid(collision.get_collider_rid())
 			var tiledata = collider.get_cell_tile_data(0,coords)
 			if tiledata.get_custom_data("Kill"): 
-				bounce(collision, delta)
+				bounce(collision, delta, 25)
 				loseBalloon()
 				break
 		
@@ -184,12 +184,12 @@ func _physics_process(delta):
 				print(CharacterName, "you should die")
 				collider.startFalling()
 			
-			bounce(collision, delta)
+			bounce(collision, delta,50)
 			break
 		elif collider.is_in_group("bounce") and not is_on_floor():
-			if collision.get_collider_shape():
-				print(CharacterName, " hit da ceiling? ", collision.get_collider_shape(),collision.get_collider_shape().is_in_group("ceiling"))
-			bounce(collision, delta)
+			if otherShape and otherShape.is_in_group("ceiling"):
+				bounce(collision, delta, 100)
+			bounce(collision, delta, 50)
 			break
 		elif collider.is_in_group("ground") and is_on_floor():
 			if dropping:
@@ -205,7 +205,7 @@ func _physics_process(delta):
 			playerHUD.update()
 			break
 
-func bounce(collision, delta):
+func bounce(collision, delta, minimumSpeed):
 	var normal = collision.get_normal()
 	#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
 	var travel = collision.get_travel() 
@@ -213,6 +213,7 @@ func bounce(collision, delta):
 	var newVel = (travel + remainder) / delta
 	velocity = newVel.bounce(collision.get_normal())
 	#print ('travel: ',travel, " | remainder: ", remainder, " | newVel: ", newVel, " | bouncedVel: ", velocity)
+	if velocity.length() < minimumSpeed: velocity = minimumSpeed * normal
 	$Audio/Bounce.play()
 	
 func loseBalloon ():
