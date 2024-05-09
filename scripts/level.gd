@@ -9,6 +9,7 @@ func _ready():
 	bg.z_index = -99
 	bg.z_as_relative = false
 	add_child(bg)
+	move_child(bg, 0)
 
 func _process(_delta):	
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
