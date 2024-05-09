@@ -8,10 +8,11 @@ const MAX_DISTANCE = 96
 var target
 var avoidTileDirection
 var avoidTilePoint
+var extendCooldown = 500
 
 func calculatePriority(distance, balloons, velocity):
 	if distance > MAX_DISTANCE: return 1
-	var distScore = MAX_DISTANCE * pow(velocity*4, -log(distance / MAX_DISTANCE))
+	var distScore = MAX_DISTANCE * pow(velocity, -log(distance / MAX_DISTANCE))
 	var ballScore = pow(10,4-balloons)
 	return round(distScore + ballScore) / 2
 
@@ -27,5 +28,6 @@ func getInput(input, character):
 func debugDraw(character):
 	if not target: return
 	var pos = character.get_global_position()
+	character.draw_line(Vector2.ZERO, target-pos, Color.MAGENTA, 2)
 	character.draw_rect(Rect2(target.x-pos.x+2, target.y-pos.y+2, 4, 4), Color.MAGENTA)
-	character.draw_circle(avoidTilePoint-pos, 8, Color.GREEN)
+	character.draw_circle(avoidTilePoint-pos, 4, Color.GREEN)

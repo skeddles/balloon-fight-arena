@@ -28,17 +28,8 @@ func getInput(input, character):
 func debugDraw(character):
 	character.draw_line(Vector2.ZERO, target.get_global_position()-character.get_global_position(), Color(0,0.3,0.3), 2)
 	character.draw_circle(fleeTargetPoint-character.get_global_position(), 8, Color(1,0,1,0.3))
-	var newTarget = [
-		Vector2(64,0),
-		Vector2(-64,0),
-		Vector2(0,-64),
-		Vector2(0,64),
-		Vector2(64,64),
-		Vector2(-64,-64),
-		Vector2(-64,64),
-		Vector2(64,-64),
-	]
-	for t in newTarget:
+	
+	for t in Escape.getPossibleTargets():
 		var s = round(Escape.getEscapeRouteQuality(character,t,target.position).score)
 		character.draw_circle(t,s/16,Color(0,1,1,0.3))
 		character.draw_string(ThemeDB.fallback_font,t, str(s), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, Color.WHITE)

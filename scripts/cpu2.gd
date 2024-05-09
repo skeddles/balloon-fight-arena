@@ -35,7 +35,7 @@ func updateState(character):
 	# Check all hazards
 	for tile in hazardTiles:
 		var hazardScore = StateAvoid.calculatePriority(character.position.distance_to(tile*8), character.current_balloons, character.velocity.length())
-		if hazardScore > priority.score: priority = {state=StateAvoid, score=hazardScore, target=tile*8}
+		if hazardScore > priority.score: priority = {state=StateAvoid, score=hazardScore, target=Vector2(tile)*8}
 		
 	#Check all enemies
 	var otherCharacters = get_tree().get_nodes_in_group("character").filter(func(c): return c != character)
@@ -58,6 +58,8 @@ func updateState(character):
 
 	state = priority.state
 	state.target = priority.target
+	if "extendCooldown" in state: 
+		Cooldown.setCooldown("updateState", state.extendCooldown) 
 
 const DEBUG = false
 var debugDrawCanvas
@@ -71,6 +73,8 @@ func debugDraw (character):
 	
 	if not debugDrawCanvas:
 		debugDrawCanvas = Node2D.new()
+		debugDrawCanvas.z_as_relative = false
+		debugDrawCanvas.z_index = 4096
 		debugDrawCanvas.set_script(load("res://scripts/testing/debug_draw.gd"))
 		get_node("/root/Level").add_child(debugDrawCanvas)
 		

@@ -7,12 +7,16 @@ func adjustInput(input, character, point, direction):
 	
 	if desiredAxis != currentAxis:
 		Cooldown.ifCool("flipSprite", 200, func(): 
-			input.dirAxis = round(direction.x)
+			if direction.x < -0.1: input.dirAxis = -1
+			if direction.x > 0.1: input.dirAxis = 1
 		)
 	else:
 		input.dirAxis = currentAxis
 	
-	Cooldown.ifCool("lastInput", 150, func(): 
-		if (point.y < character.position.y): 
+	if (direction.y < 0): 
+		Cooldown.ifCool("lastInput", 150, func(): 
 			input.jumped = true
-	)
+			print("jumpt",input.dirAxis)
+		)
+
+	

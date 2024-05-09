@@ -1,7 +1,7 @@
 extends Node
 
-const ESCAPE_POINT_COUNT = 16
-const ESCAPE_RADIUS = 96
+const ESCAPE_POINT_COUNT:float = 16.0
+const ESCAPE_RADIUS = 128
 
 
 func getNewFleeTarget (character, escapeFromPoint):

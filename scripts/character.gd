@@ -187,11 +187,12 @@ func _physics_process(delta):
 			bounce(collision, delta)
 			break
 		elif collider.is_in_group("bounce") and not is_on_floor():
+			if collision.get_collider_shape():
+				print(CharacterName, " hit da ceiling? ", collision.get_collider_shape(),collision.get_collider_shape().is_in_group("ceiling"))
 			bounce(collision, delta)
 			break
 		elif collider.is_in_group("ground") and is_on_floor():
 			if dropping:
-				print("stop drop and roll")
 				dropping = false
 				$Sprite.animation = "0_idle"
 			if parachuting:
