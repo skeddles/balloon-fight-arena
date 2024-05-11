@@ -124,7 +124,7 @@ func _physics_process(delta):
 	if input.dirAxis:
 		$Sprite.flip_h = input.dirAxis > 0
 		if is_on_floor():
-			velocity.x = input.dirAxis * TopLandSpeed
+			velocity.x = lerp(velocity.x, input.dirAxis * TopLandSpeed, 0.1)
 		elif input.jumped:
 			velocity.x = lerp(velocity.x, input.dirAxis * TopAirSpeed, 0.2)
 	elif is_on_floor():
