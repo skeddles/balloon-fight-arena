@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0 - 2024-05-08
+## 4.0.0 - 2024-05-11
 
 # Added 
 - New characters: Alice and Samm, with new dropping ability
