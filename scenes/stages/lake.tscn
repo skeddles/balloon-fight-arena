@@ -52,7 +52,7 @@ position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_sss8b")
 one_way_collision_margin = 54.2
 
-[node name="TopEdge" type="CollisionShape2D" parent="Walls"]
+[node name="TopEdge" type="CollisionShape2D" parent="Walls" groups=["ceiling"]]
 position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_ohtge")
 one_way_collision_margin = 54.2

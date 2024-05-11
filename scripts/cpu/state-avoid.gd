@@ -8,7 +8,7 @@ const MAX_DISTANCE = 96
 var target
 var avoidTileDirection
 var avoidTilePoint
-var extendCooldown = 500
+var extendCooldown = 1000
 
 func calculatePriority(distance, balloons, velocity):
 	if distance > MAX_DISTANCE: return 1

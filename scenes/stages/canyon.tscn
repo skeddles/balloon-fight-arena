@@ -30,11 +30,6 @@ script = ExtResource("1_2n2nw")
 metadata/_edit_vertical_guides_ = [320.0, 160.0, 480.0, 64.0, 576.0]
 metadata/_edit_horizontal_guides_ = [96.0]
 
-[node name="BG" type="ColorRect" parent="."]
-offset_right = 640.0
-offset_bottom = 328.0
-color = Color(0, 0, 0, 1)
-
 [node name="HUD" parent="." instance=ExtResource("2_4rp43")]
 z_index = 100
 
@@ -59,7 +54,7 @@ position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_sss8b")
 one_way_collision_margin = 54.2
 
-[node name="TopEdge" type="CollisionShape2D" parent="Walls"]
+[node name="TopEdge" type="CollisionShape2D" parent="Walls" groups=["ceiling"]]
 position = Vector2(210, -359)
 shape = SubResource("WorldBoundaryShape2D_ohtge")
 one_way_collision_margin = 54.2
