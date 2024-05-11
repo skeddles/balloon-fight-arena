@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsjwvhyymiq56"]
+
+[ext_resource type="PackedScene" uid="uid://dbb6gubo3cjm4" path="res://scenes/character.tscn" id="1_1n6el"]
+[ext_resource type="Texture2D" uid="uid://dvi2njxkgadb0" path="res://art/characters/alice.png" id="2_0ddf5"]
+
+[node name="Character" instance=ExtResource("1_1n6el")]
+SpriteSheet = ExtResource("2_0ddf5")
+CharacterName = "Alice"
+CharacterSource = "Balloon Kid (1990)"
+HasDropping = true
+TopAirSpeed = 70.0
+TopLandSpeed = 90.0
+BalloonGravity = 0.35
+FlapStrength = 0.5

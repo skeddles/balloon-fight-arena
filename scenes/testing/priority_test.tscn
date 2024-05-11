@@ -11,7 +11,7 @@ character1 = NodePath("Sprite2D")
 character2 = NodePath("Sprite2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(533, 186)
+position = Vector2(202, 195)
 texture = ExtResource("2_xopaw")
 region_enabled = true
 region_rect = Rect2(80, 8, 24, 16)

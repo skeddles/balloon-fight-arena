@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.0.0 - 2024-05-11
+
+# Added 
+- New characters: Alice and Samm, with new dropping ability
+- New stages: Pencilvania, Cliff, Island
+- Added killable tiles
+- Pause Menu
+
+### Changed
+- Characters now bounce off tiles and world boundaries
+- Upgraded match over screen
+
 ## 3.0.0 - 2024-05-05
 
 ### Added

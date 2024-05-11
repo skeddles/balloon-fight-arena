@@ -1,9 +1,8 @@
 extends CharacterBody2D
 class_name Character
+
 ## The PNG of this character's sprite sheet
 @export var SpriteSheet:CompressedTexture2D
-
-
 
 @export_group("Character Source")
 ## The proper name of the character
@@ -20,7 +19,10 @@ enum characterSourceTypes {Game,Interpretation,RelatedGame,RomHack,FanGame,Origi
 @export_group("Character Abilities")
 ## Whether this character should be able to use a parachute while falling
 @export var HasParachute:bool = false
-
+@export var ParachuteGravity:float = 0.1
+@export var HasDropping:bool = false
+@export var DroppingGravity:float = 0.9
+@export var DroppingDistance:int = 999
 
 @export_group("Character Stats")
 # How quickly the player comes to a stop after letting go of run button (0.0-0.1)
@@ -48,12 +50,15 @@ var stored_balloons = 0
 var falling = false
 var parachuting = false
 var invincible = false
+var invincible_until = 0
 var current_fill_amount = 0
-	
+var dropping = false
+var droppingStartY = 0
 
 func _physics_process(delta):
 	if DEBUG or (controller and controller.has_method("debugDraw")): queue_redraw()
-	if invincible && Time.get_ticks_msec() > invincible: invincible = false
+	if invincible && Time.get_ticks_msec() > invincible_until: invincible = false
+
 	
 	# Falling
 	if falling:
@@ -61,15 +66,19 @@ func _physics_process(delta):
 		if position.y > 400: queue_free()
 		return move_and_slide()
 	# Falling with parachute
-	elif parachuting:
-		if is_on_floor():
-			parachuting = false
-			$Balloons.animation = "0_idle"
+	elif parachuting and not is_on_floor():
+		velocity.x = lerp(velocity.x,sin(Time.get_ticks_msec() / 500 ) * 32, 0.1)
+		velocity.y += gravity*ParachuteGravity * delta
+		if position.y > 400: queue_free()
+		return move_and_slide()
+	# Dropping
+	elif dropping:
+		print ("dropping dueces ",  position.y - droppingStartY > DroppingDistance)
+		if position.y - droppingStartY > DroppingDistance:
+			startFalling()
 		else:
-			velocity.x = lerp(velocity.x,sin(Time.get_ticks_msec() / 500 ) * 32, 0.1)
-			velocity.y += gravity*BalloonGravity*0.25 * delta
+			velocity.y += gravity*DroppingGravity * delta
 			if position.y > 400: queue_free()
-			return move_and_slide()
 	# Jumping without balloon
 	elif not is_on_floor() and current_balloons == 0:
 		velocity.y += gravity * delta
@@ -81,7 +90,7 @@ func _physics_process(delta):
 	var input = controller.getInput(self)
 	
 	# Handle Jumping / Flapping
-	if input.jumped:
+	if input.jumped and not falling and not dropping and not parachuting:
 		if is_on_floor(): 
 			if current_balloons > 0:
 				velocity.y = -JumpHeight
@@ -121,13 +130,27 @@ func _physics_process(delta):
 	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, LandFriction)
 
+	# Handle Special Ability Actions
+	if input.action:
+		if HasDropping:
+			if not is_on_floor() and current_balloons > 0 and not dropping and not parachuting:
+				dropping = true
+				current_balloons = 0
+				droppingStartY = position.y 
+				velocity.x = 0
+				velocity.y = 50
+				$Sprite.play("dropping")
+				$Balloons.animation = "0_idle"
+				$Audio/Drop.play()
+				
+
 
 	# Play Animations
 	if is_on_floor():
 		if filling: $Sprite.animation = 'refill'
 		elif abs(velocity.x) < 25: $Sprite.animation = 'idle'
 		else: $Sprite.animation = 'walk'
-	else:
+	elif not parachuting and not dropping:
 		if ($Sprite.animation != 'flap'): $Sprite.animation = 'float'
 	
 	# Move
@@ -138,60 +161,93 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var localShape = collision.get_local_shape()
 		var otherShape = collision.get_collider_shape()
-		#print("shape ",	localShape, " disabled:",localShape.disabled)
+		#print(CharacterName, " shape ",	localShape, " disabled:",localShape.disabled)
 		if localShape.disabled or (otherShape and otherShape.disabled): continue
 		var collider = collision.get_collider()
-		#print("I collided with ", collider.name)
+		#print(CharacterName, "I collided with ", collider.name, ' [is in bounce group: ', collider.is_in_group("ground"),"]")	
+		
+		if collider is TileMap:
+			var coords = collider.get_coords_for_body_rid(collision.get_collider_rid())
+			var tiledata = collider.get_cell_tile_data(0,coords)
+			if tiledata.get_custom_data("Kill"): 
+				bounce(collision, delta, 25)
+				loseBalloon()
+				break
+		
 		if collider.is_in_group("character"):
 			if (falling): break
-			if current_balloons == 0 and !falling:
+			if current_balloons == 0 and not falling and not dropping:
+				print(CharacterName, "i should die", falling, dropping)
 				startFalling()
 				break
-			if collider.current_balloons == 0 and !collider.falling:
+			if collider.current_balloons == 0 and !collider.falling and !dropping:
+				print(CharacterName, "you should die")
 				collider.startFalling()
-			var normal = collision.get_normal()
-			#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
 			
-			var travel = collision.get_travel() 
-			var remainder = collision.get_remainder()
-			var newVel = (travel + remainder) / delta
-			
-			print ('travel: ',travel, " | remainder: ", remainder, " | newVel: ", newVel)
-			
-			velocity = newVel.bounce(collision.get_normal())
-			print("new velocity",velocity)	
+			bounce(collision, delta,50)
 			break
+		elif collider.is_in_group("bounce") and not is_on_floor():
+			if otherShape and otherShape.is_in_group("ceiling"):
+				bounce(collision, delta, 100)
+			bounce(collision, delta, 50)
+			break
+		elif collider.is_in_group("ground") and is_on_floor():
+			if dropping:
+				dropping = false
+				$Sprite.animation = "0_idle"
+			if parachuting:
+				parachuting = false
+				$Balloons.animation = "0_idle"
 		elif collider.is_in_group("water"):
 			$Audio/Drown.play()
 			splash()
 			falling = true
 			playerHUD.update()
-			
+			break
 
+func bounce(collision, delta, minimumSpeed):
+	var normal = collision.get_normal()
+	#print("\n[",i," collision with ",collider.name,"] normal: ",normal, " | dot: ", Vector2.UP.dot(normal))
+	var travel = collision.get_travel() 
+	var remainder = collision.get_remainder()
+	var newVel = (travel + remainder) / delta
+	velocity = newVel.bounce(collision.get_normal())
+	#print ('travel: ',travel, " | remainder: ", remainder, " | newVel: ", newVel, " | bouncedVel: ", velocity)
+	if velocity.length() < minimumSpeed: velocity = minimumSpeed * normal
+	$Audio/Bounce.play()
+	
 func loseBalloon ():
-	print("POOOPPPPPPPPPPPPPPPPPPPPPPPPPP",name)
+	if invincible: return
+	print(CharacterName, "Pop! ",name)
 	$Balloons.animation = str(current_balloons) + "_pop"
 	current_balloons -= 1
-	if current_balloons < 0: printerr("current_balloons dropped below 0, should be impossible", name, current_balloons)
+	if current_balloons < 0: printerr(CharacterName, "current_balloons dropped below 0, should be impossible", name, current_balloons)
 	$Audio/Pop.playing = true
 	if current_balloons == 0:
 		switchCollisionShape()
-		if HasParachute:
+		if is_on_floor():
+			$Sprite.animation = "idle_0"
+			$Balloons.animation = "blank"
+		elif HasParachute:
 			$Sprite.animation = "parachute"
 			$Balloons.animation = "parachute"
 			parachuting = true
-			invincible = Time.get_ticks_msec() + 500
+			go_invincible(500)
 		else:
 			startFalling()
 	else:
-		invincible = Time.get_ticks_msec() + 1000
+		print("made invincible")
+		go_invincible(1000)
 
 func startFalling():
 	if (falling): return
-	print("start falling...")
+	print(CharacterName, "start falling...")
 	falling = true
+	dropping = false
 	collision_mask = 0
-	$Sprite.animation = "fall"
+	velocity.x = 0
+	velocity.y = -50
+	$Sprite.play("fall")
 	$Audio/Falling.play(0)
 	playerHUD.update()
 
@@ -204,6 +260,7 @@ func _on_sprite_animation_finished():
 			stored_balloons -= 1
 			current_balloons += 1
 			playerHUD.update()
+			switchCollisionShape()
 			$BalloonFilling.play("blank")
 			$Balloons.animation = str(current_balloons) + "_idle"
 			$Audio/Filled.play()
@@ -215,21 +272,21 @@ func _on_balloons_animation_changed():
 	$Balloons.play()
 	
 func _on_balloons_animation_finished():
-	print("finito",$Balloons.animation)
+	print(CharacterName, "finito",$Balloons.animation)
 	if $Balloons.animation.ends_with("pop"):
 		$Balloons.animation = str(current_balloons) + "_idle"
 
 
 func _on_balloon_area_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
-	print("balloon shape entered", body.name)
+	print(CharacterName, " balloon shape entered", body.name)
 	
 func _on_balloon_area_area_entered(area):
-	if invincible: return
-	if current_balloons == 0: return
 	var otherCharacter = area.get_parent()
-	if otherCharacter.falling or otherCharacter.parachuting or otherCharacter.current_balloons < 1: return
+	print(CharacterName, " my balon pop?! thanks ", otherCharacter.CharacterName)
+	if invincible or current_balloons == 0 or otherCharacter.falling: return
+	#used to be if otherCharacter.falling or otherCharacter.parachuting or otherCharacter.current_balloons < 1: return
 	if area.name == "FeetArea": 
-		print("balloon area entered", area.name)
+		print(CharacterName, " balloon area entered", area.name)
 		
 		#position.angle_to(otherCharacter.position)
 		var collision_angle = position.angle_to(otherCharacter.position)
@@ -243,7 +300,7 @@ func _on_balloon_area_area_entered(area):
 		loseBalloon()
 
 func switchCollisionShape():
-	print("switing collision shape",current_balloons == 0)
+	print(CharacterName, " switching collision shape",current_balloons == 0)
 	if current_balloons == 0:
 		$HasBallonsCollisionShape.set_deferred("disabled", true)
 		$NoBallonsCollisionShape.set_deferred("disabled", false)
@@ -251,9 +308,12 @@ func switchCollisionShape():
 		$HasBallonsCollisionShape.set_deferred("disabled", false)
 		$NoBallonsCollisionShape.set_deferred("disabled", true)
 	
-	print("$HasBallonsCollisionShape.disabled",$HasBallonsCollisionShape.disabled)
-	print("$NoBallonsCollisionShape.disabled",$NoBallonsCollisionShape.disabled)
+	print(CharacterName, "$HasBallonsCollisionShape.disabled",$HasBallonsCollisionShape.disabled)
+	print(CharacterName, "$NoBallonsCollisionShape.disabled",$NoBallonsCollisionShape.disabled)
 
+func go_invincible(ms):
+	invincible = true
+	invincible_until = Time.get_ticks_msec() + ms
 
 func init():
 	$Balloons.animation = str(current_balloons) + "_idle"

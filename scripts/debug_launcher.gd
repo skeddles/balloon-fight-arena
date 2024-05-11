@@ -63,9 +63,15 @@ func _ready():
 	)
 	
 	# DEBUG SETTINGS FORCE
-	#$StageSelect.selected=2
+	#$StageSelect.selected=3
+	#$P1Char.selected = 0
+	#$P1Input.selected = 0
+	#$P3Char.selected = 10
+	#$P2Input.selected = 2
 	#$P3Input.selected = 0
 	#$P4Input.selected = 0
+	#$BalloonCount.value = 10
+	#Engine.time_scale = 10
 
 func _on_start_match_button_pressed():
 	if !checkAtLeast2CharactersSelected():
@@ -84,7 +90,6 @@ func _on_start_match_button_pressed():
 	var arenaScene = load(chosenArena).instantiate()
 	
 	get_tree().root.add_child(arenaScene)
-	var balloonCount = int($BalloonCount.value)
 	var enabledCharacters = []
 	for i in range(1,MAX_PLAYERS+1):
 		print("char",i," P"+str(i)+"Input")
@@ -103,22 +108,14 @@ func _on_start_match_button_pressed():
 			enabledCharacters.append(character)
 			
 			# Set Balloons
-			if balloonCount > 4:
-				if $StartFilled.button_pressed:
-					character.current_balloons = 4
-					character.stored_balloons = balloonCount - 4
-				else:
-					character.stored_balloons = balloonCount
-			else:
-				if $StartFilled.button_pressed:
-					character.current_balloons = balloonCount
-				else:
-					character.stored_balloons = balloonCount
+			character.current_balloons = int($StartingBalloonCount.value)
+			character.stored_balloons = int($BackupBalloonCount.value)
 
 			# Attach Controller
 			var controller
 			if controlSelection == NUMBER_OF_CONTROL_SCHEMES-1: 
 				controller = preload("res://scenes/controls/cpu.tscn").instantiate()
+				pass
 			else:
 				controller = preload("res://scenes/controls/human.tscn").instantiate()
 				print ("attach controller? ", controlSelection, " ", inputSchemes.size()," ",  inputSchemes.size() - NUMBER_OF_CONTROLLERS - 1, " ", NUMBER_OF_STATIC_CONTROL_SCHEMES)

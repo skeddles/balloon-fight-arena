@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://va8r8fp0koxv"]
+
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="1_aykfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sg6g"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.435294, 0.435294, 0.435294, 1)
+anti_aliasing = false
+
+[node name="MatchOver" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 109.0
+offset_top = 68.0
+offset_right = 539.0
+offset_bottom = 158.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6sg6g")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.0375
+anchor_right = 0.05625
+offset_left = 256.0
+offset_top = 84.0
+offset_right = 402.0
+offset_bottom = 107.0
+theme = ExtResource("1_aykfs")
+theme_override_colors/font_color = Color(0.313726, 0.698039, 0.964706, 1)
+theme_override_font_sizes/font_size = 14
+text = "MATCH OVER"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Winner" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.0375
+anchor_right = 0.05625
+offset_left = 256.0
+offset_top = 111.0
+offset_right = 388.0
+offset_bottom = 134.0
+theme = ExtResource("1_aykfs")
+theme_override_colors/font_color = Color(0.435294, 0.435294, 0.435294, 1)
+text = "WINNER:"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerNumber" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.0375
+anchor_right = 0.05625
+offset_left = 256.0
+offset_top = 142.0
+offset_right = 388.0
+offset_bottom = 165.0
+theme = ExtResource("1_aykfs")
+theme_override_colors/font_color = Color(0.12549, 0.113725, 0.498039, 1)
+text = "[PLAYER 3]"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterName" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.0375
+anchor_right = 0.05625
+offset_left = 137.0
+offset_top = 125.0
+offset_right = 514.0
+offset_bottom = 148.0
+theme = ExtResource("1_aykfs")
+theme_override_font_sizes/font_size = 16
+text = "BALLOON FIGHTER (FAMICOM"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

@@ -2,13 +2,26 @@ extends Node2D
 
 var endedMatch = false
 
-func _process(_delta):
+func _ready():
+	var bg = ColorRect.new()
+	bg.size = Vector2(640,360)
+	bg.color = Color.BLACK
+	bg.z_index = -99
+	bg.z_as_relative = false
+	add_child(bg)
+	move_child(bg, 0)
+
+func _process(_delta):	
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
 		endedMatch = true
 		var winner = get_tree().get_nodes_in_group("character")[0]
 		$Sound/Music.playing = false
 		$Sound/MatchOver.playing = true
-		$MatchOver/Winner.text = "WINNER: PLAYER "+ str(winner.playerNumber)
+		$MatchOver.get_node("CharacterName").text = winner.CharacterName.to_upper()
+		if (winner.controller.is_in_group("cpu_controller")):
+			$MatchOver/PlayerNumber.text = "[PLAYER "+ str(winner.playerNumber) +" CPU]"
+		else:
+			$MatchOver/PlayerNumber.text = "[PLAYER "+ str(winner.playerNumber) +"]"
 		$MatchOver.visible = true
 		
 func _on_match_over_finished():
