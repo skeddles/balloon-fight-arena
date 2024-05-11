@@ -3,8 +3,8 @@
 ## 4.0.0 - 2024-05-08
 
 # Added 
-- New character: Alice, with new dropping ability
-- New stages: Pencilvania, Cliff
+- New characters: Alice and Samm, with new dropping ability
+- New stages: Pencilvania, Cliff, Island
 - Added killable tiles
 - Pause Menu
 
