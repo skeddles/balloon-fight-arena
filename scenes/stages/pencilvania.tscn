@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_ff6ka"]
 [ext_resource type="TileSet" uid="uid://dklr7gbpni7mk" path="res://scenes/tileset.tres" id="3_6ja20"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_ri22m"]
-[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_20y2h"]
+[ext_resource type="AudioStream" uid="uid://sk4qnsik4nws" path="res://sound/music/balloon-kid-stage-1.mp3" id="5_p43ff"]
 [ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_pbtub"]
 [ext_resource type="PackedScene" uid="uid://doct7j5cxamfx" path="res://scenes/ui/pause-menu.tscn" id="7_6gux6"]
 
@@ -80,11 +80,12 @@ position = Vector2(464, 112)
 
 [node name="MatchOver" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("4_ri22m")
+bus = &"Effects"
 
 [node name="Music" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("5_20y2h")
-volume_db = -13.048
+stream = ExtResource("5_p43ff")
 autoplay = true
+bus = &"Music"
 
 [node name="MatchOver" parent="." instance=ExtResource("6_pbtub")]
 visible = false

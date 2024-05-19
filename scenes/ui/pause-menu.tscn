@@ -57,6 +57,7 @@ text = "EXIT
 
 [node name="PauseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4pg14")
+bus = &"Effects"
 
 [connection signal="pressed" from="ResumeButton" to="." method="unpause"]
 [connection signal="pressed" from="ExitButton" to="." method="exit"]

@@ -584,28 +584,36 @@ shape = SubResource("CapsuleShape2D_s0k5s")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_x6tsq")
+bus = &"Effects"
 
 [node name="Falling" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_eutk4")
+bus = &"Effects"
 
 [node name="Fill" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_32qx7")
 volume_db = -5.356
+bus = &"Effects"
 
 [node name="Filled" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_tr0yw")
+bus = &"Effects"
 
 [node name="Drown" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_7ucb3")
+bus = &"Effects"
 
 [node name="Bounce" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_iok53")
+bus = &"Effects"
 
 [node name="Drop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_wphto")
+bus = &"Effects"
 
 [node name="Zap" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_uigar")
+bus = &"Effects"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

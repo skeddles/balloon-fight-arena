@@ -4,12 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_55ii7"]
 [ext_resource type="TileSet" uid="uid://dklr7gbpni7mk" path="res://scenes/tileset.tres" id="3_iatcm"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_4aex0"]
-[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_pqolp"]
+[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/music/balloon-fight-balloon-trip.wav" id="5_pqolp"]
 [ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_dp61c"]
 [ext_resource type="Script" path="res://scripts/testing/debug_draw.gd" id="7_ke5sg"]
 [ext_resource type="PackedScene" uid="uid://bqk3ku2hu44cn" path="res://scenes/characters/tingle.tscn" id="8_tn37q"]
 [ext_resource type="PackedScene" uid="uid://ckslsgtfdjm88" path="res://scenes/characters/luigi.tscn" id="9_bbuu3"]
 [ext_resource type="PackedScene" uid="uid://feu4pn66m67n" path="res://scenes/controls/human.tscn" id="10_nt4jt"]
+
 
 [sub_resource type="Gradient" id="Gradient_y6ol7"]
 interpolation_mode = 1

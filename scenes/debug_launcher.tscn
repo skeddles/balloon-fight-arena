@@ -100,7 +100,7 @@ offset_bottom = 59.0
 theme = ExtResource("2_yn84k")
 text = "PLAYER 1"
 
-[node name="Select Players" type="Label" parent="."]
+[node name="Heading" type="Label" parent="."]
 offset_top = 12.0
 offset_right = 640.0
 offset_bottom = 35.0

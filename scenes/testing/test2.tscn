@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_d4xvl"]
 [ext_resource type="Texture2D" uid="uid://du0cdw1j5f083" path="res://art/tiles/tileset.png" id="3_nvf4p"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_dm7f1"]
-[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_ikj4g"]
+[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/music/balloon-fight-balloon-trip.wav" id="5_ikj4g"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="6_6cxpu"]
 [ext_resource type="SpriteFrames" uid="uid://ctwtumk40eivu" path="res://art/fx/splash.tres" id="7_l5fby"]
 [ext_resource type="Script" path="res://scripts/delete-after-animation.gd" id="8_bmbtv"]

@@ -6,7 +6,8 @@
 - Single Player Balloon Trip Mode
 - Sparks obstacle that electrocutes players
 - High score lists
-
+- Settings screen with volume controls
+- Pencilvania and Island now have unique music (from Balloon Kid)
 
 ## 4.0.0 - 2024-05-11
 

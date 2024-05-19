@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_m2n30"]
 [ext_resource type="TileSet" uid="uid://dklr7gbpni7mk" path="res://scenes/tileset.tres" id="3_pnhc6"]
 [ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_hgba5"]
-[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="5_royqc"]
+[ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/music/balloon-fight-balloon-trip.wav" id="5_royqc"]
 [ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_mv3us"]
+
 
 [sub_resource type="Gradient" id="Gradient_y6ol7"]
 interpolation_mode = 1

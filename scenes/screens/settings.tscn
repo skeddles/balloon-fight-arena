@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxlnfu0yx2t6g"]
+
+[ext_resource type="Script" path="res://scripts/screens/settings.gd" id="1_sxa2h"]
+[ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="2_wrado"]
+[ext_resource type="Texture2D" uid="uid://b0jsj6con4iq2" path="res://art/ui/back.png" id="3_uk786"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc81b"]
+atlas = ExtResource("3_uk786")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv3pd"]
+atlas = ExtResource("3_uk786")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsxm4"]
+atlas = ExtResource("3_uk786")
+region = Rect2(32, 0, 32, 32)
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_sxa2h")
+
+[node name="Heading" type="Label" parent="."]
+offset_top = 12.0
+offset_right = 640.0
+offset_bottom = 35.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="."]
+offset_left = 190.0
+offset_top = 128.0
+offset_right = 494.0
+offset_bottom = 160.0
+theme = ExtResource("2_wrado")
+
+[node name="VolumeLabel" type="Label" parent="."]
+offset_top = 75.0
+offset_right = 640.0
+offset_bottom = 98.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "VOLUME:"
+horizontal_alignment = 1
+
+[node name="MusicPercent" type="Label" parent="."]
+offset_left = 502.0
+offset_top = 139.0
+offset_right = 562.0
+offset_bottom = 162.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "100%"
+
+[node name="MusicLabel" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 139.0
+offset_right = 176.0
+offset_bottom = 162.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "MUSIC:"
+horizontal_alignment = 2
+
+[node name="EffectsSlider" type="HSlider" parent="."]
+offset_left = 190.0
+offset_top = 184.0
+offset_right = 494.0
+offset_bottom = 216.0
+theme = ExtResource("2_wrado")
+
+[node name="EffectsPercent" type="Label" parent="."]
+offset_left = 502.0
+offset_top = 195.0
+offset_right = 562.0
+offset_bottom = 218.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "100%"
+
+[node name="EffectsLabel" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 195.0
+offset_right = 176.0
+offset_bottom = 218.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "EFFECTS:"
+horizontal_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="."]
+offset_left = 190.0
+offset_top = 240.0
+offset_right = 494.0
+offset_bottom = 272.0
+theme = ExtResource("2_wrado")
+
+[node name="MasterPercent" type="Label" parent="."]
+offset_left = 502.0
+offset_top = 251.0
+offset_right = 562.0
+offset_bottom = 274.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "100%"
+
+[node name="MasterLabel" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 251.0
+offset_right = 176.0
+offset_bottom = 274.0
+theme = ExtResource("2_wrado")
+theme_override_font_sizes/font_size = 14
+text = "MASTER:"
+horizontal_alignment = 2
+
+[node name="BackButton" type="TextureButton" parent="."]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 43.0
+texture_normal = SubResource("AtlasTexture_bc81b")
+texture_pressed = SubResource("AtlasTexture_bv3pd")
+texture_hover = SubResource("AtlasTexture_gsxm4")
+
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="value_changed" from="MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

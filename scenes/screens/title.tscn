@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://hr41fkindfuj"]
+[gd_scene load_steps=10 format=3 uid="uid://hr41fkindfuj"]
 
 [ext_resource type="Script" path="res://scripts/screens/title.gd" id="1_m6u6w"]
 [ext_resource type="Texture2D" uid="uid://cl7q8s1ygc8an" path="res://art/ui/logo.png" id="1_r3xtq"]
 [ext_resource type="Theme" uid="uid://ceoxr5e0y42y5" path="res://themes/menu-buttons.tres" id="2_d8iyl"]
 [ext_resource type="Theme" uid="uid://bv6xaxgvlwc1i" path="res://themes/theme.tres" id="3_cvf31"]
-[ext_resource type="AudioStream" uid="uid://4f6v8x01jgmj" path="res://sound/bf-vs-music.ogg" id="5_ru7pm"]
+[ext_resource type="AudioStream" uid="uid://4f6v8x01jgmj" path="res://sound/music/vs-balloon-fight-name-entry.ogg" id="5_ru7pm"]
+[ext_resource type="Texture2D" uid="uid://77oqqm2uqx35" path="res://art/ui/settings.png" id="6_ckajs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yejhd"]
+atlas = ExtResource("6_ckajs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38h3s"]
+atlas = ExtResource("6_ckajs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbsa1"]
+atlas = ExtResource("6_ckajs")
+region = Rect2(32, 0, 32, 32)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_m6u6w")
@@ -30,10 +43,10 @@ theme = ExtResource("2_d8iyl")
 text = "BALLOON TRIP"
 
 [node name="Version" type="Label" parent="."]
-offset_left = 556.0
-offset_top = 4.0
-offset_right = 637.0
-offset_bottom = 15.0
+offset_left = 557.0
+offset_top = 352.0
+offset_right = 638.0
+offset_bottom = 363.0
 theme = ExtResource("3_cvf31")
 theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
 text = "V0.0.0"
@@ -41,7 +54,17 @@ horizontal_alignment = 2
 
 [node name="TitleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ru7pm")
-volume_db = -6.789
+bus = &"Music"
+
+[node name="SettingsButton" type="TextureButton" parent="."]
+offset_left = 604.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 36.0
+texture_normal = SubResource("AtlasTexture_yejhd")
+texture_pressed = SubResource("AtlasTexture_38h3s")
+texture_hover = SubResource("AtlasTexture_xbsa1")
 
 [connection signal="pressed" from="ArenaButton" to="." method="_on_arena_button_pressed"]
 [connection signal="pressed" from="BalloonTripButton" to="." method="_on_balloon_trip_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
