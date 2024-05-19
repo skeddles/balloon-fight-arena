@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://casosdraa6hps"]
+
+[ext_resource type="Script" path="res://scripts/balloon-trip-obstacle.gd" id="1_sj5jd"]
+[ext_resource type="PackedScene" uid="uid://yso3atcbdlol" path="res://scenes/spark.tscn" id="2_4nk45"]
+
+[node name="SparkField" type="ReferenceRect"]
+offset_right = 120.0
+offset_bottom = 320.0
+border_width = 2.8
+editor_only = false
+script = ExtResource("1_sj5jd")
+
+[node name="Spark25" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(24, 56)
+
+[node name="Spark26" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(40, 80)
+
+[node name="Spark27" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(112, 96)
+
+[node name="Spark28" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(104, 200)
+
+[node name="Spark31" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(48, 136)
+
+[node name="Spark40" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(88, 16)
+
+[node name="Spark41" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(40, 216)
+
+[node name="Spark35" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(72, 232)
+
+[node name="Spark36" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(112, 296)
+
+[node name="Spark37" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(24, 304)
+
+[node name="Spark38" parent="." instance=ExtResource("2_4nk45")]
+position = Vector2(16, 232)

@@ -1,0 +1,321 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc0ehjcckmxdd"]
+
+[ext_resource type="Script" path="res://scripts/balloon-trip-obstacle.gd" id="1_6h81l"]
+[ext_resource type="PackedScene" uid="uid://yso3atcbdlol" path="res://scenes/spark.tscn" id="2_pxe20"]
+
+[node name="SparkField" type="ReferenceRect"]
+offset_right = 560.0
+offset_bottom = 320.0
+border_width = 2.8
+editor_only = false
+script = ExtResource("1_6h81l")
+
+[node name="Spark" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(400, 152)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark6" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(384, 168)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark7" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(368, 184)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark8" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(352, 200)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark9" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(336, 216)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark5" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(416, 136)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark16" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(480, 72)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark17" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(464, 88)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark18" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(448, 104)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark19" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(432, 120)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark20" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(496, 56)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark21" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(512, 40)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark22" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(528, 24)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark23" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(200, 24)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark25" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(184, 40)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark58" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(168, 56)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark59" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(152, 72)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark60" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(136, 88)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark61" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(120, 104)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark62" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(104, 120)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark63" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(88, 136)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark64" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(72, 152)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark65" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(56, 168)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark66" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(40, 184)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark10" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(304, 248)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark11" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(288, 264)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark12" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(272, 280)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark13" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(256, 296)
+speed = 80
+direction = Vector2(0, -1)
+
+[node name="Spark26" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(504, 296)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark57" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(520, 312)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark27" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(488, 280)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark28" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(472, 264)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark29" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(456, 248)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark30" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(440, 232)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark31" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(424, 216)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark32" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(408, 208)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark33" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(392, 184)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark34" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(376, 168)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark35" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(360, 152)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark36" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(344, 136)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark37" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(328, 120)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark38" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(312, 104)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark39" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(296, 88)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark40" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(280, 72)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark41" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(264, 56)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark42" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(248, 40)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark43" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(232, 24)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark44" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(216, 8)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark24" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(240, 312)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark45" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(224, 296)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark46" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(208, 280)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark47" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(192, 264)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark48" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(176, 248)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark49" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(160, 232)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark50" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(144, 216)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark51" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(128, 200)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark52" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(112, 184)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark53" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(96, 168)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark54" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(80, 152)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark55" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(64, 136)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark56" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(48, 120)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="Spark15" parent="." instance=ExtResource("2_pxe20")]
+position = Vector2(320, 232)
+speed = 80
+direction = Vector2(0, -1)

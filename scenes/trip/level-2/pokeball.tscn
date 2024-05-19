@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://0oqidghmjf34"]
+
+[ext_resource type="Script" path="res://scripts/balloon-trip-obstacle.gd" id="1_snfa1"]
+[ext_resource type="PackedScene" uid="uid://yso3atcbdlol" path="res://scenes/spark.tscn" id="2_uhhli"]
+
+[node name="SparkField" type="ReferenceRect"]
+offset_right = 248.0
+offset_bottom = 320.0
+border_width = 2.8
+editor_only = false
+script = ExtResource("1_snfa1")
+
+[node name="Spark24" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(96, 56)
+
+[node name="Spark25" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(208, 80)
+
+[node name="Spark26" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(40, 248)
+
+[node name="Spark27" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(8, 136)
+
+[node name="Spark28" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(8, 192)
+
+[node name="Spark29" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(240, 192)
+
+[node name="Spark30" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(240, 136)
+
+[node name="Spark31" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(208, 248)
+
+[node name="Spark32" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(152, 272)
+
+[node name="Spark33" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(40, 80)
+
+[node name="Spark34" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(96, 272)
+
+[node name="Spark35" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(152, 56)
+
+[node name="Spark36" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(168, 144)
+
+[node name="Spark37" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(104, 120)
+
+[node name="Spark38" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(88, 128)
+
+[node name="Spark39" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(80, 184)
+
+[node name="Spark40" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(80, 144)
+
+[node name="Spark41" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(88, 200)
+
+[node name="Spark42" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(104, 208)
+
+[node name="Spark43" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(144, 120)
+
+[node name="Spark44" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(144, 208)
+
+[node name="Spark45" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(160, 128)
+
+[node name="Spark46" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(160, 200)
+
+[node name="Spark47" parent="." instance=ExtResource("2_uhhli")]
+position = Vector2(168, 184)

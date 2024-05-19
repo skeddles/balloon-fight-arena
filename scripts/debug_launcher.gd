@@ -63,8 +63,8 @@ func _ready():
 	)
 	
 	# DEBUG SETTINGS FORCE
-	#$StageSelect.selected=3
-	#$P1Char.selected = 0
+	#$StageSelect.selected=4
+	#$P1Char.selected = 2
 	#$P1Input.selected = 0
 	#$P3Char.selected = 10
 	#$P2Input.selected = 2

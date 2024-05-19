@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://yso3atcbdlol"]
+
+[ext_resource type="Texture2D" uid="uid://dmnt4j6pbjtr5" path="res://art/fx/spark.png" id="1_heebg"]
+[ext_resource type="Script" path="res://scripts/spark.gd" id="1_orhl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmn8m"]
+radius = 3.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st16b"]
+atlas = ExtResource("1_heebg")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt72v"]
+atlas = ExtResource("1_heebg")
+region = Rect2(12, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ocns"]
+atlas = ExtResource("1_heebg")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l1xx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st16b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt72v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ocns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt72v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Spark" type="CharacterBody2D" groups=["electrocute"]]
+collision_layer = 16
+script = ExtResource("1_orhl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vmn8m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l1xx3")
+autoplay = "default"
+frame_progress = 0.587174

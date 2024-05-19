@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4qvn071h4uh2"]
+
+[ext_resource type="Script" path="res://scripts/balloon-trip-obstacle.gd" id="1_lu8y3"]
+[ext_resource type="PackedScene" uid="uid://yso3atcbdlol" path="res://scenes/spark.tscn" id="2_5otha"]
+
+[node name="SparkField" type="ReferenceRect"]
+offset_right = 128.0
+offset_bottom = 320.0
+border_width = 2.8
+editor_only = false
+script = ExtResource("1_lu8y3")
+
+[node name="Spark5" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(96, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark6" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(80, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark8" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(64, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark9" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(48, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark10" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(32, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark11" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(16, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark7" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(112, 160)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark12" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(88, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark13" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(72, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark14" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(56, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark15" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(40, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark16" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(24, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark17" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(8, 216)
+speed = 40
+direction = Vector2(0, -1)
+
+[node name="Spark18" parent="." instance=ExtResource("2_5otha")]
+position = Vector2(104, 216)
+speed = 40
+direction = Vector2(0, -1)

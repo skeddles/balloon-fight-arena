@@ -6,6 +6,13 @@ var gamepadId:int = 0
 
 
 func getInput(_character):
+	if InputScheme == "singleplayer":
+		return {
+			dirAxis = Input.get_axis("singleplayer_left", "singleplayer_right"),
+			jumped = Input.is_action_just_pressed("singleplayer_jump"),
+			fill = Input.is_action_just_pressed("singleplayer_fill"),
+			action = Input.is_action_just_pressed("singleplayer_action"),
+		}
 	if usingGamePad:
 		return {
 			dirAxis = round(Input.get_joy_axis(gamepadId, JOY_AXIS_LEFT_X)),

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwrfvonged1m7"]
+
+[ext_resource type="FontFile" uid="uid://ci2ne8c118w1t" path="res://art/fonts/balloon_fight_font.ttf" id="1_csxlr"]
+
+[resource]
+Label/constants/line_spacing = 7
+Label/font_sizes/font_size = 14
+Label/fonts/font = ExtResource("1_csxlr")

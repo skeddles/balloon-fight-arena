@@ -15,7 +15,7 @@ func initialize(numberOfPlayers):
 	visible = true
 
 func update():
-	print("updating hud for p",str(character.playerNumber))
+	print("updating hud for p",str(character.playerNumber), )
 	if not character: return
 	
 	# Reset
@@ -26,13 +26,12 @@ func update():
 	setBalloonCounterVisibility(false)
 	
 	# Show Dead Symbol
-	if (character.falling):
+	if character.is_dead:
 		print("marking p",str(character.playerNumber)," as dead")
 		$Contents/Dead.visible = true
-		return
-		
+
 	# Update Balloon Counter
-	if character.stored_balloons > 10:
+	elif character.stored_balloons > 10:
 		print("more than 10 balloons")
 		$Contents/BalloonCounter.text = "x"+str(character.stored_balloons)
 		setBalloonCounterVisibility(true)

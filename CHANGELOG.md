@@ -2,6 +2,12 @@
 
 ## 5.0.0 - 2024-05-16
 
+### Added
+- Single Player Balloon Trip Mode
+- Sparks obstacle that electrocutes players
+- High score lists
+
+
 ## 4.0.0 - 2024-05-11
 
 # Added 

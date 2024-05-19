@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqp0vkaohn6kw"]
+
+[ext_resource type="Script" path="res://scripts/balloon-trip-obstacle.gd" id="1_jom6u"]
+[ext_resource type="PackedScene" uid="uid://yso3atcbdlol" path="res://scenes/spark.tscn" id="2_1vbs7"]
+
+[node name="SparkField" type="ReferenceRect"]
+offset_right = 48.0
+offset_bottom = 320.0
+border_width = 2.8
+editor_only = false
+script = ExtResource("1_jom6u")
+
+[node name="Spark4" parent="." instance=ExtResource("2_1vbs7")]
+position = Vector2(8, 8)
+speed = 125
+direction = Vector2(0, 1)
+
+[node name="Spark5" parent="." instance=ExtResource("2_1vbs7")]
+position = Vector2(16, 24)
+speed = 125
+direction = Vector2(0, 1)
+
+[node name="Spark6" parent="." instance=ExtResource("2_1vbs7")]
+position = Vector2(24, 40)
+speed = 125
+direction = Vector2(0, 1)
+
+[node name="Spark7" parent="." instance=ExtResource("2_1vbs7")]
+position = Vector2(32, 56)
+speed = 125
+direction = Vector2(0, 1)
+
+[node name="Spark8" parent="." instance=ExtResource("2_1vbs7")]
+position = Vector2(40, 72)
+speed = 125
+direction = Vector2(0, 1)
