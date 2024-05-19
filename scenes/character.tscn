@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dbb6gubo3cjm4"]
+[gd_scene load_steps=68 format=3 uid="uid://dbb6gubo3cjm4"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_io5r3"]
 [ext_resource type="Texture2D" uid="uid://2550g4vitahk" path="res://art/characters/balloon-bird-pink.png" id="2_6jrem"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://b6yv3o0egnoij" path="res://sound/bf-drown.wav" id="8_7ucb3"]
 [ext_resource type="AudioStream" uid="uid://cddmr4e61122a" path="res://sound/bf-bounce.wav" id="9_iok53"]
 [ext_resource type="AudioStream" uid="uid://cpym1iy4t1nsu" path="res://sound/bk-drop-balloons.wav" id="10_wphto"]
+[ext_resource type="AudioStream" uid="uid://ncheq3xhj7b2" path="res://sound/bf-zap.wav" id="12_uigar"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt8ew"]
 radius = 4.0
@@ -368,7 +369,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"electrocute",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -531,6 +532,7 @@ height = 16.0
 
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 z_index = 1
+collision_mask = 21
 script = ExtResource("1_io5r3")
 
 [node name="HasBallonsCollisionShape" type="CollisionShape2D" parent="."]
@@ -552,7 +554,7 @@ autoplay = "1_idle"
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_q4adw")
-animation = &"fall"
+animation = &"electrocute"
 autoplay = "idle"
 
 [node name="BalloonFilling" type="AnimatedSprite2D" parent="."]
@@ -561,7 +563,6 @@ sprite_frames = SubResource("SpriteFrames_qqckv")
 animation = &"blank"
 
 [node name="FeetArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -571,7 +572,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u622o")
 
 [node name="BalloonArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -604,6 +604,9 @@ stream = ExtResource("9_iok53")
 [node name="Drop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_wphto")
 
+[node name="Zap" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_uigar")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="animation_changed" from="Balloons" to="." method="_on_balloons_animation_changed"]
@@ -613,3 +616,4 @@ stream = ExtResource("10_wphto")
 [connection signal="area_entered" from="BalloonArea" to="." method="_on_balloon_area_area_entered"]
 [connection signal="body_shape_entered" from="BalloonArea" to="." method="_on_balloon_area_body_shape_entered"]
 [connection signal="finished" from="Audio/Drown" to="." method="_on_drown_finished"]
+[connection signal="finished" from="Audio/Zap" to="." method="_on_zap_finished"]
