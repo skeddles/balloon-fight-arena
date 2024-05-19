@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ceoxr5e0y42y5"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ceoxr5e0y42y5"]
 
 [ext_resource type="Texture2D" uid="uid://d5wa5ynmo4mj" path="res://art/ui/checkbox-checked.png" id="1_vdq2n"]
 [ext_resource type="Texture2D" uid="uid://cpmx4dmi017gq" path="res://art/ui/checkbox.png" id="2_eo1jn"]
@@ -13,31 +13,37 @@ bg_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdkp"]
-bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0yt"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40wd7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74ypf"]
+content_margin_left = 16.0
+content_margin_right = 16.0
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqbcj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4mg"]
+content_margin_left = 16.0
+content_margin_right = 16.0
 bg_color = Color(0.105882, 0.105882, 0.105882, 1)
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 shadow_color = Color(0.54902, 0.54902, 0.54902, 1)
 anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgjas"]
-bg_color = Color(0.25098, 0.25098, 0.25098, 1)
-expand_margin_left = 8.0
-expand_margin_right = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs0xx"]
 
@@ -68,10 +74,10 @@ default_font = ExtResource("3_31qkf")
 default_font_size = 7
 Button/font_sizes/font_size = 14
 Button/styles/disabled = SubResource("StyleBoxFlat_4ywq8")
-Button/styles/focus = SubResource("StyleBoxFlat_chdkp")
-Button/styles/hover = SubResource("StyleBoxFlat_40wd7")
-Button/styles/normal = SubResource("StyleBoxFlat_lqbcj")
-Button/styles/pressed = SubResource("StyleBoxFlat_dgjas")
+Button/styles/focus = SubResource("StyleBoxFlat_oo0yt")
+Button/styles/hover = SubResource("StyleBoxFlat_74ypf")
+Button/styles/normal = SubResource("StyleBoxFlat_1k4mg")
+Button/styles/pressed = SubResource("StyleBoxFlat_oo0yt")
 CheckBox/icons/checked = ExtResource("1_vdq2n")
 CheckBox/icons/unchecked = ExtResource("2_eo1jn")
 CheckBox/styles/disabled = SubResource("StyleBoxEmpty_xs0xx")

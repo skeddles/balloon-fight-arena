@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://shehgwlt4opc"]
+[gd_scene load_steps=8 format=3 uid="uid://shehgwlt4opc"]
 
 [ext_resource type="Script" path="res://scripts/high-score-list.gd" id="1_8tiyi"]
 [ext_resource type="Texture2D" uid="uid://ha31bvfvtgh4" path="res://art/ui/trophies.png" id="2_8w7c3"]
 [ext_resource type="Theme" uid="uid://bwrfvonged1m7" path="res://themes/high-scores.tres" id="2_eamxa"]
+[ext_resource type="AudioStream" uid="uid://dybbwhdwsww0o" path="res://sound/bf-win.wav" id="4_mxw8x"]
+[ext_resource type="AudioStream" uid="uid://d0oeg0vdl07c1" path="res://sound/bf-bonus-perfect.wav" id="5_hutlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg2aq"]
 bg_color = Color(0, 0, 0, 1)
@@ -47,6 +49,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kg2aq")
 
 [node name="Highlight" type="Panel" parent="Panel"]
+layout_mode = 0
 offset_left = 25.0
 offset_top = 36.0
 offset_right = 410.0
@@ -259,3 +262,13 @@ texture = ExtResource("2_8w7c3")
 centered = false
 region_enabled = true
 region_rect = Rect2(240, 0, 16, 16)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Lose" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_mxw8x")
+bus = &"Effects"
+
+[node name="Win" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_hutlu")
+bus = &"Effects"

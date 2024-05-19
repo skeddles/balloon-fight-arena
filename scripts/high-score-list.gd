@@ -16,14 +16,17 @@ func update_and_reveal_high_scores(newScore):
 	var entries = data.entries
 	print("high score data: ", data)
 	
-	if entries.size() < HIGH_SCORE_TABLE_ENTRIES or entries.back().score <= newScore:
+	
+	if is_high_score(newScore):
 		var position = get_score_position(newScore)-1
 		entries.insert(position,{score=newScore, name="SKDLS"})
 		if entries.size() == HIGH_SCORE_TABLE_ENTRIES + 1: 
 			entries.pop_back()
 		$Panel/Highlight.position.y += position * 19
+		$Sounds/Win.play()
 	else:
 		$Panel/Highlight.visible = false
+		$Sounds/Lose.play()
 		
 	update_high_score_list(entries)
 	save_highscore_data(entries)

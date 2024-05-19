@@ -34,3 +34,9 @@ func restart():
 func _on_settings_button_pressed():
 	settingsScreen.visible = true
 	visible = false
+
+func reloadScene(scene, path):
+	scene.queue_free()
+	await scene.tree_exited
+	var newScene = load(path).instantiate()
+	get_tree().root.add_child(newScene)

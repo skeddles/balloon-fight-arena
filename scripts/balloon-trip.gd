@@ -33,6 +33,7 @@ func _ready():
 			print("  loading pattern ", pattern)
 			ObstaclePatterns[level].append(pattern.replace('.remap', ''))
 			
+	$GUI/EndGameNav.visible = false
 	$Sounds/Music.play()
 
 func _process(delta):
@@ -127,15 +128,20 @@ func _draw():
 
 func _game_over():
 	$Sounds/Music.stop()
-	if $GUI/HighScoreList.is_high_score(current_distance()):
-		$Sounds/Win.play()
-	else:
-		$Sounds/Lose.play()
-		
-	print("done")
 	$GUI/HighScoreList.update_and_reveal_high_scores(current_distance())
+	$GUI/EndGameNav.visible = true
 
 func _input(event):
 	if Input.is_action_just_pressed("debug"): 
 		DEBUG = true
 		print("debug toggled")
+
+
+func _on_exit_button_pressed():
+	get_node("/root/TitleScreen").restart()
+	queue_free()
+
+
+func _on_try_again_button_pressed():
+	get_node("/root/TitleScreen").reloadScene(self, "res://scenes/balloon-trip.tscn")
+	
