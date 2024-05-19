@@ -1,10 +1,12 @@
 extends Control
 
+var number_string = preload("res://scripts/util/format-number-string.gd").new()
+
 ## The identifier for this high score list, which will be used to save and look up it's contents - should probably be camel case
 @export var HighScoreListName:String
 
 const HIGH_SCORE_TABLE_ENTRIES = 10
-const TROPHY_GOALS = [0,25,50,100,250,500,1000,2500,5000,10000,25000,50000,100000,250000,500000,1000000]
+const TROPHY_GOALS = [0,25,50,100,200,300,400,500,650,800,1000,1200,2500,5000,7500,10000]
 
 func _ready():
 	visible = false
@@ -33,7 +35,7 @@ func update_and_reveal_high_scores(newScore):
 
 func update_high_score_list(entries):
 	$Panel/Names.text = "\n".join(entries.map(func (e): return e.name))
-	$Panel/Scores.text = "\n".join(entries.map(func (e): return e.score))
+	$Panel/Scores.text = "\n".join(entries.map(func (e): return number_string.format(e.score)))
 	#for i in range(1,11):
 	var i = 1
 	for e in entries:
