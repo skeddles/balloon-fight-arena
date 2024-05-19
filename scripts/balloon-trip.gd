@@ -127,7 +127,12 @@ func _draw():
 
 func _game_over():
 	$Sounds/Music.stop()
-	$Sounds/End.play()
+	if $GUI/HighScoreList.is_high_score(current_distance()):
+		$Sounds/Win.play()
+	else:
+		$Sounds/Lose.play()
+		
+	print("done")
 	$GUI/HighScoreList.update_and_reveal_high_scores(current_distance())
 
 func _input(event):

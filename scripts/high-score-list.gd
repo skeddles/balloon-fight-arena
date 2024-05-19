@@ -17,11 +17,7 @@ func update_and_reveal_high_scores(newScore):
 	print("high score data: ", data)
 	
 	if entries.size() < HIGH_SCORE_TABLE_ENTRIES or entries.back().score <= newScore:
-		var position = 0
-		for e in entries:
-			if newScore < e.score: position += 1
-			else: break
-		print("inserting new high score ("+str(newScore)+") at position: "+str(position))
+		var position = get_score_position(newScore)-1
 		entries.insert(position,{score=newScore, name="SKDLS"})
 		if entries.size() == HIGH_SCORE_TABLE_ENTRIES + 1: 
 			entries.pop_back()
@@ -32,6 +28,25 @@ func update_and_reveal_high_scores(newScore):
 	update_high_score_list(entries)
 	save_highscore_data(entries)
 	visible = true
+
+func get_score_position(newScore):
+	var data = get_highscore_data()
+	var entries = data.entries
+	
+	if entries.size() == 0: return 1
+	
+	if entries.size() == HIGH_SCORE_TABLE_ENTRIES and newScore < entries.back().score: 
+		return HIGH_SCORE_TABLE_ENTRIES + 1
+	
+	var position = 1
+	for e in entries:
+		if newScore < e.score: position += 1
+		else: break
+	return position
+
+func is_high_score(score): 
+	print("pos?:",get_score_position(score))
+	return get_score_position(score) <= HIGH_SCORE_TABLE_ENTRIES
 
 func update_high_score_list(entries):
 	$Panel/Names.text = "\n".join(entries.map(func (e): return e.name))

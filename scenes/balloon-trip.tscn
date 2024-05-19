@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bixhphvjc1ia8"]
+[gd_scene load_steps=25 format=3 uid="uid://bixhphvjc1ia8"]
 
 [ext_resource type="Script" path="res://scripts/balloon-trip.gd" id="1_ifoyk"]
 [ext_resource type="PackedScene" uid="uid://dbreo1apbaegh" path="res://scenes/characters/balloon-fighter-blue.tscn" id="3_joy5l"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dybbwhdwsww0o" path="res://sound/bf-win.wav" id="7_o342b"]
 [ext_resource type="AudioStream" uid="uid://5ur8j7bw5308" path="res://sound/bf-balloon-trip.wav" id="8_3w24y"]
 [ext_resource type="PackedScene" uid="uid://shehgwlt4opc" path="res://scenes/ui/high-score-list.tscn" id="10_owdas"]
+[ext_resource type="AudioStream" uid="uid://d0oeg0vdl07c1" path="res://sound/bf-bonus-perfect.wav" id="11_m05up"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gyug"]
 size = Vector2(14, 7)
@@ -218,11 +219,14 @@ editor_only = true
 
 [node name="Sounds" type="Node" parent="."]
 
-[node name="End" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Lose" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("7_o342b")
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_3w24y")
 volume_db = -13.048
+
+[node name="Win" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_m05up")
 
 [connection signal="tree_exited" from="Character" to="." method="_game_over"]
