@@ -1,0 +1,92 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ceoxr5e0y42y5"]
+
+[ext_resource type="Texture2D" uid="uid://d5wa5ynmo4mj" path="res://art/ui/checkbox-checked.png" id="1_vdq2n"]
+[ext_resource type="Texture2D" uid="uid://cpmx4dmi017gq" path="res://art/ui/checkbox.png" id="2_eo1jn"]
+[ext_resource type="FontFile" uid="uid://ci2ne8c118w1t" path="res://art/fonts/balloon_fight_font.ttf" id="3_31qkf"]
+[ext_resource type="Texture2D" uid="uid://bwe55tvx08yjs" path="res://art/ui/down.png" id="4_xxnqy"]
+[ext_resource type="Texture2D" uid="uid://bx23jpb4uva4a" path="res://art/ui/radio-checked.png" id="5_f55nr"]
+[ext_resource type="Texture2D" uid="uid://bk8mxsw15cdlw" path="res://art/ui/blank.png" id="6_8q4mf"]
+[ext_resource type="Texture2D" uid="uid://ct2me21iv33hm" path="res://art/ui/updown.png" id="7_g5vcu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ywq8"]
+bg_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdkp"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40wd7"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqbcj"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+shadow_color = Color(0.54902, 0.54902, 0.54902, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgjas"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs0xx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6khse"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb2vg"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1kmi"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gaut"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+border_color = Color(0.341176, 0.341176, 0.341176, 1)
+corner_detail = 1
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("3_31qkf")
+default_font_size = 7
+Button/font_sizes/font_size = 14
+Button/styles/disabled = SubResource("StyleBoxFlat_4ywq8")
+Button/styles/focus = SubResource("StyleBoxFlat_chdkp")
+Button/styles/hover = SubResource("StyleBoxFlat_40wd7")
+Button/styles/normal = SubResource("StyleBoxFlat_lqbcj")
+Button/styles/pressed = SubResource("StyleBoxFlat_dgjas")
+CheckBox/icons/checked = ExtResource("1_vdq2n")
+CheckBox/icons/unchecked = ExtResource("2_eo1jn")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_xs0xx")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_xs0xx")
+Fonts/fonts/normal = ExtResource("3_31qkf")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_6khse")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_tb2vg")
+OptionButton/constants/arrow_margin = 12
+OptionButton/icons/arrow = ExtResource("4_xxnqy")
+PopupMenu/icons/radio_checked = ExtResource("5_f55nr")
+PopupMenu/icons/radio_unchecked = ExtResource("6_8q4mf")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_g1kmi")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_5gaut")
+SpinBox/icons/updown = ExtResource("7_g5vcu")

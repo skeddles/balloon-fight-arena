@@ -27,4 +27,5 @@ func _process(_delta):
 func _on_match_over_finished():
 	var menu = load("res://scenes/debug_launcher.tscn").instantiate()
 	get_tree().root.add_child(menu)
+	get_node("/root/TitleScreen").resumeMusic()
 	get_node("/root/Level").queue_free()

@@ -15,9 +15,6 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
-	# initialize room
-	$TitleMusic.play()
-	$Version.text = "V"+ ProjectSettings.get_setting("application/config/version")
 	
 	# SETUP CHARACTER DROPDOWNS
 	var characterDropdowns = get_tree().get_nodes_in_group("characterDropdown")
@@ -133,6 +130,7 @@ func _on_start_match_button_pressed():
 	for character in enabledCharacters:
 		character.playerHUD.initialize(enabledCharacters.size())
 	get_node("/root/DebugLauncher").queue_free()
+	get_node("/root/TitleScreen").suspend()
 
 func checkAtLeast2CharactersSelected():
 	var charactersSelected = 0
@@ -153,3 +151,8 @@ func checkForDuplicateInputMethods():
 	if $P3Input.selected != 0 and $P3Input.selected != inputSchemes.size()-1:
 		if $P3Input.selected == $P4Input.selected: return "player 3 and player 4"
 	return "okay"
+
+
+func _on_back_button_pressed():
+	get_node("/root/TitleScreen").visible = true
+	queue_free()
