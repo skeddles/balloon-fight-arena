@@ -36,7 +36,7 @@ func _ready():
 	$Sounds/Music.play()
 
 func _process(delta):
-	if not is_instance_valid(Character): return 
+	if not is_instance_valid(Character) or Character.is_dead: return 
 	
 	
 	var score = current_distance()
