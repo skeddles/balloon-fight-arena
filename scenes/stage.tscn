@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://7e31i2vvtkb5"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_a4766"]
+[ext_resource type="PackedScene" uid="uid://nehwgbvojxei" path="res://scenes/ui/hud.tscn" id="2_q5whi"]
+[ext_resource type="AudioStream" uid="uid://cmhb0731seefy" path="res://sound/bf-lose.wav" id="4_dvk86"]
+[ext_resource type="PackedScene" uid="uid://va8r8fp0koxv" path="res://scenes/ui/match-over.tscn" id="6_238ki"]
+[ext_resource type="PackedScene" uid="uid://doct7j5cxamfx" path="res://scenes/ui/pause-menu.tscn" id="7_wphos"]
+
+[sub_resource type="Gradient" id="Gradient_y6ol7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.364444, 0.706667)
+colors = PackedColorArray(0.486275, 0.0313726, 0, 1, 0, 0.266667, 0, 1, 0.298039, 0.862745, 0.282353, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sss8b"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ohtge"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lf10b"]
+normal = Vector2(-1, 0)
+distance = -640.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8r1ka"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_a4766")
+
+[node name="HUD" parent="." instance=ExtResource("2_q5whi")]
+z_index = 100
+
+[node name="Stars" type="CPUParticles2D" parent="."]
+position = Vector2(320, 180)
+amount = 50
+emission_shape = 3
+emission_rect_extents = Vector2(640, 360)
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_y6ol7")
+
+[node name="Walls" type="StaticBody2D" parent="." groups=["bounce"]]
+position = Vector2(-210, 359)
+
+[node name="LeftEdge" type="CollisionShape2D" parent="Walls"]
+position = Vector2(210, -359)
+shape = SubResource("WorldBoundaryShape2D_sss8b")
+one_way_collision_margin = 54.2
+
+[node name="TopEdge" type="CollisionShape2D" parent="Walls" groups=["ceiling"]]
+position = Vector2(210, -359)
+shape = SubResource("WorldBoundaryShape2D_ohtge")
+one_way_collision_margin = 54.2
+
+[node name="RightEdge" type="CollisionShape2D" parent="Walls"]
+position = Vector2(210, -359)
+shape = SubResource("WorldBoundaryShape2D_lf10b")
+one_way_collision_margin = 54.2
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="MatchOver" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("4_dvk86")
+bus = &"Effects"
+
+[node name="MatchOver" parent="." instance=ExtResource("6_238ki")]
+visible = false
+
+[node name="Water" type="StaticBody2D" parent="." groups=["water"]]
+position = Vector2(0, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+shape = SubResource("WorldBoundaryShape2D_8r1ka")
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_wphos")]
+z_index = 999
+
+[connection signal="finished" from="Sound/MatchOver" to="." method="return_to_menu"]

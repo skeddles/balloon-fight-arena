@@ -20,9 +20,11 @@ Current version / minor version is on main branch, current next version has its 
 
 ## Stages
 
-1. Duplicate an existing stage
-2. Hide the BG element so you can see the nagivation grid tiles
-3. Switch to tilemap and erase all the current tiles
+1. Go to `res://scenes/stage.tscn`
+2. Right click and select `New Inherited Scene`	
+3. Add a tilemap node
 4. Draw in new tiles
 5. Place navigation tiles, leaving 1 tile of space around platforms and walls and ceiling, and 2 under platforms
-6. Adjust placement of the spawn markers
+6. Add 4 Marker2D nodes, named Spawn1-Spawn4
+7. Add a AudioStreamPlayer2D node, named Music under the Sound node
+8. Save under `res://scenes/stages`

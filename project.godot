@@ -38,6 +38,7 @@ window/snap/snap_2d_transforms_to_pixel=false
 
 folder_colors={
 "res://art/": "red",
+"res://scenes/": "yellow",
 "res://scripts/": "green",
 "res://sound/": "pink"
 }

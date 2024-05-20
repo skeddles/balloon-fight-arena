@@ -584,6 +584,7 @@ shape = SubResource("CapsuleShape2D_s0k5s")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_x6tsq")
+volume_db = 4.0
 bus = &"Effects"
 
 [node name="Falling" type="AudioStreamPlayer" parent="Audio"]
@@ -605,6 +606,7 @@ bus = &"Effects"
 
 [node name="Bounce" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_iok53")
+volume_db = 2.0
 bus = &"Effects"
 
 [node name="Drop" type="AudioStreamPlayer" parent="Audio"]

@@ -248,7 +248,7 @@ editor_only = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_3w24y")
-volume_db = -13.048
+volume_db = -10.0
 bus = &"Music"
 
 [connection signal="tree_exited" from="Character" to="." method="_game_over"]
