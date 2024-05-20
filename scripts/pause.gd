@@ -21,8 +21,6 @@ func unpause():
 	visible=false
 
 func exit():
-	unpause()
-	var menu = load("res://scenes/debug_launcher.tscn").instantiate()
-	get_tree().root.add_child(menu)
-	get_node("/root/TitleScreen").resumeMusic()
-	get_node("/root/Level").queue_free()
+	get_tree().paused = false
+	visible=false
+	GlobalSignal.pause_menu_exit.emit()

@@ -2,7 +2,7 @@ extends Node2D
 
 var number_string = preload("res://scripts/util/format-number-string.gd").new()
 
-var DEBUG = true
+var DEBUG = false
 const MAX_SCROLL_SPEED = 50.0
 const OBSTACLE_SPACING = [1,10,25,50,75,100,150,200,250,300,350,400,500,750,1000,2500]
 const SPEED_TIERS = [100,50,25]
@@ -35,6 +35,8 @@ func _ready():
 			
 	$GUI/EndGameNav.visible = false
 	$Sounds/Music.play()
+	
+	GlobalSignal.pause_menu_exit.connect(return_to_menu)
 
 func _process(delta):
 	if not is_instance_valid(Character) or Character.is_dead: return 
@@ -136,12 +138,10 @@ func _input(event):
 		DEBUG = true
 		print("debug toggled")
 
-
-func _on_exit_button_pressed():
-	get_node("/root/TitleScreen").restart()
-	queue_free()
-
-
 func _on_try_again_button_pressed():
 	get_node("/root/TitleScreen").reloadScene(self, "res://scenes/balloon-trip.tscn")
-	
+
+
+func return_to_menu():
+	get_node("/root/TitleScreen").restart()
+	queue_free()

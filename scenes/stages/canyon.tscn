@@ -98,4 +98,4 @@ shape = SubResource("WorldBoundaryShape2D_8r1ka")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_t14na")]
 
-[connection signal="finished" from="Sound/MatchOver" to="." method="_on_match_over_finished"]
+[connection signal="finished" from="Sound/MatchOver" to="." method="return_to_menu"]

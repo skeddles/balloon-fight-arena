@@ -10,6 +10,7 @@ func _ready():
 	bg.z_as_relative = false
 	add_child(bg)
 	move_child(bg, 0)
+	GlobalSignal.pause_menu_exit.connect(return_to_menu)
 
 func _process(_delta):	
 	if !endedMatch && (get_tree().get_nodes_in_group("character").size() == 1): 
@@ -24,7 +25,7 @@ func _process(_delta):
 			$MatchOver/PlayerNumber.text = "[PLAYER "+ str(winner.playerNumber) +"]"
 		$MatchOver.visible = true
 		
-func _on_match_over_finished():
+func return_to_menu():
 	var menu = load("res://scenes/debug_launcher.tscn").instantiate()
 	get_tree().root.add_child(menu)
 	get_node("/root/TitleScreen").resumeMusic()
