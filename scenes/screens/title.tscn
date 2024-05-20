@@ -29,7 +29,7 @@ texture = ExtResource("1_r3xtq")
 [node name="ArenaButton" type="Button" parent="."]
 offset_left = 224.0
 offset_top = 200.0
-offset_right = 416.0
+offset_right = 424.0
 offset_bottom = 231.0
 theme = ExtResource("2_d8iyl")
 text = "ARENA"
