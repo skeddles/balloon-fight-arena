@@ -1,0 +1,215 @@
+[gd_scene load_steps=22 format=3 uid="uid://bk8tupyknfd6v"]
+
+[ext_resource type="Script" path="res://scripts/obstacles/cloud.gd" id="1_6o84w"]
+[ext_resource type="Texture2D" uid="uid://bbrh1drad3hxj" path="res://art/obstacles/clouds.png" id="1_f3w53"]
+[ext_resource type="AudioStream" uid="uid://ckpqxtmtuviqa" path="res://sound/bf-lightning.wav" id="3_gv6ho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3lr2"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t60m"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6j33"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy16s"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fd72"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4rpa"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ybd"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_angk6"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aoid"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6amf"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4plif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3lr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t60m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6j33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy16s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fd72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4rpa")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ybd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_angk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aoid")
+}],
+"loop": true,
+"name": &"flashing",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6amf")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqgu"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(0, 112, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6duu8"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(8, 112, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw0qi"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(16, 112, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in7r8"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(24, 112, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkdb6"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(32, 112, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02wqp"]
+atlas = ExtResource("1_f3w53")
+region = Rect2(40, 112, 8, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wigur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6duu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6duu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw0qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in7r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw0qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in7r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkdb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02wqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkdb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02wqp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Cloud" type="Node2D"]
+position = Vector2(291, 195)
+script = ExtResource("1_6o84w")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4plif")
+animation = &"idle"
+
+[node name="Bolt_NW" type="AnimatedSprite2D" parent="."]
+position = Vector2(-15, -32)
+sprite_frames = SubResource("SpriteFrames_wigur")
+frame = 8
+frame_progress = 0.0982304
+centered = false
+flip_v = true
+
+[node name="Bolt_NE" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, -33)
+sprite_frames = SubResource("SpriteFrames_wigur")
+frame = 5
+frame_progress = 0.844159
+centered = false
+offset = Vector2(-8, 0)
+flip_h = true
+flip_v = true
+
+[node name="Bolt_SE" type="AnimatedSprite2D" parent="."]
+position = Vector2(18, 35)
+sprite_frames = SubResource("SpriteFrames_wigur")
+frame = 5
+frame_progress = 0.844159
+centered = false
+offset = Vector2(-8, -24)
+flip_h = true
+
+[node name="Bolt_SW" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 36)
+sprite_frames = SubResource("SpriteFrames_wigur")
+frame = 5
+frame_progress = 0.844159
+centered = false
+offset = Vector2(0, -24)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Lightning" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_gv6ho")
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="animation_finished" from="Bolt_NW" to="." method="_on_bolt_sprite_animation_finished" binds= [Vector2(-1, -1)]]
+[connection signal="animation_finished" from="Bolt_NE" to="." method="_on_bolt_sprite_animation_finished" binds= [Vector2(1, -1)]]
+[connection signal="animation_finished" from="Bolt_SE" to="." method="_on_bolt_sprite_animation_finished" binds= [Vector2(1, 1)]]
+[connection signal="animation_finished" from="Bolt_SW" to="." method="_on_bolt_sprite_animation_finished" binds= [Vector2(-1, 1)]]
